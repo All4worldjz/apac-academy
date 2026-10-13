@@ -3,7 +3,7 @@ name: 发布加密站点
 on:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/pages.yml"]
+    paths: ["site/**", "sources-reading/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -42,9 +42,17 @@ jobs:
             console.log("加密文件检查通过；强制改口令="+v.mustChange+"；更新于 "+v.updated);
           '
 
+      - name: 组装发布目录（加密站点 + sources-reading 阅读册）
+        run: |
+          set -e
+          mkdir -p _deploy
+          cp -r site/. _deploy/
+          mkdir -p _deploy/sources-reading
+          cp sources-reading/index.html _deploy/sources-reading/index.html
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _deploy
       - id: deployment
         uses: actions/deploy-pages@v4
