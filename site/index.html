@@ -17,7 +17,7 @@ body{background:radial-gradient(640px 340px at 85% -5%,var(--glow),transparent 7
 [hidden]{display:none!important}
 .card{width:min(440px,100%);background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:30px 28px;display:grid;gap:18px}
 .card.wide{width:min(560px,100%)}
-.pub{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:16px}.pub span{font-size:12px;color:var(--muted)}.pub a{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none;font-weight:500;font-size:14px;background:var(--card)}.pub a:hover{border-color:var(--accent);color:var(--accent)}.pub i{font-style:normal;color:var(--muted)}
+.pub{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:16px}.pub span{font-size:12px;color:var(--muted)}.pub a{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none;font-weight:500;font-size:14px;background:var(--card)}.pub a:hover{border-color:var(--accent);color:var(--accent)}.pub i{font-style:normal;color:var(--muted)}.pub a.home{justify-content:flex-start;gap:8px;background:var(--bg)}
 .brand{display:flex;align-items:center;gap:12px}
 .mark{width:40px;height:40px;border-radius:10px;background:var(--accent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2),0 6px 14px -6px var(--accent);display:grid;place-items:center}
 .mark svg{width:22px;height:22px}
@@ -66,7 +66,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
       <p class="msg" id="loginMsg" role="alert"></p>
     </form>
     <p class="foot">内容以 AES-256 加密存放，只在你的浏览器里解密。口令不会发送到任何服务器。</p>
-    <nav class="pub" aria-label="公开学院"><span>公开学院 · 无需登录</span><a href="./genspark/">Genspark 领航学院<i>→</i></a><a href="./zilliz/">Zilliz 领航学院<i>→</i></a></nav>
+    <nav class="pub" aria-label="巡航"><a href="../" class="home"><i>←</i>返回总导航</a><span>其他学院 · 无需登录</span><a href="../genspark/">Genspark 领航学院<i>→</i></a><a href="../zilliz/">Zilliz 领航学院<i>→</i></a></nav>
   </section>
 
   <section class="card" id="vChange" hidden>
@@ -140,10 +140,11 @@ function getJSON(u,n){n=n||0;return fetch(u,{cache:'no-store'}).then(function(r)
 // ---------- open the site
 function saveSession(dek,stamp,pendingContent){return exportDek(dek).then(function(k){var o={dek:k,stamp:stamp};if(pendingContent)o.content=pendingContent;ss(SKEY,JSON.stringify(o))})}
 function lockUi(){
-  return '<style>#vaultDock{position:fixed;top:calc(9px + env(safe-area-inset-top,0px));right:12px;z-index:9999;display:flex;gap:6px}#vaultDock button{font:500 12.5px/1 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:8px 12px;border-radius:8px;border:1px solid #e9ebf0;background:#ffffff;color:#354052;box-shadow:0 4px 8px -2px rgba(16,24,40,.1);cursor:pointer;min-height:32px}#vaultDock button:hover{border-color:#0033ff;color:#0033ff}@media (prefers-color-scheme:dark){#vaultDock button{background:#222225;color:#d9d9de;border-color:#323238}}@media (min-width:1024px){#vaultDock{top:auto;right:auto;left:18px;bottom:18px}}@media print{#vaultDock{display:none}}</style>'+
-  '<div id="vaultDock"><button type="button" onclick="try{sessionStorage.removeItem(\''+SKEY+'\')}catch(e){};location.replace(location.pathname)">锁定</button><button type="button" onclick="try{sessionStorage.removeItem(\''+SKEY+'\')}catch(e){};location.replace(location.pathname+\'?change=1\')">改口令</button></div>';
+  return '<style>#vaultDock{position:fixed;top:calc(9px + env(safe-area-inset-top,0px));right:12px;z-index:9999;display:flex;gap:6px}#vaultDock a,#vaultDock button{text-decoration:none;display:inline-flex;align-items:center;font:500 12.5px/1 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:8px 12px;border-radius:8px;border:1px solid #e9ebf0;background:#ffffff;color:#354052;box-shadow:0 4px 8px -2px rgba(16,24,40,.1);cursor:pointer;min-height:32px}#vaultDock a:hover,#vaultDock button:hover{border-color:#0033ff;color:#0033ff}@media (prefers-color-scheme:dark){#vaultDock a,#vaultDock button{text-decoration:none;display:inline-flex;align-items:center;background:#222225;color:#d9d9de;border-color:#323238}}@media (min-width:1024px){#vaultDock{top:auto;right:auto;left:18px;bottom:18px}}@media print{#vaultDock{display:none}}</style>'+
+  '<div id="vaultDock"><a href="../" id="hubLink">← 导航页</a><button type="button" onclick="try{sessionStorage.removeItem(\''+SKEY+'\')}catch(e){};location.replace(location.pathname)">锁定</button><button type="button" onclick="try{sessionStorage.removeItem(\''+SKEY+'\')}catch(e){};location.replace(location.pathname+\'?change=1\')">改口令</button></div>';
 }
 function openSite(html){
+  try{localStorage.setItem('hub-last',JSON.stringify({s:'protected',v:'learn',t:Date.now()}))}catch(e){}
   var inj=lockUi();
   var i=html.toLowerCase().lastIndexOf('</body>');
   html=i>=0?html.slice(0,i)+inj+html.slice(i):html+inj;

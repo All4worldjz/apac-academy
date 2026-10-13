@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>领航学院 · 总导航</title>
+<meta name="description" content="AI 创业公司亚太与大中华区 GM 研究学院的总入口：选择学院、按航线学习、随时返回。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23101828'/%3E%3Cpath d='M16 6l3 10-3 10-3-10z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#F4F5F7;--paper:#FFFFFF;--ink:#0B1220;--ink2:#344054;--muted:#667085;--line:#E4E7EC;--soft:#F9FAFB;--dot:#D0D5DD;
+--accent:#101828;--accent-ink:#FFFFFF;--ok:#079455;--lock:#B54708;--lock-soft:#FFFAEB;
+--c-p:#0033FF;--c-g:#18181B;--c-z:#1D3BD1;--c-z2:#0E9F9A;
+--shadow:0 1px 2px rgba(16,24,40,.05);--shadow-md:0 12px 24px -10px rgba(16,24,40,.14),0 2px 4px -2px rgba(16,24,40,.05)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D12;--paper:#14171F;--ink:#F5F6F8;--ink2:#CDD2DB;--muted:#98A1B2;--line:#272C37;--soft:#191D26;--dot:#2B303B;--accent:#F5F6F8;--accent-ink:#0B0D12;--ok:#47CD89;--lock:#FDB022;--lock-soft:rgba(253,176,34,.10);--c-p:#5B8CFF;--c-g:#E4E4E7;--c-z:#7A94FF;--c-z2:#2CC5BE;--shadow:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 16px 30px -12px rgba(0,0,0,.6)}}
+:root[data-theme="dark"]{--bg:#0B0D12;--paper:#14171F;--ink:#F5F6F8;--ink2:#CDD2DB;--muted:#98A1B2;--line:#272C37;--soft:#191D26;--dot:#2B303B;--accent:#F5F6F8;--accent-ink:#0B0D12;--ok:#47CD89;--lock:#FDB022;--lock-soft:rgba(253,176,34,.10);--c-p:#5B8CFF;--c-g:#E4E4E7;--c-z:#7A94FF;--c-z2:#2CC5BE;--shadow:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 16px 30px -12px rgba(0,0,0,.6)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:radial-gradient(circle,var(--dot) 1px,transparent 1.2px) 0 0/22px 22px,var(--bg);color:var(--ink2);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Roboto,sans-serif}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:30px;height:30px;flex:none}
+.brand b{display:block;font-size:15.5px;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+.brand span{display:block;font-size:11.5px;color:var(--muted)}
+.tnav{display:flex;gap:4px}
+.tnav a{font-size:13.5px;text-decoration:none;color:var(--ink2);padding:8px 12px;border-radius:8px;min-height:36px;display:inline-flex;align-items:center}
+.tnav a:hover{background:var(--paper);color:var(--ink)}
+.theme{border:1px solid var(--line);background:var(--paper);color:var(--ink2);border-radius:8px;width:36px;height:36px;display:grid;place-items:center;cursor:pointer}
+.hero{padding:64px 0 28px}
+.kick{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink2);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 6px;box-shadow:var(--shadow)}
+.kick b{font-size:11px;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:2px 9px;font-weight:600}
+h1{margin:18px 0 14px;font-size:clamp(34px,5.4vw,60px);line-height:1.1;letter-spacing:-.03em;color:var(--ink);font-weight:750}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--c-p),var(--c-z) 55%,var(--c-z2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:40em;font-size:16.5px;color:var(--ink2);margin:0}
+.resume{margin-top:24px;display:none;align-items:center;gap:14px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);max-width:640px}
+.resume.on{display:flex}
+.resume .rt{flex:1;min-width:200px}
+.resume .rt small{display:block;font-size:12px;color:var(--muted)}
+.resume .rt b{color:var(--ink);font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:10px 18px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;font-size:14.5px;border:1px solid transparent}
+.btn:hover{opacity:.9}
+.btn.ghost{background:var(--paper);color:var(--ink);border-color:var(--line)}
+section{padding:36px 0}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.sh h2{margin:0;font-size:24px;color:var(--ink);letter-spacing:-.02em}
+.sh p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.eyebrow{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);letter-spacing:.04em}
+/* academies */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);transition:box-shadow .2s,transform .2s;min-width:0}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.card::before{content:"";position:absolute;left:22px;right:22px;top:0;height:3px;border-radius:0 0 3px 3px;background:var(--c)}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ico{width:40px;height:40px;border-radius:11px;background:var(--c);display:grid;place-items:center;color:#fff;flex:none}
+.ico svg{width:20px;height:20px}
+.tag{font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;border:1px solid var(--line);color:var(--ink2);background:var(--soft);white-space:nowrap}
+.tag.lock{color:var(--lock);background:var(--lock-soft);border-color:color-mix(in srgb,var(--lock) 30%,transparent)}
+.card h3{margin:0;font-size:19px;color:var(--ink);letter-spacing:-.01em}
+.card .sub{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.card .desc{margin:0;font-size:14px}
+.stats{display:flex;gap:18px;flex-wrap:wrap;padding:12px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line)}
+.stats div b{display:block;color:var(--ink);font-size:20px;letter-spacing:-.02em;line-height:1.2}
+.stats div span{font-size:12px;color:var(--muted)}
+.prog{display:grid;gap:6px;font-size:12.5px;color:var(--muted)}
+.bar{height:6px;border-radius:999px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--c);border-radius:999px;transition:width .6s}
+.prog .pl{display:flex;justify-content:space-between;gap:8px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.acts .btn{flex:1;min-width:120px}
+.jump{display:flex;gap:6px;flex-wrap:wrap}
+.jump a{font-size:12.5px;text-decoration:none;color:var(--ink2);border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-height:32px;display:inline-flex;align-items:center;background:var(--soft)}
+.jump a:hover{border-color:var(--c);color:var(--ink)}
+/* route */
+.route{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;counter-reset:s}
+.route li{position:relative;padding:0 10px 0 0;min-width:0}
+.route .dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:2px solid var(--ink);color:var(--ink);font:700 13px/1 ui-monospace,Menlo,monospace;position:relative;z-index:1}
+.route li.end .dot{background:var(--ink);color:var(--paper)}
+.route li:not(:last-child)::after{content:"";position:absolute;left:34px;right:0;top:16px;border-top:2px dashed var(--line)}
+.route b{display:block;margin-top:12px;color:var(--ink);font-size:15px}
+.route p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.55}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+.loop{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.loop div{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.loop div b{display:block;color:var(--ink);font-size:14px;margin-bottom:2px}
+.kbd{font:600 11.5px/1 ui-monospace,Menlo,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:2px 6px;background:var(--paper);color:var(--ink)}
+/* compare */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:12.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:920px){.cards{grid-template-columns:1fr}.route{grid-template-columns:1fr 1fr;row-gap:22px}.route li:nth-child(2n)::after{display:none}.loop{grid-template-columns:1fr}}
+@media (max-width:560px){.tnav{display:none}.hero{padding:40px 0 16px}.route{grid-template-columns:1fr}.route li::after{display:none}.route li{display:grid;grid-template-columns:34px 1fr;column-gap:14px}.route b{margin-top:6px}.route p{grid-column:2}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./" aria-label="领航学院总导航">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent)"/><path d="M16 6l3 10-3 10-3-10z" fill="var(--accent-ink)"/><circle cx="16" cy="16" r="1.6" fill="var(--accent)"/></svg>
+    <div><b>领航学院 · 总导航</b><span>AI 创业公司亚太 GM 研究</span></div>
+  </a>
+  <nav class="tnav" aria-label="页面导航"><a href="#academies">学院</a><a href="#route">航线</a><a href="#compare">速览</a></nav>
+  <button class="theme" id="themeBtn" type="button" aria-label="切换深浅色"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <span class="kick"><b>出发</b>三座学院 · 一条航线</span>
+  <h1>选一家公司，<br><em>按航线读懂它</em></h1>
+  <p class="lede">每座学院都是同一套方法：八个模块讲清创始人、产品、组织、竞争、趋势和区域市场，再用原典阅读室核对来源，最后用认证测评检验你和创始人的判断是否对齐。随时可以回到这里换一站。</p>
+  <div class="resume" id="resume" role="status">
+    <div class="rt"><small>上次停在</small><b id="resumeT">—</b></div>
+    <a class="btn" id="resumeA" href="./">继续 →</a>
+  </div>
+</div>
+
+<section id="academies"><div class="wrap">
+  <div class="sh"><div><span class="eyebrow">01 · ACADEMIES</span><h2>三座学院</h2><p>进度保存在你这台设备的浏览器里，这里会实时显示。</p></div></div>
+  <div class="cards">
+    <article class="card" style="--c:var(--c-p)" data-site="protected" data-key="apac-acad" data-href="./dify/" data-mods="8">
+      <div class="ch"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><span class="tag lock">需口令</span></div>
+      <div><h3>APAC 领航学院</h3><p class="sub">受保护学院 · 内容加密存放</p></div>
+      <p class="desc">原始研究项目。内容以 AES-256 加密，只在你的浏览器里解密；登录后可锁定或修改口令。</p>
+      <div class="stats"><div><b>8</b><span>学习模块</span></div><div><b>AES-256</b><span>端到端加密</span></div></div>
+      <div class="prog"><div class="pl"><span>模块进度</span><span class="pv">—</span></div><div class="bar"><i></i></div><span class="pa"></span></div>
+      <div class="acts"><a class="btn" href="./dify/">登录进入 →</a></div>
+    </article>
+
+    <article class="card" style="--c:var(--c-g)" data-site="genspark" data-key="gspk-acad" data-href="./genspark/" data-mods="8">
+      <div class="ch"><div class="ico" style="background:#18181B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg></div><span class="tag">公开</span></div>
+      <div><h3>Genspark 领航学院</h3><p class="sub">AI Agent 工作空间 · 估值 26 亿美元</p></div>
+      <p class="desc">一家「只做结果」的公司：极小团队、多模型 Agent、日韩各 1 亿美元投入。重点看日韩之外的亚太空间，以及大中华区只剩台港的现实。</p>
+      <div class="stats"><div><b>147</b><span>道题</span></div><div><b>21</b><span>篇原典</span></div><div><b>8</b><span>模块</span></div></div>
+      <div class="prog"><div class="pl"><span>模块进度</span><span class="pv">—</span></div><div class="bar"><i></i></div><span class="pa"></span></div>
+      <div class="jump"><a href="./genspark/#learn">学习</a><a href="./genspark/#read">原典</a><a href="./genspark/#assess">测评</a><a href="./genspark/#report">报告</a></div>
+      <div class="acts"><a class="btn" href="./genspark/">进入学院 →</a></div>
+    </article>
+
+    <article class="card" style="--c:var(--c-z)" data-site="zilliz" data-key="zlz-acad" data-href="./zilliz/" data-mods="8">
+      <div class="ch"><div class="ico" style="background:linear-gradient(135deg,#1D3BD1,#0E9F9A)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div><span class="tag">公开</span></div>
+      <div><h3>Zilliz 领航学院</h3><p class="sub">Milvus 向量数据库 · 累计融资 1.13 亿美元</p></div>
+      <p class="desc">坚持九年的基础软件公司：开源获客、云优先、2026 年转向 Vector Lakebase。重点看中国区如何在不做项目的前提下赚钱。</p>
+      <div class="stats"><div><b>131</b><span>道题</span></div><div><b>16</b><span>篇原典</span></div><div><b>8</b><span>模块</span></div></div>
+      <div class="prog"><div class="pl"><span>模块进度</span><span class="pv">—</span></div><div class="bar"><i></i></div><span class="pa"></span></div>
+      <div class="jump"><a href="./zilliz/#learn">学习</a><a href="./zilliz/#read">原典</a><a href="./zilliz/#assess">测评</a><a href="./zilliz/#report">报告</a></div>
+      <div class="acts"><a class="btn" href="./zilliz/">进入学院 →</a></div>
+    </article>
+  </div>
+</div></section>
+
+<section id="route"><div class="wrap">
+  <div class="sh"><div><span class="eyebrow">02 · ROUTE</span><h2>巡航路径：出发、学习、返回</h2><p>每座学院走同一条航线，任何一站都能一键回到这里或换到另一座学院。</p></div></div>
+  <div class="panel">
+    <ol class="route">
+      <li><span class="dot">0</span><b>出发</b><p>在本页选一座学院；上次没读完的，从「继续」直接回到原处</p></li>
+      <li><span class="dot">1</span><b>学习</b><p>按顺序读 8 个模块，每读完一个自动记进度</p></li>
+      <li><span class="dot">2</span><b>原典</b><p>原典阅读室核对来源，标记已读</p></li>
+      <li><span class="dot">3</span><b>测评</b><p>选岗位题包，每题标注把握程度</p></li>
+      <li><span class="dot">4</span><b>报告</b><p>看对齐指数、偏差画像和该补读的材料</p></li>
+      <li class="end"><span class="dot">↩</span><b>返回 / 换站</b><p>点「导航页」回到这里，或从「航线」菜单直达另一座学院</p></li>
+    </ol>
+    <div class="loop">
+      <div><b>在任何学院里</b>电脑上看左下角，手机上看右上角，那里有「导航页」和「航线」两个按钮。</div>
+      <div><b>换一座学院</b>打开「航线」菜单，直接跳到另一座学院；各学院的进度互不影响。</div>
+      <div><b>回到原处</b>本页记住你最后停留的学院和栏目；在学院里按 <span class="kbd">Esc</span> 可关闭航线菜单。</div>
+    </div>
+  </div>
+</div></section>
+
+<section id="compare"><div class="wrap">
+  <div class="sh"><div><span class="eyebrow">03 · AT A GLANCE</span><h2>两家公开学院速览</h2><p>从一个亚太 / 大中华区 GM 的视角看。</p></div></div>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Genspark</th><th>Zilliz</th></tr></thead>
+    <tbody>
+      <tr><td>做什么</td><td>AI Agent 工作空间：给目标，交付成品</td><td>开源向量数据库 Milvus 与托管云</td></tr>
+      <tr><td>阶段与资本</td><td>2026 年 6 月估值 26 亿美元，累计融资 6.45 亿美元</td><td>累计约 1.13 亿美元，最近一轮在 2022 年</td></tr>
+      <tr><td>增长发动机</td><td>产品口碑与极小团队；年化收入约 2.5 亿美元（2026 年 7 月报道）</td><td>开源获客、云订阅变现；12 个月收入增长 3.3 倍（2025 年 8 月）</td></tr>
+      <tr><td>亚太布局</td><td>日本、韩国各 3 年 1 亿美元，已有本地团队</td><td>新加坡办公室；东京、首尔、新加坡、印度云区域</td></tr>
+      <tr><td>中国大陆</td><td>不是选项；现实范围是台湾、香港</td><td>起点在上海，有本地主体与阿里云服务区；模式待解</td></tr>
+      <tr><td>对你的关键问题</td><td>日韩是否在你的范围内</td><td>如何在「不做项目」的纪律下拿下政企与大客户</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">数据截至 2026 年 10 月，出处见各学院「信号与来源」模块。</p>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>领航学院 · 基于公开资料整理，非任何公司官方文档</span><span>本站不加载任何第三方脚本、字体或统计服务</span></div></footer>
+
+<script>
+(function(){
+  function get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+  function setTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('hub-theme',t)}catch(e){}}
+  try{var th=localStorage.getItem('hub-theme');if(th)document.documentElement.setAttribute('data-theme',th)}catch(e){}
+  document.getElementById('themeBtn').onclick=function(){var cur=document.documentElement.getAttribute('data-theme');var dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;setTheme(dark?'light':'dark')};
+
+  var NAMES={protected:'APAC 领航学院（受保护）',genspark:'Genspark 领航学院',zilliz:'Zilliz 领航学院'};
+  var PATHS={protected:'./dify/',genspark:'./genspark/',zilliz:'./zilliz/'};
+  var VIEWS={learn:'学习路径',module:'学习模块',read:'原典阅读室',assess:'认证测评',run:'测评进行中',report:'测评报告'};
+
+  [].forEach.call(document.querySelectorAll('.card[data-key]'),function(c){
+    var k=c.dataset.key,n=+c.dataset.mods||8;
+    var read=get(k+'-read')||{},hist=get(k+'-hist')||[],canon=get(k+'-canon')||{};
+    var done=Object.keys(read).filter(function(x){return /^M\d+$/.test(x)}).length;
+    c.querySelector('.pv').textContent=done+' / '+n;
+    c.querySelector('.bar i').style.width=Math.round(done/n*100)+'%';
+    var parts=[];var nc=Object.keys(canon).length;if(nc)parts.push('原典已读 '+nc+' 篇');
+    if(hist.length){var last=hist[hist.length-1];parts.push('最近对齐指数 '+last.align)}
+    c.querySelector('.pa').textContent=parts.length?parts.join(' · '):(done?'学习中':'尚未开始');
+    if(done>0){var b=c.querySelector('.acts .btn');if(c.dataset.site!=='protected')b.textContent='继续学习 →'}
+  });
+
+  var last=get('hub-last');
+  if(last&&NAMES[last.s]){
+    var v=last.v||'learn';
+    document.getElementById('resumeT').textContent=NAMES[last.s]+(VIEWS[v]?' · '+VIEWS[v]:'')+(v==='module'&&last.m?' '+last.m:'');
+    var h='';if(last.s!=='protected'){if(v==='module'&&last.m)h='#'+last.m;else if(v==='run')h='#assess';else if(['read','assess','report'].indexOf(v)>=0)h='#'+v}
+    document.getElementById('resumeA').href=PATHS[last.s]+h;
+    document.getElementById('resume').classList.add('on');
+  }
+})();
+</script>
+</body>
+</html>

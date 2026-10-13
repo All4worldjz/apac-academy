@@ -1,4 +1,4 @@
-<title>Zilliz 领航学院</title>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Zilliz 领航学院：面向 Zilliz 中国区与亚太机会的学习、测评与入职平台。"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><title>Zilliz 领航学院</title>
 <style>
 /* Concept: the academy is a Dify workflow. Learning modules are nodes on a run, the assessment is a focused stage, the report is a run trace. A deep "night canvas" band carries the hero in both themes; reading surfaces are calm and bright. Node-type colours (start/LLM/knowledge/agent/human/end) are the semantic palette. */
 :root{
@@ -841,7 +841,7 @@ body{margin:0}
   .sc summary{padding:12px 12px}.sbody{padding:12px 14px 16px}
   .sc .sb{display:none}
 }
-</style>
+</style></head><body>
 
 <header class="bar"><div class="in">
   <a class="brand" href="#" data-go="learn" aria-label="Zilliz 领航学院首页">
@@ -1806,3 +1806,35 @@ function renderRead(){rDB();
 }
 
 </script>
+<style>
+#cruise{position:fixed;z-index:70;top:calc(10px + env(safe-area-inset-top,0px));right:12px;display:flex;gap:6px;font:500 12.5px/1 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+#cruise>a,#cruise>button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:8px 12px;border-radius:999px;border:1px solid var(--line,#e4e7ec);background:var(--paper,#fff);color:var(--ink2,#344054);text-decoration:none;cursor:pointer;font:inherit;box-shadow:0 6px 14px -6px rgba(16,24,40,.22)}
+#cruise>a:hover,#cruise>button:hover,#cruise>button[aria-expanded="true"]{border-color:var(--ink,#101828);color:var(--ink,#101828)}
+#cruise svg{width:14px;height:14px}
+#cruiseMenu{position:absolute;right:0;top:calc(100% + 8px);width:250px;background:var(--paper,#fff);border:1px solid var(--line,#e4e7ec);border-radius:14px;box-shadow:0 18px 36px -12px rgba(16,24,40,.28);padding:6px;display:grid;gap:2px}
+#cruiseMenu[hidden]{display:none}
+#cruiseMenu .ct{font-size:11px;color:var(--muted,#667085);padding:8px 10px 4px;letter-spacing:.04em}
+#cruiseMenu a{display:grid;gap:3px;padding:10px;border-radius:10px;text-decoration:none;color:var(--ink,#101828)}
+#cruiseMenu a:hover{background:var(--soft,#f9fafb)}
+#cruiseMenu a b{font-size:13.5px;font-weight:600}
+#cruiseMenu a span{font-size:11.5px;color:var(--muted,#667085)}
+#cruiseMenu a[aria-current]{background:var(--soft,#f9fafb);box-shadow:inset 3px 0 0 var(--accent,#101828)}
+@media (min-width:1024px){#cruise{top:auto;right:auto;left:18px;bottom:18px}#cruiseMenu{top:auto;bottom:calc(100% + 8px);left:0;right:auto}}
+@media print{#cruise{display:none}}
+</style>
+<nav id="cruise" aria-label="巡航">
+<a href="../" title="返回总导航"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>导航页</a>
+<button type="button" id="cruiseBtn" aria-expanded="false" aria-controls="cruiseMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3l2.6 9L12 21l-2.6-9z"/></svg>航线</button>
+<div id="cruiseMenu" hidden><div class="ct">换一站</div><a href="../"><b>总导航</b><span>出发与返回</span></a><a href="../dify/"><b>APAC 领航学院</b><span>受保护 · 需口令</span></a><a href="../genspark/"><b>Genspark 领航学院</b><span>公开</span></a><a href="../zilliz/" aria-current="page"><b>Zilliz 领航学院</b><span>当前所在</span></a></div>
+</nav>
+<script>
+(function(){var S="zilliz",b=document.getElementById("cruiseBtn"),m=document.getElementById("cruiseMenu");
+function tog(o){m.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false")}
+b.onclick=function(e){e.stopPropagation();tog(m.hidden)};
+document.addEventListener("click",function(e){if(!m.hidden&&!m.contains(e.target))tog(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!m.hidden){tog(false);b.focus()}});
+function rec(v,o){try{localStorage.setItem("hub-last",JSON.stringify({s:S,v:v||"learn",m:(o&&o.m)||(typeof curMod!=="undefined"?curMod:null),t:Date.now()}))}catch(e){}}
+if(typeof window.go==="function"){var g=window.go;window.go=function(v,o){var r=g.apply(this,arguments);rec(v,o);return r}}
+rec(typeof curView!=="undefined"?curView:"learn");})();
+</script>
+</body></html>
