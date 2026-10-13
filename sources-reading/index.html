@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dify 原典读本 · Reading Room</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=Noto+Serif+SC:wght@400;600;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root{
+  --paper:#faf7f1; --cream:#f3ecdf; --ink:#18181b; --ink-3:#5b564e;
+  --line:#18181b; --accent:#c0613d; --seal:#b3392c;
+  --ink-2:#2c2925; --hair:rgba(24,24,27,.3); --hair-l:rgba(24,24,27,.15); --hair-d:rgba(24,24,27,.4);
+  --paper-glass:rgba(250,247,241,.94);
+  --serif:'Fraunces','Noto Serif SC',serif;
+  --sans:'Noto Sans SC',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-width:none}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;
+  font-size:calc(15px + (17 - 15) * ((100vw - 300px) / (1600 - 300)));line-height:1.9;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--ink);color:var(--paper)}
+::-webkit-scrollbar{display:none}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* masthead */
+.masthead{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);
+  display:flex;align-items:stretch;height:52px}
+.masthead .brand{padding:0 20px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--line);
+  font-family:var(--serif);font-weight:900;letter-spacing:.12em;font-size:14px;white-space:nowrap}
+.masthead .brand .seal-dot{width:9px;height:9px;background:var(--seal);border-radius:50%}
+.ticker-wrap{flex:1;overflow:hidden;display:flex;align-items:center;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.ticker{display:flex;gap:56px;white-space:nowrap;animation:tick 60s linear infinite;
+  font-size:11px;letter-spacing:.22em;color:var(--ink-3);text-transform:uppercase;font-family:var(--serif)}
+@keyframes tick{to{transform:translateX(-50%)}}
+.masthead .progress-label{padding:0 20px;border-left:1px solid var(--line);display:flex;align-items:center;
+  font-size:11px;letter-spacing:.18em;font-variant-numeric:tabular-nums;color:var(--ink-3);white-space:nowrap}
+
+.reading-line{position:fixed;right:14px;top:80px;bottom:80px;width:1px;background:var(--hair-l);z-index:55}
+.reading-dot{position:absolute;left:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;
+  background:var(--seal);box-shadow:0 0 0 4px rgba(179,57,44,.15);top:0;transition:top .1s linear}
+
+/* cover */
+.cover{min-height:92vh;display:grid;grid-template-columns:1fr;position:relative;border-bottom:1px solid var(--line)}
+.cover-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;max-width:1280px;width:100%;margin:0 auto;
+  padding:8vh 32px 0;gap:24px}
+.kicker{font-size:12px;letter-spacing:.32em;color:var(--accent);text-transform:uppercase;
+  font-family:var(--serif);font-weight:600;margin-bottom:4vh;display:flex;align-items:center;gap:14px}
+.kicker::before{content:'';width:44px;height:1px;background:var(--accent)}
+.cover h1{font-family:var(--serif);font-weight:900;font-size:clamp(52px,9.5vw,140px);line-height:1.02;letter-spacing:.01em}
+.cover h1 .alt{color:var(--accent)}
+.cover-sub{margin-top:4vh;font-family:var(--serif);font-size:clamp(17px,1.8vw,23px);color:var(--ink-3);
+  max-width:34em;line-height:1.9}
+.cover-sub em{font-style:normal;background:linear-gradient(transparent 62%,rgba(192,97,61,.28) 62%);padding:0 2px}
+.vertical-col{writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;color:var(--hair-l);
+  font-size:clamp(28px,3.6vw,52px);letter-spacing:.3em;padding-top:2vh;user-select:none}
+.cover-meta{display:flex;gap:0;margin-top:7vh;border:1px solid var(--line);max-width:1280px;
+  margin-left:auto;margin-right:auto;width:calc(100% - 64px)}
+.cover-meta div{flex:1;padding:18px 22px;border-right:1px solid var(--line)}
+.cover-meta div:last-child{border-right:none}
+.cover-meta .num{font-family:var(--serif);font-weight:900;font-size:30px;font-variant-numeric:tabular-nums;line-height:1.2}
+.cover-meta .lbl{font-size:11px;letter-spacing:.2em;color:var(--ink-3);margin-top:4px}
+.scroll-hint{text-align:center;padding:26px 0 30px;font-size:11px;letter-spacing:.4em;color:var(--ink-3);animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+section.block{max-width:1280px;margin:0 auto;padding:10vh 32px;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:6vh;flex-wrap:wrap}
+.sec-head .no{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,72px);color:var(--accent);font-variant-numeric:tabular-nums}
+.sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,3.6vw,48px);letter-spacing:.02em}
+.sec-head .en{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);font-family:var(--serif)}
+
+.note-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:0;border:1px solid var(--line)}
+.note-grid>div{padding:36px 38px}
+.note-grid>div:first-child{border-right:1px solid var(--line)}
+.note-grid h3{font-family:var(--serif);font-weight:900;font-size:20px;margin-bottom:14px}
+.note-grid p{font-size:15px;color:var(--ink-3)}
+.note-grid .rule-list{list-style:none;margin-top:18px}
+.note-grid .rule-list li{padding:12px 0;border-top:1px dashed var(--hair);font-size:14px}
+.note-grid .rule-list b{color:var(--seal);font-weight:700;margin-right:8px}
+
+/* timeline */
+.timeline{position:relative;padding:30px 0 10px}
+.tl-track{display:flex;gap:0;overflow-x:auto;padding:34px 6px 26px;scroll-snap-type:x mandatory}
+.tl-item{min-width:150px;scroll-snap-align:start;position:relative;text-decoration:none;color:inherit;padding-top:26px}
+.tl-item::before{content:'';position:absolute;top:6px;left:0;right:0;height:1px;background:var(--hair)}
+.tl-item .dot{position:absolute;top:1px;left:0;width:11px;height:11px;border-radius:50%;background:var(--paper);
+  border:2px solid var(--ink);transition:.25s}
+.tl-item.must .dot{background:var(--seal);border-color:var(--seal)}
+.tl-item:hover .dot{transform:scale(1.5)}
+.tl-item .yr{font-family:var(--serif);font-weight:900;font-size:22px;font-variant-numeric:tabular-nums}
+.tl-item .ttl{font-size:12.5px;color:var(--ink-3);line-height:1.6;margin-top:6px;display:block;padding-right:18px}
+.tl-item .badge-must{position:absolute;top:-14px;left:0;font-size:10px;letter-spacing:.2em;color:var(--seal)}
+.tl-legend{display:flex;gap:26px;font-size:12px;color:var(--ink-3);padding-top:8px}
+.tl-legend span{display:flex;align-items:center;gap:8px}
+.tl-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* route */
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;border:1px solid var(--line)}
+.route a{display:block;padding:28px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  text-decoration:none;color:inherit;position:relative;transition:background .25s}
+.route a:hover{background:var(--cream)}
+.route a .step{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--accent)}
+.route a h4{font-family:var(--serif);font-weight:900;font-size:19px;margin:10px 0 8px;line-height:1.5}
+.route a p{font-size:13px;color:var(--ink-3);line-height:1.7}
+.route a .arrow{position:absolute;right:26px;top:28px;font-family:var(--serif);transition:transform .25s}
+.route a:hover .arrow{transform:translateX(6px)}
+
+/* controls */
+.controls{position:sticky;top:52px;z-index:40;background:var(--paper-glass);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);padding:14px 32px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 240px;min-width:0;border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  padding:9px 18px;font:inherit;font-size:14px;border-radius:0}
+.search:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink-3);padding:7px 16px;font-size:13px;
+  cursor:pointer;font-family:var(--serif);letter-spacing:.08em;transition:.2s}
+.chip:hover{background:var(--cream)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* volumes */
+.act{max-width:1280px;margin:0 auto;padding:12vh 32px 6vh}
+.act-head{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:end;margin-bottom:7vh}
+.act-no{font-family:var(--serif);font-weight:300;font-size:clamp(80px,11vw,160px);line-height:.85;color:transparent;
+  -webkit-text-stroke:1px var(--ink)}
+.act-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(30px,4.4vw,58px);line-height:1.15}
+.act-head .en{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);font-family:var(--serif);margin-bottom:10px}
+.act-head p{color:var(--ink-3);font-size:15px;margin-top:12px;max-width:44em}
+
+.article{border:1px solid var(--line);margin-bottom:56px;background:var(--paper);position:relative;
+  display:grid;grid-template-columns:210px 1fr;opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.article.reveal{opacity:1;transform:none}
+.article .spine{border-right:1px solid var(--line);padding:30px 24px;display:flex;flex-direction:column;gap:16px;background:var(--cream)}
+.spine .idx{font-family:var(--serif);font-weight:900;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.spine .src{font-family:var(--serif);font-size:13px;font-weight:600}
+.spine .meta{font-size:11.5px;color:var(--ink-3);line-height:1.8;font-variant-numeric:tabular-nums}
+.spine .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-size:10px;letter-spacing:.14em;border:1px solid var(--line);padding:3px 9px;text-transform:uppercase;font-family:var(--serif)}
+.tag.must{background:var(--seal);color:var(--paper);border-color:var(--seal)}
+.tag.lang{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.article .body{padding:34px 40px 30px}
+.article h3{font-family:var(--serif);font-weight:900;font-size:clamp(21px,2.3vw,29px);line-height:1.45;margin-bottom:6px}
+.article .orig{font-size:12.5px;color:var(--ink-3);font-family:var(--serif);margin-bottom:22px;letter-spacing:.02em;word-break:break-word}
+.article h5{font-size:12px;letter-spacing:.3em;color:var(--accent);margin:26px 0 12px;font-family:var(--serif);text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.article h5::after{content:'';flex:1;height:1px;background:rgba(192,97,61,.35)}
+.article .sum{font-size:15px;color:var(--ink-2);line-height:1.95}
+.kw-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.kw-tags span{font-size:11.5px;border:1px dashed var(--hair-d);padding:3px 12px;color:var(--ink-3);font-family:var(--serif)}
+.lens{margin-top:24px;border:1px solid var(--ink);padding:24px 26px;background:linear-gradient(135deg,rgba(192,97,61,.06),transparent 55%)}
+.lens .lbl{font-size:11px;letter-spacing:.3em;color:var(--seal);font-weight:700;margin-bottom:10px;font-family:var(--serif)}
+.lens p{font-size:14.5px;color:var(--ink-2);line-height:1.95}
+.article .foot{display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:20px;border-top:1px dashed var(--hair);flex-wrap:wrap;gap:14px}
+.read-link{font-family:var(--serif);font-weight:600;font-size:14px;color:var(--ink);text-decoration:none;
+  border-bottom:2px solid var(--accent);padding-bottom:2px;display:inline-flex;gap:8px;align-items:center;transition:.25s}
+.read-link:hover{color:var(--accent);gap:14px}
+.read-mark{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-3);cursor:pointer;user-select:none}
+.read-mark .box{width:18px;height:18px;border:1px solid var(--ink);display:grid;place-items:center;transition:.2s;font-size:12px;color:transparent}
+.article.done .read-mark .box{background:var(--ink);color:var(--paper)}
+.article.done h3{color:var(--ink-3)}
+.article.done::after{content:'已讀';position:absolute;top:-14px;right:24px;background:var(--paper);
+  font-family:var(--serif);font-weight:900;color:var(--seal);font-size:15px;letter-spacing:.1em;padding:0 8px}
+.none-msg{padding:60px 0;color:var(--ink-3);text-align:center;font-family:var(--serif);font-size:18px}
+
+.colophon{max-width:1280px;margin:0 auto;padding:12vh 32px 14vh;text-align:center}
+.colophon .seal{width:92px;height:92px;margin:0 auto 30px;border:2px solid var(--seal);display:grid;place-items:center;
+  font-family:var(--serif);font-weight:900;color:var(--seal);font-size:22px;line-height:1.3;letter-spacing:.15em;transform:rotate(-4deg)}
+.colophon p{color:var(--ink-3);font-size:14px;max-width:46em;margin:0 auto;line-height:2}
+.colophon .fin{font-family:var(--serif);font-weight:900;font-size:clamp(26px,3vw,40px);color:var(--ink);margin-top:36px;letter-spacing:.2em}
+
+
+/* ===== 夜间模式 ===== */
+body{transition:background .4s ease,color .4s ease}
+body.night{--paper:#1a1712;--cream:#26211a;--ink:#ece4d4;--ink-2:#d9cfbc;--ink-3:#a89d8a;--line:#4a4136;
+  --hair:rgba(236,228,212,.26);--hair-l:rgba(236,228,212,.13);--hair-d:rgba(236,228,212,.42);
+  --paper-glass:rgba(26,23,18,.93);--accent:#d07a50;--seal:#d05841}
+body.night::before{opacity:.07}
+body.night .lens{background:linear-gradient(135deg,rgba(208,122,80,.10),transparent 55%)}
+
+/* 顶部进度条 */
+.top-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--seal));z-index:70}
+
+/* 顶栏工具 */
+.masthead .tools{display:flex;align-items:stretch}
+.mtool{border:none;border-left:1px solid var(--line);background:none;color:var(--ink);padding:0 14px;cursor:pointer;
+  font-family:var(--serif);font-size:13px;letter-spacing:.05em;transition:.2s}
+.mtool:hover{background:var(--cream);color:var(--accent)}
+body.night #nightBtn{color:var(--accent)}
+
+/* 字号缩放 */
+body.fs1 #stage{zoom:1.07}
+body.fs2 #stage{zoom:1.15}
+body.fsm #stage{zoom:.93}
+
+/* ===== 入门导读 ===== */
+.primer-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.p-card{padding:32px 34px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.p-card:nth-child(2n){border-right:none}
+.p-card:nth-child(3),.p-card:nth-child(4){border-bottom:none}
+.p-card h3{font-family:var(--serif);font-weight:900;font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.p-card h3 .ptag{font-size:10px;letter-spacing:.2em;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;font-weight:600}
+.p-card p{font-size:14.5px;color:var(--ink-2);line-height:1.95}
+.p-card p b{color:var(--seal)}
+.fact{border:1px solid var(--line);border-top:none;padding:30px 34px;background:var(--cream)}
+.fact h3{font-family:var(--serif);font-weight:900;font-size:17px;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.fact h3::after{content:'';flex:1;height:1px;background:var(--hair)}
+.fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 28px}
+.fact-grid .fv{font-family:var(--serif);font-weight:900;font-size:19px;line-height:1.35}
+.fact-grid .fk{font-size:11px;letter-spacing:.16em;color:var(--ink-3);margin-top:4px}
+.mini-tl{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-top:none}
+.mini-tl .mi{flex:1 1 150px;padding:18px 20px;border-right:1px solid var(--line)}
+.mini-tl .mi:last-child{border-right:none}
+.mini-tl .my{font-family:var(--serif);font-weight:900;font-size:15px;color:var(--accent)}
+.mini-tl .mt2{font-size:12.5px;color:var(--ink-3);margin-top:6px;line-height:1.6}
+
+/* ===== 术语表 ===== */
+.gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.gloss-card{padding:26px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .25s}
+.gloss-card:hover{background:var(--cream)}
+.gloss-card .gt{font-family:var(--serif);font-weight:900;font-size:17px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.gloss-card .gt .ge{font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;font-weight:600}
+.gloss-card .gd{font-size:13.5px;color:var(--ink-2);line-height:1.85;margin-top:10px}
+.gloss-card .grefs{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.gloss-card .grefs a{font-size:10.5px;letter-spacing:.08em;border:1px dashed var(--hair-d);color:var(--ink-3);padding:2px 9px;text-decoration:none;font-family:var(--serif)}
+.gloss-card .grefs a:hover{color:var(--seal);border-color:var(--seal)}
+.gloss-card.pulse{animation:pulse 2.2s ease}
+@keyframes pulse{0%,55%{background:var(--cream);box-shadow:inset 0 0 0 2px var(--seal)}100%{box-shadow:none}}
+
+/* 正文内联术语 */
+.term{background:none;border:none;border-bottom:1px dotted var(--seal);color:inherit;font:inherit;padding:0;cursor:pointer;line-height:inherit}
+.term:hover{color:var(--seal)}
+.term-pop{position:fixed;z-index:80;max-width:340px;background:var(--ink);color:var(--paper);padding:18px 20px;
+  font-size:13px;line-height:1.85;box-shadow:0 14px 50px rgba(0,0,0,.3);border-left:3px solid var(--accent)}
+.term-pop .tp-t{font-family:var(--serif);font-weight:900;font-size:15px;margin-bottom:8px}
+.term-pop .tp-refs{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+.term-pop .tp-refs a{color:var(--paper);font-size:11px;border-bottom:1px solid var(--accent);text-decoration:none;letter-spacing:.06em}
+.term-pop .tp-refs a:hover{color:var(--accent)}
+
+/* ===== 拓展阅读 ===== */
+.x-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line)}
+.x-card{display:grid;grid-template-columns:auto 1fr auto;gap:20px;padding:26px 28px;border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .25s;align-items:start}
+.x-card:hover{background:var(--cream)}
+.x-card .xn{font-family:var(--serif);font-weight:300;font-size:30px;color:var(--accent);font-variant-numeric:tabular-nums}
+.x-card h4{font-family:var(--serif);font-weight:900;font-size:16.5px;line-height:1.5}
+.x-card .xu{font-size:11px;color:var(--ink-3);font-family:var(--serif);margin-top:3px;letter-spacing:.04em;word-break:break-all}
+.x-card p{font-size:13px;color:var(--ink-3);line-height:1.75;margin-top:8px}
+.x-card .xa{font-family:var(--serif);color:var(--ink-3);transition:.25s}
+.x-card:hover .xa{color:var(--accent);transform:translateX(5px)}
+
+/* 浮动按钮 */
+.fab-col{position:fixed;right:20px;bottom:24px;z-index:65;display:flex;flex-direction:column;gap:10px;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.fab-col.show{opacity:1;pointer-events:auto}
+.fab{width:46px;height:46px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;
+  font-family:var(--serif);font-size:14px;display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.12);transition:.2s}
+.fab:hover{background:var(--ink);color:var(--paper)}
+
+/* 目录抽屉 */
+.toc-mask{position:fixed;inset:0;background:rgba(20,17,12,.45);z-index:74;opacity:0;pointer-events:none;transition:opacity .3s}
+.toc-mask.open{opacity:1;pointer-events:auto}
+.toc{position:fixed;top:0;right:0;bottom:0;width:min(400px,92vw);background:var(--paper);border-left:1px solid var(--line);
+  z-index:75;transform:translateX(103%);transition:transform .38s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.toc.open{transform:none}
+.toc .toc-head{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.toc .toc-head b{font-family:var(--serif);font-weight:900;font-size:17px;letter-spacing:.1em}
+.toc .toc-head button{border:none;background:none;font-size:22px;cursor:pointer;color:var(--ink);line-height:1}
+.toc .toc-list{overflow-y:auto;flex:1;padding:8px 0 40px}
+.toc .tg{padding:16px 24px 6px;font-size:11px;letter-spacing:.26em;color:var(--accent);font-family:var(--serif);font-weight:600}
+.toc .ti{display:flex;gap:12px;padding:10px 24px;text-decoration:none;color:var(--ink);font-size:13.5px;line-height:1.6;align-items:baseline;transition:background .2s}
+.toc .ti:hover{background:var(--cream)}
+.toc .ti .tn{font-family:var(--serif);font-weight:600;color:var(--ink-3);font-size:11px;min-width:24px;font-variant-numeric:tabular-nums}
+.toc .ti.is-done{color:var(--ink-3)}
+.toc .ti.is-done .tt{text-decoration:line-through}
+.toc .tm{color:var(--seal);font-size:11px;margin-left:auto;flex:none}
+.toc .ti2{display:block;padding:9px 24px;font-size:12px;color:var(--ink-3);text-decoration:none;font-family:var(--serif);letter-spacing:.06em}
+.toc .ti2:hover{color:var(--seal)}
+
+/* 全文首字下沉 */
+.fulltext p.lead::first-letter{font-family:var(--serif);font-weight:900;font-size:2.9em;float:left;line-height:.95;padding:4px 10px 0 0;color:var(--accent)}
+.article,.gloss-card,section.block{scroll-margin-top:126px}
+.act{scroll-margin-top:56px}
+
+@media (prefers-reduced-motion:reduce){.ticker{animation:none}.scroll-hint{animation:none}html{scroll-behavior:auto}}
+
+@media (max-width:1100px){
+  .gloss-grid{grid-template-columns:repeat(2,1fr)}
+  .fact-grid{grid-template-columns:repeat(2,1fr)}
+  .article{grid-template-columns:170px 1fr}
+  .spine .idx{font-size:34px}
+  .act-head{gap:20px}
+}
+@media (max-width:860px){
+  .cover-inner{grid-template-columns:1fr;padding:7vh 22px 0}
+  .vertical-col{display:none}
+  .cover-meta{display:grid;grid-template-columns:1fr 1fr;width:calc(100% - 44px)}
+  .cover-meta div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 16px}
+  .cover-meta div:nth-child(2n){border-right:none}
+  .cover-meta div:nth-child(3),.cover-meta div:nth-child(4){border-bottom:none}
+  .cover-meta .num{font-size:22px}
+  .note-grid{grid-template-columns:1fr}
+  .note-grid>div:first-child{border-right:none;border-bottom:1px solid var(--line)}
+  .note-grid>div{padding:26px 24px}
+  .article{grid-template-columns:1fr;margin-bottom:40px}
+  .article .spine{border-right:none;border-bottom:1px solid var(--line);flex-direction:row;align-items:center;flex-wrap:wrap;padding:16px 20px;gap:10px}
+  .spine .idx{font-size:28px}
+  .spine .tags{margin-top:0;margin-left:auto}
+  .article .body{padding:26px 20px 22px}
+  .reading-line{display:none}
+  .ticker-wrap{display:none}
+  .controls{top:52px;padding:10px 14px;flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:10px}
+  .search{flex:none;width:100%}
+  #chips{display:flex;overflow-x:auto;gap:8px;padding-bottom:2px;scrollbar-width:none}
+  #chips::-webkit-scrollbar{display:none}
+  #chips .chip{white-space:nowrap;flex:none;padding:7px 14px;font-size:12.5px}
+  section.block{padding:8vh 20px}
+  .act{padding:9vh 20px 4vh}
+  .act-no{font-size:64px}
+  .primer-grid{grid-template-columns:1fr}
+  .p-card{border-right:none!important;border-bottom:1px solid var(--line)!important;padding:26px 24px}
+  .p-card:last-child{border-bottom:none!important}
+  .gloss-grid{grid-template-columns:1fr}
+  .gloss-card{border-right:none}
+  .x-grid{grid-template-columns:1fr}
+  .x-card{border-right:none}
+  .fact-grid{grid-template-columns:1fr 1fr}
+  .fact{padding:24px}
+  .fulltext{padding:30px 20px}
+  .fulltext p{text-align:left}
+  .masthead .progress-label{padding:0 12px;font-size:10px}
+  .masthead .brand{padding:0 14px}
+  .mtool{padding:0 10px;font-size:12px}
+  .term-pop{left:16px!important;right:16px;bottom:20px;top:auto!important;max-width:none}
+  .colophon{padding:10vh 20px 16vh}
+  .article,.gloss-card,section.block{scroll-margin-top:140px}
+  .fab{	width:44px;height:44px}
+}
+</style>
+</head>
+<body>
+
+<div class="reading-line"><div class="reading-dot" id="readDot"></div></div>
+
+<header class="masthead">
+  <div class="brand"><span class="seal-dot"></span>原典读本</div>
+  <div class="ticker-wrap"><div class="ticker">
+    <span>华创派</span><span>量子位</span><span>42章经</span><span>和牛商业</span><span>Forbes Argentina</span><span>Dify Blog</span><span>Business Wire</span><span>Ventureburn</span><span>DotAI Times</span><span>PR TIMES</span><span>DIME</span><span>AIWiki</span><span>YesPress</span>
+    <span>华创派</span><span>量子位</span><span>42章经</span><span>和牛商业</span><span>Forbes Argentina</span><span>Dify Blog</span><span>Business Wire</span><span>Ventureburn</span><span>DotAI Times</span><span>PR TIMES</span><span>DIME</span><span>AIWiki</span><span>YesPress</span>
+  </div></div>
+  <div class="progress-label" id="progLabel">已读 0 / 27</div>
+  <div class="tools">
+    <button class="mtool" id="fontBtn" title="切换字号">A<span style="font-size:10px">±</span></button>
+    <button class="mtool" id="nightBtn" title="夜间模式">☾</button>
+    <button class="mtool" id="tocBtn" title="目录">目录</button>
+  </div>
+</header>
+
+<div class="top-progress" id="topBar"></div>
+<div id="stage">
+<div class="cover">
+  <div class="cover-inner">
+    <div>
+      <div class="kicker">Reading Room · Dify &amp; 张路宇 · 2024 → 2026</div>
+      <h1>Dify<br>原典<span class="alt">读本</span></h1>
+      <p class="cover-sub">把散落的报道读成一条线。二十七篇原始来源、六卷分类：从<em>创始人原声</em>到他亲笔的署名文章，从融资文件到日本、韩国的区域动态——理解张路宇与 Dify 的全部一手材料。</p>
+    </div>
+    <div class="vertical-col">散落的报道，读成一条线</div>
+  </div>
+  <div>
+    <div class="cover-meta">
+      <div><div class="num">27</div><div class="lbl">原始来源 · 四种语言</div></div>
+      <div><div class="num">06</div><div class="lbl">必读篇目 · 主线骨架</div></div>
+      <div><div class="num">06</div><div class="lbl">主题卷 · 按声音分类</div></div>
+      <div><div class="num">2024–26</div><div class="lbl">时间跨度 · 三年</div></div>
+    </div>
+    <div class="scroll-hint">向下滚动 · SCROLL</div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="sec-head"><span class="no">00</span><h2>阅读说明</h2><span class="en">How to Read</span></div>
+  <div class="note-grid">
+    <div>
+      <h3>这本册子怎么用</h3>
+      <p>全部 27 篇原始来源整理成这份中文读本：每篇给出要点概述、「对你意味着什么」的解读，以及逐篇撰写的<b>全文编译稿</b>——点每篇的「展开全文编译」即可在页内通读，英文、日文、西班牙文均已译为中文。编译稿忠实覆盖原文主线与关键引语但经压缩，受版权保护不逐字转载，引用请以「阅读原文」链接为准。</p>
+      <ul class="rule-list">
+        <li><b>概述</b>是中文要点，<b>全文编译</b>是覆盖原文主线的压缩译本；正文里带虚线下划线的词，点开就是术语解释。</li>
+        <li><b>解读</b>是针对 APAC GM 岗位所做的分析。</li>
+        <li><b>必读</b>标红的六篇是理解张路宇与 Dify 的骨架。</li>
+      </ul>
+    </div>
+    <div>
+      <h3>两点提醒</h3>
+      <ul class="rule-list">
+        <li>部分来源为日文或西班牙文报道，或是第三方资料库；<b style="color:var(--seal)">资料库里的数字以官方信息为准</b>。</li>
+        <li>已读标记只保存在你当前的浏览器里，不会上传到任何地方。</li>
+        <li>用下方的搜索与筛选，可以按卷、按必读、按未读快速定位。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="block" id="primer">
+  <div class="sec-head"><span class="no">01</span><h2>三分钟入门</h2><span class="en">Primer · 给第一次接触 Dify 的你</span></div>
+  <div class="primer-grid">
+    <div class="p-card"><h3>Dify 是什么 <span class="ptag">产品</span></h3>
+      <p>一个<b>开源</b>的 AI 应用开发平台——用张路宇的话说，是夹在大模型与真实业务之间的「<b>中间层</b>」。不会写代码也能在画布上拖出聊天机器人、知识库问答和自动化流程（Workflow）；会写代码，可以编排数百个节点、接入企业内部系统。模型可以热插拔：GPT、Claude、DeepSeek，换模型不用重写应用。</p></div>
+    <div class="p-card"><h3>张路宇是谁 <span class="ptag">人物</span></h3>
+      <p>Dify 创始人 & CEO，1991 年生，12 岁做个人站长，初中学历、自学成才。做过测试工具「飞蛾」，被 CODING 收购后随其进入腾讯，带过上百万开发者的 DevOps 平台。2023 年 3 月再创业，第一天就定下三件事：<b>开源、To B、全球化</b>。他招人「专挑大厂不要的人」，相信团队高于产品。</p></div>
+    <div class="p-card"><h3>为什么值得读 <span class="ptag">时机</span></h3>
+      <p>AI 应用正在从「聊天框里的演示」走向「真正运转的生产系统」，Dify 是这条路上跑得最快的开源项目：GitHub 星标全站第 51，装机 140 万台、覆盖 175 个国家，2026 年 3 月完成 3000 万美元融资。这本册子收录的是<b>一手材料</b>——他怎么说、怎么写、怎么做。</p></div>
+    <div class="p-card"><h3>这本册子怎么用 <span class="ptag">读法</span></h3>
+      <p>三条路径：赶时间，沿「推荐阅读路线」读六篇必读；想通读，按时间河从 2024 顺流而下；做功课，用搜索和筛选按主题定位。遇到生词点正文里的<b>虚线词</b>，或翻到末尾「术语速查」。每篇的「展开全文编译」是完整中译本，「阅读原文」通向原始出处。</p></div>
+  </div>
+  <div class="fact">
+    <h3>公司速览 · Fact Sheet</h3>
+    <div class="fact-grid">
+      <div class="fi"><div class="fv">2023.3</div><div class="fk">创立 · 2023.5 开源</div></div>
+      <div class="fi"><div class="fv">门洛帕克</div><div class="fk">总部 · 东京 / 苏州 / 上海</div></div>
+      <div class="fi"><div class="fv">$30M</div><div class="fk">Pre-A · 2026.3 · HSG 领投</div></div>
+      <div class="fi"><div class="fv">~$1.8 亿</div><div class="fk">投后估值（媒体报道）</div></div>
+      <div class="fi"><div class="fv">No.51</div><div class="fk">GitHub 星标全站排名</div></div>
+      <div class="fi"><div class="fv">140 万+</div><div class="fk">装机机器 · 175+ 国家和地区</div></div>
+      <div class="fi"><div class="fv">~100 人</div><div class="fk">团队 · 约 60 名核心工程师在中国</div></div>
+      <div class="fi"><div class="fv">Volvo 等</div><div class="fk">Maersk · Ricoh · ETS · 安克 · 得到</div></div>
+    </div>
+  </div>
+  <div class="mini-tl">
+    <div class="mi"><div class="my">2023.3</div><div class="mt2">Dify 创立</div></div>
+    <div class="mi"><div class="my">2023.5</div><div class="mt2">GitHub 开源，一周 4-5k Star</div></div>
+    <div class="mi"><div class="my">2024.4</div><div class="mt2">Workflow 发布</div></div>
+    <div class="mi"><div class="my">2025.2</div><div class="mt2">日本法人 LangGenius K.K.</div></div>
+    <div class="mi"><div class="my">2026.3</div><div class="mt2">Pre-A 3000 万美元</div></div>
+    <div class="mi"><div class="my">2026.8</div><div class="mt2">New Agent 发布</div></div>
+    <div class="mi"><div class="my">2026.9</div><div class="mt2">IF Con Tokyo 2026</div></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="sec-head"><span class="no">02</span><h2>时间河</h2><span class="en">Timeline · 点击圆点跳到对应文章</span></div>
+  <div class="timeline">
+    <div class="tl-track" id="tlTrack"></div>
+    <div class="tl-legend">
+      <span><i style="background:var(--seal)"></i>必读篇目</span>
+      <span><i style="background:var(--paper);border:2px solid var(--ink)"></i>泛读篇目</span>
+      <span style="margin-left:auto">常更页面列于最右</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="border-bottom:none;padding-bottom:4vh">
+  <div class="sec-head"><span class="no">03</span><h2>推荐阅读路线</h2><span class="en">先读这六篇，就能抓住主线</span></div>
+  <div class="route" id="routeGrid"></div>
+</section>
+
+<div class="controls" id="controls">
+  <input class="search" id="q" type="search" placeholder="搜索标题、来源或关键词，例如：开源、Workflow、日本">
+  <span id="chips"></span>
+</div>
+
+<main id="volumes"></main>
+<section class="block" id="glossary">
+  <div class="sec-head"><span class="no">04</span><h2>术语速查</h2><span class="en">Glossary · 26 个关键词，小白友好</span></div>
+  <div class="gloss-grid" id="glossGrid"></div>
+</section>
+
+<section class="block" id="extra" style="border-bottom:none">
+  <div class="sec-head"><span class="no">05</span><h2>拓展阅读</h2><span class="en">Further Reading · 读完原典之后往这里走</span></div>
+  <div class="x-grid">
+    <a class="x-card" href="https://github.com/langgenius/dify" target="_blank" rel="noopener"><span class="xn">01</span><div><h4>Dify GitHub 仓库</h4><div class="xu">github.com/langgenius/dify</div><p>代码、Star、Issue 与贡献者的第一现场。判断一个开源项目是否真有活力，看这里的提交频率和 Issue 响应速度，比看任何报道都准。</p></div><span class="xa">→</span></a>
+    <a class="x-card" href="https://docs.dify.ai" target="_blank" rel="noopener"><span class="xn">02</span><div><h4>Dify 官方文档</h4><div class="xu">docs.dify.ai</div><p>从部署、快速上手到 API 参考的完整文档。配合卷肆的官方页面一起读，半小时即可搭建第一个应用。</p></div><span class="xa">→</span></a>
+    <a class="x-card" href="https://dify.ai/blog" target="_blank" rel="noopener"><span class="xn">03</span><div><h4>Dify 官方博客</h4><div class="xu">dify.ai/blog</div><p>产品发布、研究长文与公司公告的统一出口。张路宇的署名文章都在这里首发，订阅它等于订阅他的思考。</p></div><span class="xa">→</span></a>
+    <a class="x-card" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener"><span class="xn">04</span><div><h4>Anthropic：Building Effective Agents</h4><div class="xu">anthropic.com/engineering</div><p>Agent 领域被引用最多的设计共识：何时该用 Workflow、何时该用 Agent、编排的五种模式。读它再回头读张路宇的竞品点评，会更有味道。</p></div><span class="xa">→</span></a>
+    <a class="x-card" href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf" target="_blank" rel="noopener"><span class="xn">05</span><div><h4>OpenAI：A Practical Guide to Building Agents（PDF）</h4><div class="xu">cdn.openai.com</div><p>34 页免费指南：什么是 Agent、何时该建、如何设计护栏与人工介入。与 Dify 的「Agent + Workflow」思路对照阅读。</p></div><span class="xa">→</span></a>
+    <a class="x-card" href="https://agents.md" target="_blank" rel="noopener"><span class="xn">06</span><div><h4>AGENTS.md 官方站</h4><div class="xu">agents.md</div><p>《分与合》里那份「写给 AI 的项目说明书」的行业标准形态，已被 6 万多个开源项目采用，由 Linux 基金会旗下机构看护。</p></div><span class="xa">→</span></a>
+    <a class="x-card" href="https://modelcontextprotocol.io" target="_blank" rel="noopener"><span class="xn">07</span><div><h4>Model Context Protocol（MCP）</h4><div class="xu">modelcontextprotocol.io</div><p>让 AI 应用以统一方式连接外部工具与数据的开放协议，相当于 AI 世界的 USB-C 接口。Dify 的 Agent 可以直接接入 MCP server。</p></div><span class="xa">→</span></a>
+    <a class="x-card" href="https://dataintensive.net" target="_blank" rel="noopener"><span class="xn">08</span><div><h4>《Designing Data-Intensive Applications》</h4><div class="xu">dataintensive.net</div><p>张路宇在「状态基础设施」长文中引用的分布式系统经典，Martin Kleppmann 著。想真正读懂那篇论文式长文，这是最好的梯子。</p></div><span class="xa">→</span></a>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="seal">原典<br>读本</div>
+  <p>本册为阅读指南：概述与全文编译均为中文转述而非逐字翻译，数字与事实以各原文及官方信息为准；原文版权归原刊所有。部分来源为日文或西班牙文报道，或是第三方资料库，已逐篇标注。已读进度仅保存在本浏览器。</p>
+  <div class="fin">读 完 即 是 开 始</div>
+</footer>
+</div><!-- /stage -->
+
+<script>
+/* ============ DATA · 26 sources, 6 volumes ============ */
+const CATS = {
+  A:{n:'创始人原声', cn:'壹', en:'His Own Voice', d:'长访谈、播客与人物报道，最接近张路宇本人的思考方式'},
+  B:{n:'张路宇署名文章', cn:'贰', en:'Written by Luyu Zhang', d:'他亲自写的长文，是理解他当前世界观的一手材料'},
+  C:{n:'融资与公司报道', cn:'叁', en:'Funding & Company', d:'2026 年 Pre-A 融资前后的媒体报道与公司档案'},
+  D:{n:'产品与官方页面', cn:'肆', en:'Product & Official', d:'产品发布、定价、企业版、伙伴计划与公司文化'},
+  E:{n:'区域动态', cn:'伍', en:'Regional Moves', d:'日本、韩国市场的活动、伙伴与客户案例'},
+  F:{n:'资料库与档案', cn:'陆', en:'Archives', d:'第三方整理的百科与产品档案，适合快速查数'}
+};
+
+const S = [
+/* ---- A 创始人原声 ---- */
+{id:'hc24',v:'A',must:1,date:'2024-06',src:'华创派 / 腾讯新闻',lg:'中文 · 长访谈',
+ t:'服务超百万开发者：张路宇谈再创业、中间层与全球化',o:'华创派｜Dify 张路宇：服务超百万开发者，再创业做大模型中间层',
+ u:'https://news.qq.com/rain/a/20240620A05JZ300',
+ s:'迄今最完整的个人长访谈。他讲了从 12 岁做网站、初中离校，到蜗牛、飞蛾、CODING 和腾讯的经历；解释了为什么在模型、中间层、应用三层里选中间层，为什么开源、为什么叫全球化而不是出海。他还提出团队高于产品，北极星是真正投产的用户数。',
+ k:'这是你理解他的「操作系统源代码」。开源五条理由、拒绝双版本、最大公约数这几个观点，几乎决定了他会怎样看你的 APAC 方案。',
+ tg:['履历','开源','全球化','组织']},
+{id:'qb24',v:'A',date:'2024-04',src:'量子位',lg:'中文 · 报道',
+ t:'Dify Workflow 发布：未来的编程可能就是编 flow',o:'量子位 2024-04 报道',
+ u:'https://www.qbitai.com/2024/04/136381.html',
+ s:'围绕 Workflow 发布的报道与访谈。他认为核心用户是少数能创造和影响他人的专业构建者，门槛不会降到零；团队刻意放慢发布节奏；DSL 导入导出是他最喜欢的特性。他自称大厂叛逆者，并不担心大厂入局。',
+ k:'注意他对「门槛」的诚实态度：从开发者起步，再向外扩展。给他讲「人人都能零门槛用」会显得不懂他的产品哲学。',
+ tg:['Workflow','产品哲学','竞争']},
+{id:'42z25',v:'A',must:1,date:'2025-12',src:'42章经 播客 / 腾讯新闻',lg:'中文 · 播客对谈',
+ t:'Dify 从被低估到成为明星项目，到底做对了什么',o:'Dify从被低估到成为明星项目，到底做对了什么｜对谈 Dify 创始人路宇',
+ u:'https://news.qq.com/rain/a/20251214A06K4B00',
+ s:'他把成功归结为「耐心」，坚持 Day 1 定下的开源、To B、全球化三条策略。他认为 Workflow 会长期存在，因为人类生产需要可预测性；未来是神经网络负责联想、符号系统负责逻辑判断。智力会变成对称资源，竞争力来自非对称的上下文与判断。他也逐一点评了 LangChain、Coze、n8n 和 OpenAI 的 Agent 工具。',
+ k:'这一篇补齐了上传材料里多条「未核验」的说法，包括 Workflow 不会被替代、工程最值钱、模型趋同后的非对称优势。竞品点评可以直接用于你的竞争叙事。',
+ tg:['Workflow','工程','竞品','世界观']},
+{id:'hn25',v:'A',date:'2025-11',src:'和牛商业 / 搜狐',lg:'中文 · 访谈',
+ t:'张路宇：我们专门招大厂不要的人，Dify 赢在组织方式上',o:'张路宇：我们专门招大厂不要的人，Dify赢在组织方式上',
+ u:'https://www.sohu.com/a/951909902_122014422',
+ s:'聚焦组织方式。他把自己的能力下放给团队，让每个人成为「超级个体」，并搭建相对去中心化的组织。苏州办公室每周一集中、其余时间远程，努力推行四天工作制；内部用飞书知识库按四条线做市场情报。他主张长期乐观、短期务实。',
+ k:'你搭团队时，「超级个体 + 去中心化 + 情报共享」是他最认可的形态。用大量层级和流程去管 APAC 团队，会和他的组织信念直接冲突。',
+ tg:['组织','招聘','管理哲学']},
+{id:'fb26',v:'A',date:'2026-02',src:'Forbes Argentina',lg:'西班牙文 · 特写',es:1,
+ t:'在中国创立 AI 公司、融资 3,000 万美元，如今进军硅谷',o:'Fundó su startup de IA en China, recaudó US$ 30 millones y ahora se expande en Silicon Valley',
+ u:'https://www.forbesargentina.com/negocios/fundo-su-startup-ia-china-recaudo-us-30-millones-ahora-expande-silicon-valley-n86713',
+ s:'福布斯报道他移居美国、在门洛帕克临时办公室工作，英语有限、通过翻译交流。公司约 100 人、已盈利、280 多家企业客户，核心开源工程团队约 60 人仍在中国。他认为国家安全议题需要细分：开源且多为客户自托管的软件，并不属于敏感领域。',
+ k:'这是你回答「美国总部、中国团队」相关问题时最好的参照口径：务实、不站队、强调自托管与开源。中文书面沟通会是你和他最顺畅的方式。',
+ tg:['中美','公司结构','人物']},
+
+/* ---- B 署名文章 ---- */
+{id:'letter26',v:'B',must:1,date:'2026-03-10',src:'Dify Blog · 张路宇',lg:'英文 · 公开信',en:1,
+ t:'融资 3,000 万美元：明天的组织将由人与 Agent 共同构建',o:"Dify Raises $30M: Tomorrow's Organizations Will Be Built by People and Agents",
+ u:'https://dify.ai/blog/dify-raises-30m-tomorrow-s-organizations-will-be-built-by-people-and-agents',
+ s:'融资公开信。他说真实工作发生在系统、文档、重复流程、审批与问责之中，而不在聊天框里；Dify 的两个不变量是可靠和简单。长期愿景是组织的操作系统，Dify 目前提供其中的逻辑层。资金将投向生产级 Agent、企业基础、降低门槛和开源生态。',
+ k:'这是公司当前的「宪法」。你的 APAC 叙事应当从这里取词：逻辑层、可靠、简单、开发者是起点。',
+ tg:['愿景','融资','Agent']},
+{id:'state26',v:'B',must:1,date:'2026-03-31',src:'Dify Blog · 张路宇',lg:'英文 · 理论长文',en:1,
+ t:'现实世界状态缺失的基础设施',o:'The Missing Infrastructure for Real-World State',
+ u:'https://dify.ai/blog/the-missing-infrastructure-for-real-world-state',
+ s:'一篇理论长文。他认为大量白领工作的本质，是向别人报告某个对象「现在处于什么状态」，许多人因此成了手工的「状态同步者」。他提出可行的状态基础设施要同时具备语义保真、置信度与来源、事件驱动同步、跨系统聚合和机器原生访问五个属性，并明确声明这一框架尚未经实证。',
+ k:'理解他下一阶段思考的钥匙。与他讨论时要区分「理论框架」和「产品现状」，他会欣赏你指出这个框架在中国政企场景里最先可能被验证的地方。',
+ tg:['状态','组织','理论']},
+{id:'dc26',v:'B',must:1,date:'2026-04-04',src:'Dify Blog · 张路宇',lg:'英文 · 工程思考',en:1,
+ t:'软件工程的分与合：从网页三剑客到 AI 时代的流水线设计',o:'Software Engineering: Divide and Converge',
+ u:'https://dify.ai/blog/software-engineering-divide-and-converge',
+ s:'他回顾软件工程在「专业分工」与「重新整合」之间的交替，认为 AI 时代的瓶颈从执行转向设计。人负责问题定义、约束、判断与品味；用控制论把流水线设计成能自我纠偏的闭环，并以 AGENTS.MD 作为约束与单一事实来源。设计厨房的人必须亲手做过汉堡。',
+ k:'这篇解释了他为什么要求 Hands-on。你作为 GM，最好能亲手做 PoC 和演示，再去设计 APAC 的 GTM 流水线；管道评审要缩短反馈延迟。',
+ tg:['控制论','工程','人的角色']},
+
+/* ---- C 融资与公司 ---- */
+{id:'bw26',v:'C',date:'2026-03-09',src:'Business Wire',lg:'英文 · 官方新闻稿',en:1,
+ t:'Dify 完成 3,000 万美元 Pre-A 轮融资，推动企业级 Agentic Workflow',o:'Dify Raises $30 million Series Pre-A to Power Enterprise-Grade Agentic Workflows',
+ u:'https://www.businesswire.com/news/home/20260309511426/en/Dify-Raises-$30-million-Series-Pre-A-to-Power-Enterprise-Grade-Agentic-Workflows',
+ s:'官方融资新闻稿。本轮由红杉中国（HSG）领投，GL Ventures、Alt-Alpha、五源资本、Mizuho Leaguer 与 NYX Ventures 参与，资金用于企业能力、Agent 能力与全球生态。',
+ k:'对外引用融资信息时，以这份新闻稿为准。',
+ tg:['融资']},
+{id:'vb26',v:'C',date:'2026-03',src:'Ventureburn',lg:'英文 · 融资报道',en:1,
+ t:'Dify 融资 3,000 万美元，加速企业 AI 工作流',o:'Dify Raises $30M to Accelerate Enterprise AI Workflows',
+ u:'https://ventureburn.com/dify-raises-30m-to-accelerate-enterprise-ai-workflows/',
+ s:'融资报道，提到投后估值约 1.8 亿美元。CEO 强调要帮助企业从试验 AI 走向真正运转的 AI 系统，并通过合作、社区活动和开发者参与扩大全球影响。',
+ k:'「从试验到运转」是对客户最有共鸣的一句话术，适合用在 APAC 的市场材料里。',
+ tg:['融资','估值']},
+{id:'ed26',v:'C',date:'2026',src:'EveryDev.ai',lg:'英文 · 公司档案',en:1,
+ t:'LangGenius 公司档案',o:'LangGenius, Inc. · EveryDev.ai',
+ u:'https://www.everydev.ai/developers/langgenius-inc',
+ s:'开发者媒体整理的公司档案，列出融资动态、与 Takin.ai 的教育合作，以及阿里云曾对 LangGenius 进行战略投资的记录。',
+ k:'阿里云既是战略投资方又是战略伙伴，在中国市场既有协作也有竞争。处理这层关系前，需要先和总部对齐边界。',
+ tg:['公司档案','阿里云']},
+{id:'nf26',v:'C',date:'2026',src:'NeuronFeed',lg:'英文 · 公司简介',en:1,
+ t:'从开源项目到全球平台',o:'From open-source project to global platform',
+ u:'https://neuronfeed.com/startups/dify',
+ s:'初创公司简介。文章提到张路宇此前负责腾讯云 CODING 的 DevOps 平台；Dify 运行在 175 个以上国家和地区的 140 多万台机器上，客户包括 Volvo、Maersk、Ricoh、ETS，融资将用于日本、美国和欧洲扩张。',
+ k:'公开叙事里列出的扩张重点是日本、美国和欧洲，没有提到中国以外的亚太。这正是你需要和 CEO 明确的资源与优先级问题。',
+ tg:['公司概况','扩张']},
+{id:'dot26',v:'C',date:'2026-04-02',src:'DotAI TIMES',lg:'日文 · 二手解读',jp:1,
+ t:'日本媒体解读 Dify 与其创始人',o:'DotAI TIMES vol.33',
+ u:'https://dot-ai.myuuu.co.jp/times/33',
+ s:'日本媒体的解读文章，主要引用福布斯与融资新闻稿。文中提到约 60 名核心开发者在中国，公司计划在硅谷与东京再招约 40 人；早期团队不少来自腾讯云 CODING。',
+ k:'日本市场是怎么看待 Dify 的「中国背景」的，这篇是一扇窗。文中把他的名字写作「張陸宇」，引用时注意。',
+ tg:['日本','人物','二手解读']},
+
+/* ---- D 产品与官方 ---- */
+{id:'agent26',v:'D',date:'2026-08-27',src:'Dify Blog · 产品团队',lg:'英文 · 产品发布',en:1,
+ t:'全新 Dify Agent 发布',o:'Introducing New Dify Agent',
+ u:'https://dify.ai/blog/introducing-new-dify-agent',
+ s:'产品团队署名的发布文章。Agent 负责任务内的动态判断，Workflow 负责何时运行、前后检查、审批与输出去向；Agent 成为可跨应用复用的单一事实来源；修复问题时先问「修复应该落在哪里」。Build 模式让用户用对话方式起草配置。',
+ k:'这是你向客户解释 Dify「Agent + Workflow」差异化的最佳素材。引用时注意作者是产品团队，不是张路宇本人。',
+ tg:['Agent','产品']},
+{id:'price',v:'D',date:'常更',src:'dify.ai/pricing',lg:'英文 · 官方页面',en:1,
+ t:'Dify 定价',o:'Pricing — Dify',
+ u:'https://dify.ai/pricing',
+ s:'Cloud 分为免费 Sandbox、Professional（每工作区每月 59 美元）、Team（159 美元）和需联系销售的 Enterprise。Enterprise 包含可扩展部署、多工作区管理，由合作伙伴提供协商 SLA，官方负责更新维护与专业支持。',
+ k:'「SLA 由伙伴提供」说明伙伴交付本来就是商业模式的一部分。你的 APAC 伙伴体系要能接住这个角色。',
+ tg:['定价','伙伴']},
+{id:'ent',v:'D',date:'常更',src:'dify.ai/dify-enterprise',lg:'英文 · 官方页面',en:1,
+ t:'Dify 企业版',o:'Dify Enterprise',
+ u:'https://dify.ai/zh/dify-enterprise',
+ s:'企业版主打在客户自有 VPC、本地或隔离网络中部署，支持 SSO、细粒度 RBAC、SCIM、防篡改审计日志、Helm 与 Terraform 部署，强调数据主权。页面列出 Maersk、Mizuho、Panasonic、Novartis、Volvo 等客户标识。',
+ k:'中国政企最在意的私有化、权限和审计，这里都有官方能力背书，可以直接用于回答数据出境类问题。',
+ tg:['企业版','安全']},
+{id:'partners',v:'D',date:'常更',src:'dify.ai/partners',lg:'英文 · 官方页面',en:1,
+ t:'成为 Dify 合作伙伴',o:'Partners — Dify',
+ u:'https://dify.ai/zh/partners',
+ s:'战略伙伴包括 AWS、NVIDIA、Microsoft Azure、PingCAP、Zilliz 和阿里云。伙伴计划分为经销商、服务伙伴和 Marketplace 伙伴三类，加入免费。',
+ k:'三类伙伴的分工，就是你搭建 APAC 渠道体系的现成骨架。',
+ tg:['伙伴','生态']},
+{id:'join',v:'D',must:1,date:'常更',src:'join.dify.ai',lg:'英文 · 官方页面',en:1,
+ t:'加入 LangGenius：价值观与工作方式',o:'Join LangGenius',
+ u:'https://join.dify.ai/',
+ s:'五条价值观：Simple & Sincere、Hands-on、Explore the Edge、Ask Why to Bedrock、Honor Your Commitments。工作原则包括 Builders First、单一负责人、小而锐利的团队、唤醒善意而非强制合规。Fast-Track 机制是一页纸提给 CEO，48 小时内决定，最长三周冲刺，失败不计职业代价。超过 60% 的代码由 LLM 构建。',
+ k:'这是你和他协作的「接口规范」：一页纸、先动手、直接说分歧、一个人负责到底。',
+ tg:['文化','价值观','组织']},
+{id:'about',v:'D',date:'常更',src:'dify.ai/about-us',lg:'英文 · 官方页面',en:1,
+ t:'关于 Dify',o:'About Us — Dify',
+ u:'https://dify.ai/about-us',
+ s:'使命是打造 AI、人、数据与工具协作新范式下最受欢迎的开源平台，愿景是成为 AI 时代组织的「操作系统」。总部在门洛帕克，东京负责研发、亚洲企业与伙伴，苏州负责工程，上海负责 APAC 市场与企业销售。',
+ k:'上海办公室是你的天然基地。东京的「亚洲企业与伙伴」职能与 APAC 有交叉，需要尽早划清边界。',
+ tg:['使命','办公室']},
+
+/* ---- E 区域动态 ---- */
+{id:'awsj25',v:'E',date:'2025',src:'Dify Blog',lg:'英文 · 活动公告',en:1,
+ t:'Dify 亮相 2025 AWS Summit Japan',o:'Dify to Showcase at 2025 AWS Summit Japan',
+ u:'https://www.dify.ai/blog/dify-to-showcase-at-2025-aws-summit-japan',
+ s:'文章宣布日本子公司 LangGenius K.K. 于 2025 年 2 月 5 日在东京日本桥成立，并介绍与 AWS 的集成：Dify Premium 自 2024 年起在 AWS Marketplace 上架。',
+ k:'日本「子公司 + 云市场 + 本地伙伴」的打法，是你在韩国、新加坡复制时最近的参照。',
+ tg:['日本','AWS']},
+{id:'ifcon',v:'E',date:'2026-07-24',src:'Dify Blog',lg:'英文 · 活动公告',en:1,
+ t:'IF Con Tokyo 2026：把「如果」变成生产',o:'IF Con Tokyo 2026: Turn "What If" into Production',
+ u:'https://dify.ai/blog/if-con-tokyo-2026-turn-what-If-into-production',
+ s:'第二届 IF Con Tokyo 于 2026 年 9 月 10 日在东京举办，主题是让生成式 AI 从试点走向日常运营，内容分业务案例和技术深潜两条线，并预告会有新产品发布（未披露名称）。',
+ k:'用户大会是日本区沉淀伙伴与客户的核心手段。你可以考虑在上海或新加坡做类似的区域大会。',
+ tg:['日本','活动']},
+{id:'prt',v:'E',date:'2026-07-24',src:'PR TIMES',lg:'日文 · 新闻稿',jp:1,
+ t:'IF Con Tokyo 2026 开幕公告',o:'Dify、AIエージェントの本番実装をテーマに「IF Con Tokyo 2026」開催',
+ u:'https://prtimes.jp/main/html/rd/p/000000028.000166429.html',
+ s:'日文新闻稿，确认张路宇与 LangGenius K.K. 社长キジ マルダン为演讲嘉宾，赞助伙伴包括 CTC、Ricoh、TDSE 等。稿件没有公开演讲内容和新产品名称。',
+ k:'上传材料中关于主题演讲内容和 Tokener 等新品的说法，目前在这里找不到依据，引用要谨慎。',
+ tg:['日本','活动','核验']},
+{id:'kddi',v:'E',date:'2026-08-05',src:'DIME',lg:'日文 · 客户案例',jp:1,
+ t:'KDDI Digital Life 在 povo2.0 客服中采用 Dify',o:'KDDI Digital Life、povo2.0のカスタマーサポートに「Dify」を活用',
+ u:'https://dime.jp/company_news/detail/?pr=2660301',
+ s:'Dify 通过官方销售与构建伙伴 TDSE，被导入 KDDI Digital Life 的在线套餐 povo2.0 客服场景。TDSE 负责需求梳理、环境搭建与运维支持，客户自行内部开发并持续改进聊天机器人。',
+ k:'「伙伴实施 + 客户自建 + 原厂产品」的三方分工，是你在电信、金融大客户身上可直接复用的模板。',
+ tg:['日本','案例','伙伴']},
+{id:'osaka',v:'E',date:'2026-08-07',src:'DIME',lg:'日文 · 政府案例',jp:1,
+ t:'LangGenius 加入大阪府行政 AI Agent 联盟',o:'LangGenius「大阪府行政AIエージェントコンソーシアム」参画',
+ u:'https://dime.jp/company_news/detail/?pr=2663112',
+ s:'LangGenius 通过提供 Dify 授权，支持理光日本在大阪府行政 AI Agent 联盟中的工作。新闻稿同时说明了日本法人的定位：销售与推广企业版授权，并与本地伙伴合作服务企业和地方政府。',
+ k:'这是公共部门的参考案例：原厂提供授权，由当地大型集成商出面。对中国政企市场有很强的借鉴意义。',
+ tg:['日本','政府','伙伴']},
+{id:'ons',v:'E',date:'2026-05',src:'Dify on X（经 traeai 收录）',lg:'英文 · 社交动态',en:1,
+ t:'官方伙伴 ONS 在 AI EXPO Korea 展示 Dify',o:"LangGenius K.K.'s official partner Open Network System (ONS) is at AI EXPO Korea",
+ u:'https://www.traeai.com/entities/open-network-system-ons',
+ s:'Dify 官方账号宣布，日本法人的官方伙伴 Open Network System（ONS）在 AI EXPO Korea 现场展示 Dify 平台。',
+ k:'韩国已有伙伴种子，而且目前挂在日本法人名下。韩国归属哪个团队，需要在你入职时说清。',
+ tg:['韩国','伙伴']},
+
+/* ---- F 资料库 ---- */
+{id:'aiwiki',v:'F',date:'2026-07',src:'AIWiki',lg:'英文 · 百科条目',en:1,
+ t:'Dify 条目',o:'Dify — AIWiki',
+ u:'https://www.aiwiki.ai/wiki/dify',
+ s:'百科式条目，整理了开源时间（2023 年 5 月）、GitHub Star 里程碑、Pre-A 融资细节，以及与 LangChain、Flowise、Langflow 的常见对比。',
+ k:'适合快速查时间线和数字，但不要当作张路宇本人的观点来源。',
+ tg:['档案','时间线']},
+{id:'yes',v:'F',date:'2026-09',src:'YesPress',lg:'英文 · 产品档案',en:1,
+ t:'Dify 产品档案',o:'Dify — YesPress',
+ u:'https://yespress.io/products/dify',
+ s:'按月整理的产品与公司动态，包括 1.13 人工介入节点、Creator Center 与模板市场、官方 CLI difyctl、1.17 重构 Agent，以及 SOC 2 Type II 与 ISO 27001 合规。',
+ k:'用来掌握近一年的产品节奏，面谈前快速过一遍即可。',
+ tg:['产品','合规','档案']}
+];
+
+/* ============ helpers ============ */
+const $ = id => document.getElementById(id);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pad = n => String(n).padStart(2,'0');
+function langTag(x){
+  if(x.jp) return '<span class="tag lang">日文</span>';
+  if(x.es) return '<span class="tag lang">西文</span>';
+  if(x.en) return '<span class="tag lang">EN</span>';
+  return '';
+}
+
+/* ============ timeline ============ */
+(function(){
+  const order = ['qb24','hc24','awsj25','hn25','42z25','fb26','bw26','letter26','vb26','state26','dc26','dot26','ons','ifcon','prt','aiwiki','kddi','osaka','agent26','yes','price','ent','partners','join','about','ed26','nf26'];
+  const tl = $('tlTrack');
+  order.forEach(id=>{
+    const a = S.find(s=>s.id===id); if(!a) return;
+    const el = document.createElement('a');
+    el.className = 'tl-item' + (a.must ? ' must' : '');
+    el.href = '#' + a.id;
+    el.innerHTML = (a.must ? '<span class="badge-must">必读</span>' : '') +
+      '<span class="dot"></span><div class="yr">' + esc(a.date.replace(/-\d{2}$/,'')) + '</div><span class="ttl">' + esc(a.t.length>16 ? a.t.slice(0,16)+'…' : a.t) + '</span>';
+    tl.appendChild(el);
+  });
+})();
+
+/* ============ route ============ */
+(function(){
+  const ROUTE = [
+    {id:'hc24', step:'第 一 读', p:'迄今最完整的个人长访谈——他的「操作系统源代码」。'},
+    {id:'42z25', step:'第 二 读', p:'播客对谈：耐心、三条 Day 1 策略，与逐一点评竞品。'},
+    {id:'letter26', step:'第 三 读', p:'融资公开信，公司当前的「宪法」。'},
+    {id:'state26', step:'第 四 读', p:'理论长文：理解他下一阶段的思考方向。'},
+    {id:'dc26', step:'第 五 读', p:'工程哲学：为什么他要求每个人都 Hands-on。'},
+    {id:'join', step:'第 六 读', p:'五条价值观与 Fast-Track——你和他协作的接口规范。'}
+  ];
+  const rg = $('routeGrid');
+  ROUTE.forEach(r=>{
+    const x = S.find(s=>s.id===r.id);
+    const a = document.createElement('a');
+    a.href = '#' + r.id;
+    a.innerHTML = '<div class="step">' + r.step + '</div><h4>' + esc(x.t) + '</h4><p>' + r.p + '</p><span class="arrow">→</span>';
+    rg.appendChild(a);
+  });
+})();
+
+/* ============ chips ============ */
+let state = {cat:'all', q:''};
+(function(){
+  let h = '<button class="chip" data-cat="all" aria-pressed="true">全部</button>';
+  Object.keys(CATS).forEach(k=>{ h += '<button class="chip" data-cat="'+k+'" aria-pressed="false">'+CATS[k].cn+' · '+CATS[k].n+'</button>'; });
+  h += '<button class="chip" data-cat="must" aria-pressed="false" style="color:var(--seal);border-color:var(--seal)">只看必读</button>';
+  h += '<button class="chip" data-cat="unread" aria-pressed="false">只看未读</button>';
+  $('chips').innerHTML = h;
+  $('chips').querySelectorAll('.chip').forEach(b=>{
+    b.onclick = ()=>{
+      state.cat = b.dataset.cat;
+      $('chips').querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+      render();
+    };
+  });
+})();
+$('q').addEventListener('input', e=>{ state.q = e.target.value.trim().toLowerCase(); render(); });
+
+/* ============ read marks ============ */
+const KEY = 'dify-reader-done-v2';
+let done = new Set(JSON.parse(localStorage.getItem(KEY) || '[]'));
+function saveDone(){ localStorage.setItem(KEY, JSON.stringify([...done])); }
+function refreshProg(){ $('progLabel').textContent = '已读 ' + done.size + ' / ' + S.length; }
+
+/* ============ render ============ */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('reveal'); io.unobserve(e.target); } });
+},{threshold:.08});
+
+function match(x){
+  if(state.cat==='must' && !x.must) return false;
+  if(state.cat==='unread' && done.has(x.id)) return false;
+  if(CATS[state.cat] && x.v!==state.cat) return false;
+  if(state.q){
+    const hay = (x.t + x.o + x.src + x.s + x.k + x.tg.join(' ')).toLowerCase();
+    if(hay.indexOf(state.q) < 0) return false;
+  }
+  return true;
+}
+
+function articleHTML(x, n){
+  return '<article class="article' + (done.has(x.id) ? ' done' : '') + '" id="' + x.id + '">' +
+    '<aside class="spine">' +
+      '<div class="idx">' + pad(n) + '</div>' +
+      '<div class="src">' + esc(x.src) + '</div>' +
+      '<div class="meta">' + esc(x.date) + '<br>' + esc(x.lg) + '</div>' +
+      '<div class="tags">' + (x.must ? '<span class="tag must">必读</span>' : '') + langTag(x) + '</div>' +
+    '</aside>' +
+    '<div class="body">' +
+      '<h3>' + esc(x.t) + '</h3>' +
+      '<div class="orig">原题：' + esc(x.o) + '</div>' +
+      '<h5>要点概述</h5>' +
+      '<p class="sum">' + esc(x.s) + '</p>' +
+      '<div class="kw-tags">' + x.tg.map(t=>'<span>'+esc(t)+'</span>').join('') + '</div>' +
+      '<div class="lens"><div class="lbl">对你意味着什么 · APAC GM 视角</div><p>' + esc(x.k) + '</p></div>' +
+      '<div class="foot">' +
+        '<a class="read-link" href="' + esc(x.u) + '" target="_blank" rel="noopener">阅读原文<span>→</span></a>' +
+        '<span class="read-mark" data-id="' + x.id + '"><span class="box">✓</span>标记已读</span>' +
+      '</div>' +
+    '</div></article>';
+}
+
+function render(){
+  let h = '', n = 0, any = false;
+  Object.keys(CATS).forEach(k=>{
+    const items = S.filter(x=>x.v===k && match(x));
+    if(!items.length) return;
+    any = true;
+    const c = CATS[k];
+    h += '<div class="act" id="vol' + k + '">' +
+      '<div class="act-head"><div class="act-no">' + c.cn + '</div>' +
+      '<div><div class="en">Volume ' + c.cn + ' · ' + c.en + '</div><h2>' + c.n + '</h2><p>' + c.d + '</p></div></div>';
+    items.forEach(x=>{
+      n = S.indexOf(x) + 1;
+      h += articleHTML(x, n);
+    });
+    h += '</div>';
+  });
+  $('volumes').innerHTML = any ? h : '<p class="none-msg">没有匹配的文章。换个关键词试试。</p>';
+  document.querySelectorAll('.article').forEach(el=>{
+    io.observe(el);
+    el.querySelector('.read-mark').addEventListener('click', ()=>{
+      const id = el.id;
+      done.has(id) ? done.delete(id) : done.add(id);
+      saveDone();
+      el.classList.toggle('done', done.has(id));
+      refreshProg();
+      if(state.cat==='unread') render();
+    });
+  });
+  refreshProg();
+  if(window.injectFull) window.injectFull();
+}
+render();
+if(location.hash.length>1){
+  setTimeout(()=>{ const el=document.getElementById(decodeURIComponent(location.hash.slice(1))); if(el) el.scrollIntoView(); }, 120);
+}
+
+/* ============ reading progress line ============ */
+const dot = $('readDot');
+function updLine(){
+  const h = document.documentElement;
+  const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  dot.style.top = (p * 100) + '%';
+}
+addEventListener('scroll', updLine, {passive:true}); updLine();
+</script>
+
+
+
+<style>
+.ft-toggle{margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;
+  font-size:14px;color:var(--paper);background:var(--ink);border:none;padding:10px 22px;cursor:pointer;letter-spacing:.1em;transition:.25s}
+.ft-toggle:hover{background:var(--seal)}
+.ft-toggle .tri{display:inline-block;transition:transform .3s;font-size:10px}
+.article.open .ft-toggle .tri{transform:rotate(90deg)}
+.fulltext{display:none;margin-top:26px;border:1px solid var(--line);background:var(--cream);padding:38px 44px;position:relative}
+.article.open .fulltext{display:block}
+.fulltext::before{content:'全文编译';position:absolute;top:-13px;left:30px;background:var(--seal);color:var(--paper);
+  font-family:var(--serif);font-weight:900;font-size:13px;letter-spacing:.3em;padding:4px 14px}
+.fulltext p{font-size:15px;line-height:2.05;color:var(--ink-2);margin-bottom:1.1em;text-align:justify}
+.fulltext p.sec{font-family:var(--serif);font-weight:900;font-size:18px;color:var(--ink);margin:1.8em 0 .8em;text-align:left;
+  display:flex;align-items:center;gap:12px}
+.fulltext p.sec::before{content:'';width:10px;height:10px;background:var(--accent);flex:none}
+.fulltext p.quote{border-left:3px solid var(--accent);padding-left:18px;color:var(--ink-3);font-family:var(--serif)}
+.fulltext .ft-note{font-size:12px;color:var(--ink-3);border-top:1px dashed var(--hair);padding-top:14px;margin-top:1.6em;text-align:left}
+</style>
+
+<script>
+/* 卷壹 · 创始人原声 */
+const FULL = {"hc24": ["§ 出版信息", "华创资本官方账号「华创派」2024 年 6 月 20 日发布的万字访谈，受访者为 Dify 创始人&CEO 张路宇。华创资本是 Dify 的天使轮投资方。这是迄今最完整的一篇个人访谈，以下为全文精编，保留全部主线与核心观点。", "§ 张路宇其人", "张路宇 1991 年出生，12 岁做个人站长，Web1.0 时代做网站和社区就有大量用户追随，每月有大几千元收入。他的学生生涯止于 2003 年初中毕业，没有上过高中和大学——「没有被教育系统体制化，想做什么就会去做」。", "做个人开发者一直到 2008 年，在老家帮人攒电脑、做软件和本地社区——「那时虽然有很多野心，但视野很受限」。2009 年到苏州，第一份工作在蜗牛游戏，入职即任 20 人团队的技术主管，做游戏发行线的基础设施。此后一直在 A 轮、B 轮阶段的 SaaS 和工具公司工作。", "2018 年 7 月创办飞蛾——面向开发者的软件测试工程协作 SaaS（对标海外的 TestRail），10 月就有很好的版本上线，但收入数据不好。「从这个点开始，我意识到中国的 SaaS 市场是有问题的」。同年 12 月选择被 CODING 收购：一是飞蛾只是 DevOps 体系里的细分品类，可以融进 All-in-one 产品；二是团队以产品技术为主，无法从头搭建运营商务团队。CODING 在他列入笔记的「卓越公司清单」上（清单里还有锤子、魅族、青云、JetBrains），他称与 CODING CEO 张海龙「理想、品位高度类似，把公司卖给他很幸运」。", "此后在 CODING 近 4 年，负责 DevOps 产品体系三分之一以上的产品并担任运营负责人，带 60 多人团队；随腾讯收购 CODING 进入腾讯，带两三百人的大团队。「腾讯云体系给了我们几乎无限的客户线索，帮我们补上了商业化和规模化的经验。」", "§ 创业的三种动机", "第一种是不满意现状——「现状没有把我的潜力发挥出来」。带技术团队时不满混乱低效，就去做技术管理；发现问题出在产品，就去做产品；又发现公司组织文化立足点错了，「不能掌控自己的命运，内心非常难受」。", "第二种是创造的欲望——积累够了之后，「闭上眼就能清楚看到自己能创造一些东西」。", "第三种是利他主义——希望帮助同事、员工发挥最大潜力，「我想做伯乐，在他们年轻的时候帮他把自己的能力全部发挥出来」；对用户也一样，「我希望用户在解决一个问题的时候，用的是世界上最好的产品，不需要走弯路」。他自己判断：「如果说哪一种更强，我觉得利他主义更强。」", "§ 为什么是中间层", "当时理性判断有三个方向：模型层、应用层、中间层。模型层在中国「是非常重投入且回报不确定的事情」；应用层投入不大但成功概率低——「我一直坚信应用是涌现式发展，100 个公司里可能只成 5 个甚至 3 个，其余 97 个是试错者」。", "确定做中间层，一是因为自己有强烈需求，二是多年企业服务的 Vision：「我能看到在一个团队里各个角色怎么使用大模型——工程师、产品定义人员、内容运营、合规，知道如何定义团队运作和信息流交换。」", "§ 产品观与市场观", "「作为一个产品人，最大的挑战是找出一个没有被满足的空白市场，而空白市场最好的来源一定是你自己的体感。」", "To B 工具产品的不同之处在于：它天生不为用户创造需求，需求本身就在用户心智里——「做 To B 产品，就是帮助用户把他 To Do List 上的一项东西更快更方便地划掉」。", "产品经理的重要职能是做需求抽象：在无数需求中抽象出最大公约数，为每个功能排优先级，「这个过程一定是用户驱动和数据驱动的」。用户驱动指需求靠用户样本聊出来；数据驱动指内部飞书知识库分探索研究、技术研发、增长、商业化四条线，每个领域有明确观察员，每周更新市场情报，归因几十万用户到底想做什么。", "§ LLMOps 图谱与两类中间件", "Dify 是面向应用开发者的大模型应用技术栈，缩写 LLMOps——「我们提出 LLMOps 概念非常早，是 2023 年 2 月，当时全球互联网上几乎搜不到这个词」。CB Insights 画过一张 LLMOps 图谱，从模型、数据标注、训练合规、向量数据库到 Prompt 工程、模型部署，Dify 是其中非常少数的中国企业。", "他把 LLMOps 分两类：为模型服务的（做一个更好的模型背后的工作流），和为应用开发服务的（逆推如何与模型交互、与模型外技术链条交互）。Dify 是后者。", "§ ChatBot 是过渡态，与 iMac 的把手", "2023 年 5 月 Dify 让大家快速搭 Bot，走在创新前沿——后续云厂商的 ChatBot 平台、OpenAI GPTs 都在沿用这个范式。但到 2023 年 7 月他意识到：「Bot 是过渡态，用户不需要那么多 ChatBot。」一个正常用户日常用的 Bot 不超过三个：超级厂商的超级助手、操作系统原生助手、有私有数据和业务上下文的企业 Bot。", "ChatBot 的价值在于让用户亲手端到端创造并交付一个东西，「觉得大模型是可以亲近、可以驾驭的」。他用乔布斯 1998 年 iMac 的把手打比方：一体机很重、没人会拎着走，但人天生看到把手就想摸一摸，「在摸的过程中，你跟它的距离就无限缩短了」。Dify 的第一个版本就是那个把手——前十万个用户几乎没人来问产品怎么用。", "今天的主力是 Workflow：兼顾易用和灵活的开发框架，把多模态大模型编排成 API 或应用，中间融合数据与 Agent。「有用户编了几百个节点」，企业客户用它做大模型批处理。", "§ 对 AI 技术栈的判断", "「AI 的技术栈现在来看基本上已经定型了。」算力之上有推算/异构层；模型层有 GPT、Llama、Mistral、智谱等不同流派；模型暴露 API 调用并不代表对应用友好——应用还要结合传统技术、交互设计、数据源、企业内可调用的 API 和 Agent 的 Action，需要综合编排。「这个架构再改动的概率不大了。」变量可能出现在模型之间的协同——不通过编排、从训练阶段实现模型间更好的配合，「是很繁重的技术问题，还没有好的中间层解决方案」。", "「大家低估了中间件的工程难度。所谓工程，就是很多复杂的东西排列组合达到最优状态。所有硬科技后面也是工程，只是颗粒度不一样——苹果做 M3、M4 芯片也是工程，只是更微观。」", "第二个难点是颗粒度与变化：多模态与应用端需求不断变化，「我们是在不停变化的环境中做产品，而不是像以前在恒定环境中做产品」，同时要平衡易用和灵活。以 RAG 为例：最粗糙的做法是文本向量化直接召回，准确度无法接受；往上要引入混合检索、多路召回、召回前的意图识别、召回后的重排序，「环节非常多」。前提是数据要好——「数据不一定要多，但一定要好。意图识别就像去图书馆找书，先知道去哪个书架哪个区域，效果才好」。", "§ Dify = Define + Modify", "名字是他从 GPT 给的候选里选的：「创业的第一步就是起名字，得好念、简短、能申请域名、能注册商标」。Dify 既是 Do it for you，也暗含 Define + Modify——不断定义你的 AI 应用并持续改进它。", "成立 12 个月超过 3 万 Star，全球安装量超 40 万，2024 年 5 月居开源大模型中间件全球增速第一（OSSInsight 数据，28 天 6000+ Star，超过 LlamaIndex）。", "§ 开源的五条理由", "第一，大模型流行后 GitHub、Hugging Face 等开源社区空前火爆——大模型流行之前，3 万 Star 的项目需要 3-5 年。", "第二，需要全球贡献者参与——Dify 当时已有 200 多位贡献者，提问题、提需求，这很重要。", "第三，开源对中间件很重要：Dify 模型中立，不捆绑任何模型或云；模型端用户控制不了，但开源中间件可以控制，确保数据安全、算法可控。", "第四，开源无限降低全球化门槛——「过去一年我们几乎没花市场预算。我们在日本特别火、贡献了不少收入，但团队里到目前为止一个会讲日语的都没有。」", "第五，这个品类非开源不可：要建立编排等技术标准，必须最短时间最大化市场渗透率。「大模型厂商搞免费打折是算力补贴，我们开源也是一种市场补贴——构建双边价值网络，早期肯定要补贴。」", "§ 为什么叫全球化，而不是出海", "「我们不用『出海』这个词，我们用『全球化』。」Xmind、Figma、JetBrains 这些工具软件，不告诉你背后是哪个国家的公司你也不知道——技术类产品没有那么强的文化属性，本来就是跨国界的。「一个中间件在中国火、在海外不火，那不是成功的产品。全球化逼迫我们去做最领先、最有效市场中的有效需求。」", "全球化的定义包括中国：「中国是全球的一部分。Dify 是一个在全球都很响的品牌，未来会和 Google、微软一样——不会一个中国版、一个海外版。」", "他讲了一个日本市场的真实事件：Dify 在日本火了之后，有日本网友在推特问「Dify 背后到底是谁？是不是腾讯控制的？」——因为他曾在腾讯工作，网友把碎片信息拼成一篇文章发到社区。「产品一旦有影响，用户一定会问 who are you，你规避不了；第二，你藏不住。」他们的回应是官方和他本人第一时间明确回复：我们是以中国人为主、也有英美日同事的市场化团队，及时披露该披露的信息；第二周又和全球用户在 Discord 开线上直面会，让团队互相介绍。「这个问题就解决了。没有大家想的那么恐怖——我们不涉及高精尖技术制裁，也不涉及广泛社会舆论影响。」", "§ 北极星指标与投产用户", "「我们有最真切的指标和最虚荣的指标。3 万 Star、收入，都是虚荣指标。真切的北极星指标是基于 Dify 投产的用户数——拿 Dify 做了东西且赚到钱、或获得了 PMF 的用户。」这个指标很难做、涨得很慢，但「指导我们选择用户、排除无效需求」。", "40 万安装量里真正投产的「也许不到 5%」，但绝对量级在千级，且出现了安克创新、得到这样「我们自己看了都觉得惊艳」的企业案例。2C 的例子是旅居日本的独立开发者 Kevin Zhou 做的语言学习应用 Miraa——「如果没有 Dify 根本不会有这个产品」。目标：未来一年安装量从 40 万到 100 万以上。", "§ 竞争与护城河", "他认为 Dify 起跑时，LangChain、Dust.tt、Fixie 等明星团队更早、拿了 5 倍以上的早期投资，「但今天回看，取胜的并非明星团队——钱不是最关键的，对同一赛道的深度认知、市场路径和产品定义能力起到决定性作用」。", "对 LangChain 的点评：标杆、捕捉新技术能力非常强（后端工程师出身），「但要说开发者社区运营、产品的产品化程度、谈业务，会有组织和学习的过程」。Dify 是「久经考验的成建制团队」。", "胜出的考量维度：市场渗透率超过一个点；建立自己的技术标准——Workflow 衍生的 DSL 就是编排语言标准，「技术标准推广开就有独特的价值网络，典型例子是 Docker」。", "§ 团队高于产品", "「我一直更关心团队，把团队放在产品之上：同事有没有跟最优秀的人协同？是否在做自己本能上最感兴趣的事、亲自动手折腾？团队有没有每周持续创新，同时保证出品标准？」当时团队仅二十几人，「团队文化很硅谷，我最拿得出手的产品是我们的团队」。", "他自称擅长精细化管理，但在 Dify 这件事上「这是需要刻意屏蔽的」——最大挑战是持续创新。「以前我做的赛道时间不敏感，不犯大错就行；今天技术环境、市场资金密度、人才密度都极高，聚集了全球最多的钱、最好的人、最激烈的竞争——你得用快于过去 3-5 倍的节奏奔跑。以前创业是马拉松，现在你要拿短跑的速度跑马拉松。」", "招聘文化反大厂：「如果和大厂一样，就会和它产生一样的结果。我们专门招大厂不要的人，会赢在组织方式上——大厂只能模仿我们的产品，模仿不了我们的基因和做事方式。」", "§ 最兴奋与最痛苦的时刻", "最兴奋：2023 年 5 月产品刚发，没有市场预算、完全冷启动，一周涨 4-5k Star，「所有社区都在讨论 Dify 是谁做的」；第二个时刻是 2024 年 3 月去加州参加 GTC，「硕大的球场坐满了人，你以为在看 Taylor Swift 演唱会——仿佛在宇宙中心，大家在共同推动生成式 AI」。", "最痛苦：2023 年 5 月第一笔融资到手之前，「一周见 30 个投资人，说三十遍同样的话」。他的体会：故事讲 30 遍后自己一定深信不疑——「你给自己洗了脑。但拿到钱上路后要时刻回头看，也许要基于第一性原理重新考虑，而不是基于自证预言做产品。」", "§ ChatGPT 时刻与《创造》", "「ChatGPT 发布的那几天，无数人跟我一样不眠不休地跟它对话，想看它边界在哪。从那一刻开始这个世界变了——所有想创造的人背后都有一个强力的模型加持。当你要创业、要探索未知领域、要开拓从未开拓过的国家市场，你会无所畏惧：也许做不了 100 分，但做个 70-80 分，还有一个强大的东西在帮你。」", "推荐托尼·法德尔（iPod 之父）的《创造》：「不要听任何人的，你要相信你自己；亲身体会到的第一手需求很重要。」创业前他跑步、骑行、冥想、读书；现在太忙，放松方式是晚上戴一副好耳机听 30 分钟古典音乐。"], "qb24": ["§ 出版信息", "量子位 2024 年 4 月围绕 Dify Workflow 发布的报道与访谈。当时 Dify 在 GitHub 超 22k Star，接入超 1000 种大模型、可插拔切换，平台上已跑出 20 万个 AI 应用。以下为全文精编。", "§ Workflow 是什么", "吴恩达当时断言「AI Agent Workflow 将在今年推动 AI 取得巨大进步，甚至可能超过下一代基础模型」，Dify 顺势上线 AI Workflow（但团队称半年前就已洞察到这个机会）。上线不到 48 小时，就有用户配出 100 多个节点的个人工作流。", "用户在「无限画布」上连接节点构建 Workflow：每个节点可配置、可定义输入输出；既可以端到端测试整个 Workflow，也可以单独测试某个节点，快速定位问题。", "六类核心节点：LLM（选任意主流大模型并定义输入输出）、工具（内置与自定义工具）、意图分类器（让 LLM 对用户输入自动分类、按类别流转）、知识检索（为 LLM 挂载知识库上下文）、代码（执行自定义 Python 或 Node.js）、If/Else 块（条件分支）。已设置好检索方案的知识库、平台第一方工具、自定义工具都能作为节点能力编排。", "§ DSL 导入导出：「最酷的功能之一」", "Workflow 支持 DSL 的导入导出，张路宇称之为「最酷的功能之一」：用户可以导出自己的 Workflow，导入其他工作区，再按需要自定义。「这个特性为社区内的合作、分享，以及在他人工作基础上再构建，打开了一扇窗户。」", "§ Chatflow 与 Workflow 两种形态", "上线 Workflow 后 Dify 有了两种应用模式：传统的 Chatflow 与 Workflow。「绝大多数用户会使用传统的 Chatbot 类型，它背后没有复杂逻辑，基本依靠接入的大模型自我运作；相比之下 Workflow 强大很多——但这不代表不能用 Workflow 做出聊天机器人。」", "「Workflow 虽然翻译为工作流，但其实代表的是 Dify 背后的运作机制。」团队朝这个方向进化是因为自己的「信仰」：「我们认为，未来的编程，可能编的就是（work）flow。」下一步规划是上线 RAG Pipeline 和 Prompt 的协同范式。", "§ 服务谁：五十万有创造力的构建者", "「假设全中国有 1000 万名开发者，其中 50 万人现在有能力去创作、去影响别人，大模型对他们有天然的吸引力；剩下的人需要时间去理解和接纳新事物。」", "他把 Dify 服务的主要用户界定为「有价值的、有留存的、能充分产品化的、在自己行业或技能上有丰富积累的人——真正的专业开发者，或者说极具创造力的创新者」。他坦白：「Dify 一直在做的事是降低工具的使用门槛，但门槛不会低到没有。」", "§ 节奏故意放慢，不害怕大厂", "上线 Workflow 的时间并不早——2023 年下半年起，借 Agent 概念的东风，不少创业公司已上线类似功能。Dify 称这是主动选择的时机：GPTs 上线前团队就已洞察机会，「既想观察模型侧和产品侧的动态，又要交付完整能力，不打没有准备好的仗——我们其实节奏故意放慢了一些」。", "是否担心大厂下场挤压？答案是「不害怕」：一是 2023 年 5 月成立时核心团队曾担心入场太晚、怕有团队先声夺人，「但事实是，没有别的团队做起来」；二是「大厂往往是因为看到市场上有这么一个机会，供给推动，选择押注；Dify 是因为看到切实需求才驱动研发」。", "他观察到：「现在这一波创业者，大多还是十年前那一波，身上的标签是在大厂修炼过——但大厂部门之间协作流程复杂，也成为这些人固有的思维模版。」他自称「大厂叛逆者」：", "「我第一份工作在一个很大的游戏公司，21 岁当工程师。那时候只要我判断我做的事有价值、产品很好，我会忽略一切流程，把产品弄上线，叫偷渡上线。这在很多公司属于违规，但我一定要做——如果按流程走可能走不通；但我把它上线，用户体验后带来的价值是显著的。」", "§ 让他高兴的事", "过去一年最兴奋的是大量年轻人涌入这个行业：「无数顶尖学校的应届生愿意投身进来。这群人不缺好机会，毕业后轻松能拿 500 强或大厂高职级，但现在愿意拿非常少的钱来做大模型相关的事。以前我们想招这样的人，甚至不知道从哪里找到简历。」这样的人在公司已有至少三分之一——「但这个比例我认为还不够高，这些人应该成为我们的主力」。"], "42z25": ["§ 出版信息", "42章经播客对谈，曲凯 × 张路宇，2025 年 12 月发表。播客原文约 25000 字，官方整理稿约 8900 字，以下为再次精编的全文主线。", "§ 两年时间线与三条策略", "从 Day 1 定了三个策略：开源、To B、全球化，由此衍生出开放生态、模型中立、工程优先的逻辑。「回头看，这些判断基本都被一一验证是正确的。」", "三波市场变迁：2023 年发布第一个版本，胜在界面友好——「当时产品只要用了 AI、能被用户理解，就有机会一炮而红」；2024 年推出后来成为核心能力的 Workflow 并搭建插件生态，第一批有付费能力的企业用户进场——「从新技术出现到 B 端愿意掏钱，通常有半年到一年时延」；2025 年模型明显进步，开源与多模态成熟，「已经很少有人争论开源强还是闭源强」。", "§ 与 LangChain 的区别", "两年前的融资季，最大质疑是壁垒，问得最多的是「Dify 和 LangChain 有什么区别」。今天的回答：面向的用户群体不同。在用户光谱上，最左是硬核工程师，最右是完全不懂技术的用户——LangChain 偏左（编码能力强的人）；Dify 在中间，未来越来越偏向弱技术甚至无技术用户；OpenAI Agent Kit 明显偏左；n8n 比 Dify 稍偏左；Coze 更偏右但生产属性不足。", "§ 逐一点评竞品", "GPTs：「想让人人都能做 Bot」的愿景很好，也有 ChatGPT 的流量入口，但没想清楚 Bot 该由谁来做。「人人都能刷抖音，但不是人人都能用好剪映。」一个人做出好产品大概有四种可能：硬科技、创造力、稀缺壁垒（如独有数据）、完整流程（SOP）。前三种稀缺、不可复用，真正可复用的只有流程。", "Coze：2023 年 7 月发布时「我确实焦虑过，但只持续了 48 小时」——受众、要解决的问题、组织能力完全不同。", "n8n：定位理念接近，不少用户两者同用。n8n 起步更早（2019 年）、生态更完善、营销做得好；Dify 的劣势是起步晚，但在 LLM 能力、RAG、多模态上下文处理上 AI-Native 工程能力更强，且能端到端交付。", "OpenAI Agent Kit：每次 OpenAI 发新品，市场就出现一轮「谁又要被杀死」的排列组合讨论，「但 Dify 从来没有被谁杀死过」。他对 Agent Kit 的判断：「至少在未来 6 个月内，不会对其他任何产品构成实质性威胁。」而 OpenAI 的产品客观上帮整个行业完成了市场教育——GPTs 发布后，很多企业意识到 AI 可以这么用却没法直接用 GPTs，于是选择部署 Dify。", "§ 一个比喻", "「模型像一条鱼，放进不同的上下文鱼缸，会长成完全不同的样子。」放进 IDE 长成 Cursor，放进 Ubuntu 沙盒长成 Manus，放进企业里长成 Dify。Dify 解决的是流程问题，以及如何在企业上下文里把 LLM 与人、工具、数据连接起来。", "§ 中间层会不会太薄", "「薄和厚没什么好讨论的，这里存在一个常见误区：大家往往认为工程不值钱。」所谓工程，是要做分层设计、把用户业务场景抽象出来、把可变和不可变拆清楚——极其费脑力，要长期和用户反复磨合、不断交学费。他举 Workflow 的「节点颗粒度」为例：太细像编程、普通人用不起来，太粗又过于抽象、能力不够——「类似的决策有成百上千个，正是这些看不见的苦工堆起了产品真正的厚度。」相比之下，「Agent Kit 背后 80% 的代码用 Codex 写出来——这种不重视工程本身的做法，做出来的产品反而才是薄的。」", "§ Workflow 会长期存在", "「Workflow 会长期存在，因为人类生产活动有一个不变的底层逻辑：需要高度的可预测性。」模型能力还没到可以无脑接受其结果的程度——更常见的是返回结果、判断够不够好、不行推倒重来，重复几次用户就会挫败。在过程中设置检查点、在关键环节让人介入，这种工作方式本质上就是 Workflow。Dify 的路线：先用 Workflow 把稳定性和可靠性做好，再走向更高水平的智能化——「完全智能化可能还要三到五年，我们保证过渡期里给技术投资者一套稳定可靠、真正可投产的系统。」AGI 路线与 Workflow 路线是技术激进者与保守者的差异——「你觉得这个世界上，是激进者多，还是保守者多？」", "§ 技术世界观：神经网络 + 符号系统", "「今天几乎所有基于 Transformer 的模型本质上都是神经网络 AI，我们从一开始就不认为 Transformer 能解决所有问题。」更早还有一条「符号 AI」路线，强调逻辑与结构。人脑能耗极低却高度智能，因为不仅有神经网络式的联想，还内置了一套符号系统——「看到一个人，几乎瞬间判断男女老幼，像大脑里有一棵内置的二叉树。」未来是神经网络负责联想、符号系统负责逻辑判断。", "§ SaaS 快时尚对了一半", "对 Sam Altman「SaaS 会变快时尚」的说法：从人机交互看，公司自建完美解决自身问题的产品是有可能的，「但这只对了一半——软件工程里始终存在不变的基础，其中就有 SaaS 的空间。比如财税场景中哪些发票字段需要长期保存、哪些属于敏感数据，必须由人来定义，这些本质上是数据结构，不能随意更改。」未来的范式：人在「结果」和「结构」的定义上投入大量时间，剩下的交给 AI 做个性化。", "§ 客户在怎么用", "「现在客户在用 Dify 编排非常复杂的流程，做企业级、大规模的智能化改造。我们见过最复杂的 Workflow 有四五百个节点。」安克用 Dify 搭建了上千个工作流、集成上万个原子能力——「他们已经把 Agent 当成一种新的生产资产，甚至和人力资源平等地管理：有了新业务先分析需要哪些能力、流程怎么设计、哪些节点由人做、哪些交给 Agent。」而且不只一家在这么做，「进展比我一开始预期的快很多」。", "§ 关于个体与 AI 协同", "曲凯提出：本身能做到 90 分、100 分的人不可能被取代，只能做 60 分的人很可能被取代。张路宇在思考的是：Dify 能不能把个体和组织的非对称能力保留下来，让人从 60 分出发，随着模型进步、上下文充分、反馈完善，逐步做到 70 分、80 分。", "§ 投资人看漏了什么", "「长话短说，就是两个字：耐心。」团队围绕最终目标和标准搭建，结果必然不会差。「我倒不觉得是厚积薄发，我们只是用成熟市场的方式做产品。」成熟市场里每个产品都有长期不变的标签——丰田是性价比与可靠性，沃尔沃是安全，特斯拉是自动驾驶。「与其问我们做对了什么，不如问有哪些东西始终没有变过。」", "§ 创始人必须快乐", "「传统观念里 CEO 就应该背责任、吃苦、扛压力，我觉得这是错的。人在巨大压力下很难真正想清楚问题；当你快乐，身心状态更好，更容易涌现最好的想法。」", "两个看似矛盾的观点：不喜欢 996，也反对严格的 8 小时工作制——「前者让人痛苦，后者不符合智力工作者真实的创作状态。进入心流时会忘记时间，这本身就与 8 小时工作制背道而驰。」", "「创业者的使命，是把未来带到现在，而不是负重前行。」对谈以「祝大家都能开心」收尾。"], "hn25": ["§ 出版信息", "和牛商业 2025 年 11 月整理的张路宇语录集，分「创业动机」「全球化」「AI 判断」「组织方式」四部分。其时 Dify 成绩：全球 1000+ 社区贡献者，GitHub Star 近 12 万，累计下载超 500 万次，跻身全球开源项目 Top 50，覆盖 150 多个国家和地区，深度服务 40+ 家全球 500 强。以下为精编。", "§ 一、创业的动机是不满意现状", "三种动机：不满意现状、创造的欲望、利他主义。「创业机会来自非对称信息——公开领域很难获得，但在微观领域无处不在：你的心智、你身边的人、你服务的对象。想清楚服务哪一群人，钻到他们中间不断交流，是获取非对称信息的最佳方式。」", "「我被迫一路向上：leader 技术管理做得不好，我被迫做技术管理；产品方向不对，被迫做产品；公司战略有问题，只能做 CEO——因为我非常关心做的事有没有价值。」", "关于融资讲故事：「一个故事讲了 30 遍，你自己一定深信不疑，哪怕原来没那么信——你给自己洗了脑。但要保持冷静，拿到钱上路之后要时刻回头看做得对不对，也许要基于第一性原理重新考虑，而不是基于自证预言做产品。」", "「创业是创始人对过去精力的变现时刻。」最大挑战是持续创新：技术环境、资金密度、人才密度都极高，「得用快于过去 3-5 倍的节奏奔跑」。", "商业模式选择：「传统 To B 难赚钱、要跟客户喝酒、回款慢、需要大销售团队——不是新兴创业公司该做的。」Dify 选择 PLG To B：通过开源社区和生态完成最大市场覆盖、最低获客成本，以 To C 的成长速度最终触达付钱的 To B 用户。", "§ 二、好的技术产品必然是全球化的", "「我们不用『出海』这个词，我们用『全球化』。技术类产品没有太强的文化属性，本来就是跨国界的。一个中间件在中国火、在海外不火，那不是成功的产品。全球化逼迫我们去做最领先市场中的有效需求。」", "三个 Day 1 选择：坚定全球化；PLG To B；最危险的决定——产品第一天就在 GitHub 上 99% 开源。", "「开源其实是一种市场补贴」：有助全球化扩张、快速增长份额；让企业无需复杂证明就建立信任；「开源可以加速我们成为某种全球标准，这是最高追求」。现实回报：每天二三十条来自各国企业的商务线索，「在迪拜几乎没有获客成本」；创立到 2024 年 12 月市场费用不到 40 万元人民币，服务了 40 家全球 500 强。", "北极星指标是「基于 Dify 投产的用户数」——拿 Dify 做了东西且赚到钱、获得 PMF 的用户。「它涨得很慢，但指导我们选择用户、排除无效需求。」", "面对大公司复制：「模型厂商做平台更注重自家模型需求，云厂商关注算力销售。初创公司的优势是敏感，我们以服务开发者为目标。」GitHub 页面上甚至有克林贡语（《星球大战》语言）翻译，「为了提升西方用户的文化黏性」。", "§ 三、AI 能让普通人和大公司拼一拼", "「Agent 和开源模型实现了这个时代的技术平权。一个技术人员从来没有如此接近这么强大的武器——我可以一抵百，可以和大公司拼一拼。」", "看好的方向：泛娱乐与生产力工具（历史上 DVD 靠娱乐内容普及、PC 靠 Excel 带动）。To B 工具不创造需求，只帮用户更快划掉 To Do List 上的一项。", "To B 与 To C 的三点不同：To C 标准化、赢家通吃；To B 应用多样性足，同一应用在不同企业会被再造一遍。To B 用户对大模型包容性更大——「行就是行，不行就是不行」；To C 用户预期高、会用智力测试反向挑战。To C 留存低因为优秀产品经理稀缺、打磨时间更长。", "「Bot 是过渡态。一个正常用户日常用的 Bot 不超过三个：超级厂商的超级助手、操作系统原生助手、企业 Bot。」「大模型给你的任何数字都不要信，但它给你的方向很多时候是好的。」", "技术预判：多模态会让模型能力质的飞跃——「试想下一代大模型训练时有视觉、听觉甚至触觉、温度这样的信息，再结合文字训练一次，能力会远大于现在」；模型移动化、小型化是趋势；「未来所有数据会向量化，有知识产权的材料都应被向量化一遍，像 U 盘一样插到 AI 上」。", "§ 四、我们专门招大厂不要的人", "「我们的招聘文化反大厂——如果和大厂一样，就会和它产生一样的结果。我们专门招大厂不要的人，会赢在组织方式上。大厂只能模仿我们的产品，模仿不了我们的基因和做事方式。」", "「我必须把自身能力下放给团队，让每个人都成为超级个体。只有一个超级个体没用，要构建相对去中心化的组织。」苏州办公室周一为 meeting day，其余时间远程，「努力实现一周上 4 天班」。", "工具极简：Notion、GitHub 全家桶、飞书。很多产品原型是 GPT 画的——「你得把足够多的背景材料输给它」。内部飞书知识库分探索研究、技术研发、增长、商业化四条线，每个领域有明确观察员，每周更新市场情报，「归因几十万用户到底想做什么」。", "「我们内部自嘲 prompt 不叫工程师，叫 prompt 艺术家，他们要愉悦这个事。」「我把团队放在产品之上，团队文化很硅谷，我最拿得出手的产品是我们的团队。」", "「人在短期内对自己比较乐观、长期悲观——真实情况不是这样。短期现实一点，长期保持乐观。用一年、五年、十年的长期主义心态做事，会有非常多的收获。」"], "fb26": ["§ 出版信息", "Forbes 特写（阿根廷版转载美国版），2026 年 2 月发表，西班牙语。题为《在中国创立 AI 公司、融资 3000 万美元，如今进军硅谷》。以下为全文中文编译，保留全部事实与引语。", "§ 搬到硅谷的辍学生", "张路宇去年从中国搬到美国，几乎不会英语，眼下也不打算学。「我现在太忙了，没时间提升英语，」他坐在门洛帕克一间临时办公室里，通过翻译对 Forbes 说，「那需要时间，而我一天都浪费不起。」", "他是 Dify 的 CEO，属于一个不断壮大的群体——带着家人和企业迁往硅谷的中国 AI 创始人。表面看这趋势有些矛盾：华盛顿收紧了先进 AI 芯片出口管制，立法者多年警告知识产权与军事议题，两国都在谈「脱钩」。但创始人仍在到来。他的赌注很简单：「如果你想建一家全球化的 AI 基础设施公司，就得在世界竞争最激烈的地方建。」", "§ 公司与融资", "这位高中辍学的编程天才近期完成 3000 万美元融资，估值 1.8 亿美元，投资方包括 HSG（红杉中国）以及高瓴创投、五源资本、Mizuho Leaguer Investment 等亚洲风投。创办 Dify 之前，他在多家创业公司工作过，后来在腾讯领导过大型工程团队。", "Dify 起初是开源项目，帮开发者用低代码界面构建 AI 应用，而不是写大段后端代码。如今在 GitHub 热门仓库中排名第 52 位。围绕 Dify 建立的公司有 100 名员工，已经盈利，服务超过 280 家企业客户，包括沃尔沃（Volvo）、赛默飞（ThermoFisher Scientific）和诺华（Novartis）。", "§ 「中国出身 + 海外运营」模式", "张路宇提到 Meta 拟以 20 亿美元收购 Manus——一家创立于中国、后迁往新加坡的 AI 创业公司——作为可参照的「中国出身 + 海外运营」模式。（Manus 正处于两端的审视之下：美国监管机构审查了 Benchmark 的投资，而据传闻中国监管机构在研究是否阻止 Meta 的收购。）", "他认为从中国建立一家真正全球化的公司很难：中国的技术生态在很大程度上是一个相对独立的系统，那里开发的软件往往只面向本土市场。「如果你是顶级运动员，你不会只满足于赢国内比赛。你训练是为了参加奥运会。对于一家为 AI 时代建设基础设施的技术公司来说，硅谷就是我们的奥运赛场——我们要在最高水平上竞争。」", "§ 迁移潮与 TikTok 的前车之鉴", "张路宇说他认识近 20 位正在迁往美国的中国创始人。投资人 Lake Dai（阿里前产品总监、Sancus Ventures 创始人，未投资 Dify）表示这股潮流更大：过去两年至少有 100 位中国创业者联系她探讨搬迁；外资开始撤出中国，风投融资收紧，把创始人推向其他市场。「中国创始人现在正在迁往美国，近几年我们看到这一现象明显增多。」", "但没人想成为 TikTok——它因中国母公司经历多年审查，曾在美国短暂下架，最终被迫出售美国业务以避免禁令。为避免反弹，许多创业公司把产品置于创始人的出身之上。「他们不想被过早贴上标签，」Dai 说。", "§ 不隐藏中国根基", "Dify 并不隐藏自己的中国根基。张路宇说公司正在湾区和东京积极招聘，但公司 60 人的核心开源工程团队仍在中国。其他创业公司采用了类似的混合结构：主力工程团队留在中国，海外补充客服和销售等职能；而 OpusClip、HeyGen 等公司则完全迁出了中国。", "张路宇在安徽长大。上中学时他靠做网站月入约 1000 美元，比当公务员的父亲挣得还多。他因无法忍受中国著名的严苛教育体系而离校，经济独立让父母无法再强迫他回去。2018 年他在腾讯获得产品领导岗位；2022 年接触生成式 AI 后创办 Dify，让开发者能大规模构建和部署 AI 应用。一次英伟达 GTC 大会之旅最终说服他搬家——「那里的能量不一样。」", "§ 务实的立场", "障碍仍在：美国政界警告敏感技术流向中国 AI 行业，一些美国投资人回避有中资背景的创业公司，硅谷部分地区的反华情绪在抬头——最近一位 Anthropic 的中国研究员辞职，并在博客中写道公司的「反华言论」是关键原因。", "张路宇认为关于 AI 与中国创业者的讨论需要更多细分：国家安全当然优先，但并非所有 AI 产品都有同等风险。Dify 是开源产品，而且多数情况下由客户在自己的服务器上托管——这让它处在他所说的「敏感领域」之外。它不同于具有算法影响力的消费社交平台，也不同于受出口管制的前沿芯片企业。", "他举了个类比：「人们去 CES 展会，不会介意买中国生产的消费电子产品。」而美国 AI 创业一直依赖中国人才：卡内基基金会 12 月的一项研究追踪了 2019 年在美国机构和公司工作的 100 位顶尖中国 AI 研究者——到 12 月，87 人仍在美国，10 人回到中国；Meta 超级智能实验室的移民创始团队中，有七人出生在中国。", "Dai 认为应当摒弃泛化的猜疑、代之以严格的审视：「我知道人们担心，会问这些中国人在美国的 AI 行业里做什么。但我认为我们应该找到欢迎这些了不起的创业者的办法——他们想在这里建立下一代 AI 公司，这让我们所有人受益。」", "§ 结尾", "对张路宇这样的创始人来说，这笔账无关意识形态、更多是务实：如果硅谷是 AI 人才、资本与野心最富集的地方，他就想在那里。他说自己不想在 AI 竞赛中选边站队，只想上场竞争。", "「从中国来到美国的创业者没有政治企图，」他说，「我们只想做出人们爱用的卓越产品。」（本文原载 Forbes.com。）"]};
+</script>
+
+<script>
+/* 卷贰 · 署名文章 */
+Object.assign(FULL, {
+
+letter26:[
+"§ 出版信息",
+"Dify 官方博客 2026 年 3 月 10 日发表的融资公开信，张路宇署名。这是公司对外叙事中规格最高的一篇，可视为当前阶段的「公司宪法」。以下为全文中文编译。",
+"§ 创立与使命",
+"2023 年 3 月我们创立了 Dify。彼时大语言模型刚刚越过技术拐点。有一点我很清楚：这项技术将从根本上重塑世界——不是渐进式改良，而是结构性变革。每个团队的工作方式、每个组织的运转方式都将被重新定义。",
+"我问自己：如果这就是方向，我们能建造什么？答案是：把这项技术交到每一个人手中——不只是资源最雄厚的公司、最精英的工程团队，而是每一个有想法、有领域专长、有真实问题要解决的人。这是 Dify 从第一天起的使命。",
+"§ 融资信息",
+"今天，我很感激地宣布：Dify 完成 3000 万美元 Pre-A 轮融资，由 HSG（红杉中国）领投，GL Ventures、Alt-Alpha Capital、五源资本、Mizuho Leaguer Investment 与 NYX Ventures 跟投。五源资本作为老股东本轮继续加注，这对我们意义重大。",
+"§ 真实工作不在聊天框里",
+"我们开始建造时，「Agentic Workflow」这个词还不存在，AI 的主流界面还是聊天框——有用，但有限。真实工作不发生在聊天框里，它发生在系统、文档、每天重复的流程之中；它有输入、有审批、有问责、有边界情况。AI 要真正对一个团队有意义，就必须出现在工作真实发生的地方。",
+"1969 年 ARPANET 第一次传输数据时，没有人知道它会变成互联网。一项通用技术的影响，往往要真正嵌入日常工作之后才会显现。AI 正处在这样的拐点上。",
+"§ 数字证明",
+"两年半后，数字自己说话：Dify 已成为 GitHub 上星标第 51 的开源项目，运行在全球 140 多万台机器上，服务 175 个以上国家和地区的开发者与团队；超过 2000 个团队和 280 家企业在 Dify 上完成了一个根本转变——从解决方案的采用者，变成解决方案的建造者。",
+"Dify 是一个开源平台，帮团队构建、部署和运营 Agentic Workflow，提供可视化构建器与生产级基础设施。它位于你的模型和业务系统之间，服务于想越过原型、又不想每次重造整个技术栈的团队。",
+"客户用 Dify 跑真实工作：文档审阅流水线、基于企业知识的内部 Copilot、带升级路径的客服自动化、发票审计与公文起草等运营流程。马士基（Maersk）AI 解决方案工程总监说：「Dify 给了我们一条务实路径，越过原型、真正把 AI 工作流运营起来。我们把真实业务流程变成了可维护的系统，而不用每次重建基础设施。」ETS 的评价：「Dify 直观的界面让我们的团队能快速设计和部署复杂的自然语言处理流水线，提升了评测产品的质量，同时降低了成本与上市时间。」",
+"§ 两个不变量：可靠与简单",
+"从第一天起有两样东西没有变过：可靠和简单。可靠到能在真实负载下站住；简单到任何有领域专长的人都能直接上手建造，而不需要先学一门新学科。",
+"§ 愿景：组织的操作系统",
+"今天的 Agentic Workflow 是这个愿景的起点，不是终点。未来组织的运转方式将是完全可定制的：每个团队都会构建自己的 Agent、设计自己的工作流、搭建供人使用的界面——建造系统和建造体验将是同一件事。Dify 今天提供的是这个操作系统中的逻辑层。前方的路还很长，但我们知道方向：",
+"「Many People. Many Agents. One Simple Way to Work.」（许多人，许多 Agent，一种简单的工作方式。）",
+"我们的团队懂如何为开发者建造。但这一次野心更大：把这项技术带给每一个人，比以往任何时候都快。开发者是起点——最终，每一个有真实问题要解决的人都应该能用上它。",
+"§ 资金的四个投向",
+"一、生产级的 Agent 与工作流：更好的构建块、更清晰的调试、真实负载下更可预测的行为——让 Agentic 系统成为你可以真正依赖的东西。",
+"二、企业基础：性能、合规、权限、可审计性——让更大规模的团队有信心采用新工具的运营控制项。",
+"三、降低构建门槛：如果你有领域专长，你就应该能直接建造出有用的东西。我们会持续把 Dify 推向开发者之外的更多人。",
+"四、更健康的开源生态：更多模板、更好的插件与连接器、更清晰的贡献路径。社区从第一天起就在塑造这个平台，我们会让它一直如此。",
+"§ 一个 AI 原生组织",
+"我们自己就是一个 AI 原生组织。Dify 的办公室今天分布在旧金山湾区、东京、上海和苏州。我们就生活在自己正在建造的未来里。",
+"我们正在扩充团队。如果你也相信这一切正在发生，我们应该聊聊——大多数人整个职业生涯都在等待：等对的项目、对的规模、工作终于能触达人的那个时刻。而在这里，那个时刻每周都在发生：你写的代码运行在上百万台机器上，你在一个普通周二下午做的决定，会改变 175 个国家的开发者构建 AI 应用的方式。这种杠杆不用熬很多年——从第一天起，它就在那里。（招聘信息见 join.dify.ai，或致信 joinus@dify.ai。）"
+],
+
+state26:[
+"§ 出版信息",
+"Dify 官方博客 2026 年 3 月 31 日发表的理论长文，张路宇署名。这是一篇跨学科论文式的文章，引用信息经济学、AI 知识表示与数字孪生工程三个领域的文献（Akerlof、Spence、Minsky、Grieves 等 20 余篇），作者明确声明「这是一个理论框架，尚未经实证检验」。以下为全文中文编译。",
+"§ 60 秒核心论点",
+"现代知识工作充满摩擦——繁琐的文书要求、没完没了的进度会、昂贵的核验流程。我们一直归咎于工具差、沟通不畅，但真正的原因更深：我们缺少一个表达「现实世界事物状态」的基础设施层。作者称之为「状态基础设施缺口」（State Infrastructure Gap，SIG）。",
+"论证分六步展开：一、全球白领工作收敛于三件事——写文档、开会、走审批；二、这三件事服务于同一个目的：让别人知道某个对象「现在处于什么状态」；三、CRUD 密集型的岗位（会计、HR、供应链、客服）本质都是状态的记录与搬运；四、繁琐的核验流程（签证、贷款审批、审计）是因为状态无法直接查询而付出的重建成本；五、这个问题同时存在于结构化状态（能放进数据库的）与非结构化状态（存在于文档、对话、邮件里的）；六、LLM 第一次让机器处理非结构化状态成为可能。",
+"§ 数据不是状态",
+"数据是被记录的值——静态、离散、脱离上下文。数据库里的一行不是「事情现在的样子」，而是「某个时刻被压缩过的痕迹」。组织常犯的一个错误是：把「有数据」当成「有状态」。状态是连续的、带语义的、随时间演化的——它回答的是「现在进行到哪一步了、卡在什么地方、接下来会怎样」。",
+"§ 「人类状态同步者」",
+"本文提出的新概念：一类工作者的主要职责，就是向别人同步某个对象的状态。这不同于野中郁次郎的「知识工作者」（创造知识的人），也不同于单纯的执行者——他们是人肉的状态同步层。这个角色远不止后台岗位：销售运营、项目协调、客户成功、合规专员……大量白领工作的实质都是状态同步。",
+"§ 状态重建成本",
+"当你无法直接查询一个实体的状态时，你就要付出「重建」它的成本。每一次签证申请、每一笔贷款审核、每一次审计、每一场进度同步会，都是一次状态重建：翻邮件、查系统、找人确认、交叉核对。这个成本平时不可见，但它渗透在组织的每一次协作里。",
+"§ 三个学科，一个盲区",
+"SIG 框架统一了三个独立发展了几十年的理论体系。其一是信息经济学：Akerlof（1970）的「柠檬市场」、Spence（1973）的信号理论、Stiglitz & Weiss（1981）的信贷配给，解释了为什么状态核验如此昂贵——签证材料就是 Akerlof 意义上的「防伪信号」。其二是知识表示（AI 的老学科）：Davis 等人（1993）、Minsky（1975）、Hayes（1979）指出，每一种知识表示都是一组本体论承诺，而组织里的状态用自然语言表达时丰富、歧义、且依赖上下文。其三是数字孪生（工程）：Grieves & Vickers（2017）提出的与现实对象双向实时同步的数字副本，是最接近的现有范式——但它只覆盖结构化的物理世界。",
+"没有一个学科回答过「组织级的状态基础设施应该长什么样」——因为技术前提此前不存在。",
+"§ SIG 的四个维度",
+"一、语义丢失：存储系统无法保留现实世界状态的语义丰富性，一段含上下文的状态描述被压成几个枚举值。二、无置信度与来源：所有记录被当成同等可信——一张三年前更新的 Jira 工单和昨天会议上老板拍板的事，在系统里看起来一样权威。三、人工触发更新：状态变化发生在会议、Slack、代码评审里，但系统的更新依赖人记得去填。四、碎片化：状态散落在几十个互不连通的工具里，「真实」的那一份要靠人去拼。",
+"§ 四个经济后果",
+"状态重建成本不只是一个公式，它级联成四种经济后果：一、组织在状态无法直接查询的地方雇人来同步（大量的协调岗）；二、查询式系统即时回答，重建式系统以天和周计——决策延迟；三、组织智能退化：状态散落在工具与人的记忆里，决策质量随之下降；四、因为「知道实际发生了什么」很贵，组织转而优化那些容易量化的东西——开始偏离真实目标。",
+"§ 为什么这个缺口存在了几十年",
+"三个互相强化的因素。技术约束：在 LLM 之前，自然语言表达的状态对机器不可处理，只能由人来同步。经济惯性：局部的变通方案——更好的仪表盘、更严格的流程、更多的例会——每一次都缓解了症状，却降低了根治的紧迫感。制度阻力：状态标准不是政治中立的，它重新定义谁的记录算数、谁的工作可见，因此会遇到组织内部的抵抗。",
+"§ LLM 能做什么",
+"LLM 消解了「语义丰富」与「机器可处理」之间的旧权衡。它能处理会议记录、邮件、工单等非结构化状态描述；能从事件流中推断状态假设——组织里的大量状态不是被声明的，而是散落在事件序列里，需要推断；还能做置信度估计——一个有用的状态基础设施不能只给答案，还要给「这个答案有多可靠」。",
+"§ LLM 不能独自解决什么",
+"首英里问题：LLM 无法验证进入系统的信息本身是否真实。幻觉：LLM 可能自信地断言与现实不符的状态，因此状态必须带来源与置信度，而非裸答案。合法性：很多核验流程存在于监管框架之内，不是技术能单方面绕开的。结论：LLM 是使能技术，不是解决方案本身——把状态接到它上面，仍然需要一层专门的基础设施。",
+"§ 可行基础设施的五个属性",
+"一套可行的状态基础设施必须同时满足五个属性：语义保真（不为了可存储而牺牲含义）、置信度与来源（每个状态都带有多可靠、从何而来的元信息）、事件驱动同步（状态随事件自动更新，而非靠人记得填）、跨系统聚合（把散落在各工具里的状态拼成完整视图）、机器原生访问（为 AI 与 Agent 的直接消费而设计，而非只为人眼）。",
+"§ 基本单元的转变：从行到状态声明",
+"这套基础设施的基本单元不是数据库的行、不是文档，而是「状态声明」：一个带有语义内容、置信度、来源与时间维度的断言。这承认了一个认识论现实：组织对「某事的状态」拥有的从来不是事实本身，而是关于状态的、可争议的主张。",
+"§ 一个分布式系统的类比",
+"这不是对现有工具的改良，而是一层新基础设施。分布式系统研究提供了一个有用的类比：在健壮的分布式系统里，节点各自收到事件、本地状态可能暂时分歧，系统通过冲突消解机制（如 CRDT，无冲突复制数据类型）最终收敛。今天的知识工作是在用人肉做等效的事：比较、合并、同步各处的状态副本。",
+"§ 影响与警示",
+"如果这层基础设施建成：人类状态同步者的劳动会缩减——不是因为 AI 做了同一份工作，而是因为这份工作本身不再必要；组织的隐性知识第一次变得可捕获；AI Agent 将获得持久、共享的记忆——这是多 Agent 协作的前提。",
+"对管理者：投资「更好的工具」只是在治症状，根因是架构性的；价值最高的 LLM 应用也许不是内容生成，而是状态捕获；警惕 Goodhart 效应——如果你的团队只在优化可量化的东西，他们很可能正在偏离真正重要的事。对个人：最容易被替代的，不是技能最少的人，而是那些工作实质是「替别人同步状态」的人。",
+"§ 局限与开放问题",
+"作者自己列出的边界：这是理论框架，未经实证；置信度维度需要形式化定义（可建立在 Gärdenfors、Halpern 的基础上）；不同组织面对不同的 SIG 剖面；LLM 状态推断的准确率尚未在真实组织环境中被系统测量；许多状态是有争议、依赖视角的，框架没有覆盖这一点。后续方向包括：状态重建成本的实证测量、LLM 状态推断的系统评估、采用过程中的制度与政治因素、形式化的置信度演算、自动 vs 传统状态捕获的比较案例、以及状态基础设施的治理模型——由谁来决定「什么算数」。",
+"§ 参考文献",
+"原文附有 20 余篇学术参考文献，横跨信息经济学（Akerlof 1970、Spence 1973、Stiglitz & Weiss 1981、Arrow 1963）、知识表示（Davis et al. 1993、Minsky 1975、Hayes 1979、Brachman & Levesque 2004）、组织理论（Nonaka 1994、Orlikowski 2002、Tushman 1977、Williamson 1975、Drucker 1959）、数字孪生（Grieves & Vickers 2017、Tao et al. 2019、Listl et al. 2024）与分布式系统（Kleppmann 2017《Designing Data-Intensive Applications》、Shapiro et al. 2011 CRDT、Packer et al. 2024 MemGPT）等。文末注明：「本文开放讨论，欢迎评论与批评。」"
+],
+
+dc26:[
+"§ 出版信息",
+"Dify 官方博客 2026 年 4 月 4 日发表的工程思考长文，张路宇署名。文章沿「分工—整合」的交替脉络回顾软件工程三十年，落到 AI 时代流水线的设计方法。以下为全文中文编译。",
+"§ 纪元一：1990 年代，一个人做完整个网站",
+"互联网早期，一个人通常建成整个网站：定义产品做什么、写前端页面、写后端逻辑、部署到服务器、自己修问题。这不是因为早期工程师格外全能，而是问题足够简单——一个静态页加几个服务器脚本，在一个人的认知容量之内。",
+"那个时代有一套工具叫「网页三剑客」：Dreamweaver 做页面、Flash 做动画交互、Fireworks 处理图片。它的意义在于把 Web 开发的全部复杂度打包进一个产品套件，让一个人不必专精任何单一学科，就能把网站从视觉设计做到上线。",
+"这种状态有个重要副产品：反馈回路是闭合的。代码我写的、服务器我管的、用户出了问题我第一个知道、也是我来修——就像厨师上菜前自己先尝一口。",
+"§ 纪元二：2000 年代，复杂度突破，分工出现",
+"到 1990 年代中期，Web 开始商业化，问题规模变大：数据库、安全、高并发、多浏览器兼容……一个人的认知容量装不下了，于是分工出现：前端、后端、运维、测试、设计，各成专业。「网页三剑客」随之消失——不是被更好的工具替代，而是被「它所服务的那个世界」淘汰了。",
+"专业化抬高了系统能达到的天花板，代价是反馈回路被拉长了：许多工程师在一家公司干了很多年，从没碰过自己写的代码真正运行的那台机器。问题在用户那里发生，经过客服、工单、排期，几周后才回到写代码的人手里。",
+"§ 纪元三：2009 年，DevOps 把「手感」找回来",
+"2009 年前后 DevOps 思想成形，技术支柱是持续集成、持续交付和基础设施即代码。亚马逊内部有句名言：「You build it, you run it.」（你构建，你运行。）——写代码的人对它在线上的表现负责，反馈回路重新闭合。云服务的成熟是 DevOps 的技术前提：运维的复杂度被云厂商吸收，一个工程师重新有可能照看从代码到生产的整条链路。",
+"§ AI 时代的新分工：设计流水线的人，和在流水线上工作的人",
+"今天，AI 辅助编程正在引发新一轮变革。代码生成的成本趋近于零，瓶颈从「执行」转移到「设计」。这带来一个比 DevOps 更深的问题：设计一条流水线，和在流水线上工作，是两种完全不同的能力。AI 时代的工程师，越来越像前者的角色——你不再亲手拧每一颗螺丝，你设计一条能自己拧螺丝、还能发现拧歪了的产线。",
+"§ 设计也进入了流水线",
+"过去 UI/UX 设计是独立环节，重度依赖人的判断，在工程流水线之外。今天 LLM 正在改变这项工作的成本结构：设计决策可以被快速生成多个候选，选定方向后组件级原型可以直接接入流水线。更重要的是，这个过程中产生的全部上下文——为什么选 A 不选 B——可以被记录下来，成为后续所有环节的约束。理想的形态不是 AI 取代设计师，而是让人在流水线中的角色上移：从亲手画每一个界面，变成定义品味、约束与验收标准。目前这个阶段人类介入的成本仍然很高，这正是要优化的部分。",
+"§ 从源头定义问题，再进入自动化",
+"自动化流水线全速运转之前，有一个更根本的环节：问题本身定义对了吗？文章借用设计领域的「双钻模型」（Double Diamond）：先发散地探索问题空间、再收敛到真正该解决的问题；然后发散地探索方案、再收敛到该做的方案。这个循环可以跑很多轮，每一轮都用新的信息校准方向。",
+"§ AGENTS.MD：约束的沉淀",
+"双钻收敛的产出，最终被写进 AGENTS.MD——给 AI 编程代理看的行为约束与单一事实来源。它把「我们是谁、这个产品为什么存在、什么绝对不能做」翻译成 Agent 每次开工前必读的文件。里面写什么：不可协商的技术边界、绝不能做的事、产品价值主张的精确表述、术语的权威定义。它的意义在于：流水线上每一个由 AI 执行的环节，都以同一份事实来源为准——分歧在定义阶段解决，而不是在执行阶段爆炸。",
+"§ 制品与质量：双轨生产结构",
+"AI 时代的工程流水线里，生产制品逐层推进：意图、规格、代码、测试、部署。关键设计是：每一层制品都天然对应一类质量检查，而各类检查的反馈速度不同——单元测试秒级、集成测试分钟级、线上观测小时级。设计流水线时，要让尽量多的问题在反馈最快的层级被拦截。",
+"§ 控制论：今天必须掌握的学科",
+"控制论（Cybernetics）由诺伯特·维纳 1948 年提出，研究系统如何通过反馈维持稳定、自我纠偏。它在今天重要，不是因为它新，而是因为 LLM 第一次让「给软件系统设计反馈回路」这件事变得便宜：模型可以读日志、看监控、评估输出质量，并据此调整下一步动作。",
+"这就是「Harness Engineering」（挽具工程）的本质：把整个工程流水线设计成一个控制系统——设定目标、观测输出、比较偏差、自动纠正。这条流水线的终极形态是「熄灯运行」（lights-out operation）：LLM 在回路里自己写完、测完、修完，人只在异常时被唤醒。不懂控制论，你能设计出来的就只是一条半自动线。",
+"§ 一个循环，但不是回到原点",
+"早期「一个人全包」可行，是因为问题简单；今天「一个人加 AI 全包」开始可行，是因为机器吸收了复杂度。形式看起来相似，机制完全不同——这是一次螺旋上升，不是回归。真正唯一不变的是：每当抽象到达一个新层级，最有价值的能力就整体上移一层。",
+"§ 先当厨师，再设计厨房",
+"麦当劳的厨房是工业化的杰作——每条流水线、每个动作都被设计到极致。但设计那个厨房的人，必须先是自己煎过汉堡的人。今天的软件工程同理：AI 时代的工程师要设计流水线，但前提是亲手在流水线里干过活，知道汉堡什么味道。",
+"软件工程的早期是一个知识沉淀的过程：关键不在于哪一份文档是单一事实来源，而在于那份来源是否真实地被每次决策所引用。",
+"§ 这不是理想主义，是最低要求",
+"软件工程从「一个人做所有事」走到今天。作者相信：任何认真对待自己产品的团队，都需要至少一个既有品味、又有深厚工程经验、还亲手做过全链路的人。这种人的稀缺不是新常态——稳定时期不需要这种人，所以市场不生产他们；当理想人选不可得时，团队必须用机制逼近这个状态。",
+"「这不是理想主义的要求。这是把事情做成的最低条件。」"
+]
+});
+</script>
+
+<script>
+/* 卷叁 · 融资与公司报道 */
+Object.assign(FULL, {
+
+bw26:[
+"§ 说明",
+"Business Wire 官方新闻稿页面当前对自动化访问返回不可用。以下编译稿依据该新闻稿在公开信（卷贰·融资公开信）与各媒体报道中一致的内容整理，对外引用请以新闻稿原文为准。",
+"§ 编译稿 · Dify 完成 3000 万美元 Pre-A 轮融资",
+"2026 年 3 月 9 日，LangGenius, Inc. 宣布完成 3000 万美元 Pre-A 轮融资，由 HSG（原红杉资本中国）领投，GL Ventures、Alt-Alpha Capital、五源资本、Mizuho Leaguer Investment 与 NYX Ventures 参与。",
+"新闻稿将 Dify 定位为「企业级 agentic workflow」的开发平台：开源、可视化构建、生产级基础设施，位于大模型与企业业务系统之间，帮助组织从 AI 试验走向真实运转的系统。",
+"融资用途：强化企业能力（性能、合规、权限、审计）、增强 Agent 能力、扩展全球生态与开发者社区。",
+"新闻稿同步披露运营数据：GitHub 开源项目 Star 数全球前列、运行在 140 万台以上机器、覆盖 175 个以上国家和地区、280 家以上企业客户。"
+],
+
+vb26:[
+"§ 全文编译 · Dify 融资 3000 万美元（Ventureburn，2026 年 3 月）",
+"Dify 获得 3000 万美元 Pre-A 轮投资。帮助企业创建并落地 AI 流程自动化（workflow）的公司正持续获得资本青睐，本轮由 HSG 领投，GL Ventures、Alt-Alpha Capital、五源资本、Mizuho Leaguer Investment 与 NYX Ventures 跟投，投后估值 1.8 亿美元。",
+"Dify 成立于 2023 年，是 AI 应用基础设施市场最早也最重要的公司之一，为 AI Agent 驱动的应用与工作流的构建和落地提供基础设施。本轮资金将用于发展企业级产品能力、全球生态与产品研发。",
+"公司自我定位为大语言模型（LLM）与业务系统之间的连接器。多数企业的痛点在于：AI 原型能做出来，但把原型变成可运行、可靠的生产系统是一大障碍，Dify 平台致力于填补这道鸿沟。",
+"平台包括 workflow 设计器、prompt 管理器、知识检索系统，以及集成与系统可观测性工具。团队可以用可视化工作流构建器把 AI 模型接入运营流程——文档审阅、客服自动化等等。",
+"§ 投资方逻辑",
+"文章分析：本轮融资得益于 AI 运营化需求的上升，行业正聚焦简化 AI 落地以提升企业效率。投资人最关注的是仍在发展但将快速扩张的 AI 应用层。随着组织离开试验期、开始规模化，对 LLMOps、工作流编排与治理管理的需求会迅速增长。",
+"Dify CEO 张路宇表示：Dify 的目的是帮助企业从「试验 AI」走向「真正运转的 AI 系统」。Dify 的设计目标是简化开发团队的工作，让团队能把领域知识转化为可靠、能在真实世界参数下有效运行的 AI 工具。",
+"§ 战略增长",
+"新资金将推进产品路线图并扩展企业能力：优先提升性能与合规能力、扩展集成、增强 Agent 功能，并通过更多插件、模板和社区支持加速开发者生态扩张。开源社区仍是重点——许多组织基于 Dify 的开源基础设施做定制 AI 开发。除产品外，Dify 还将通过合作、社区活动和开发者参与扩大全球影响力。"
+],
+
+ed26:[
+"§ 全文编译 · LangGenius 公司档案（EveryDev.ai，第三方资料库）",
+"公司概况：LangGenius, Inc.，总部加州 Sunnyvale，成立于 2023 年，员工 96 人，累计融资 3430 万美元。定位语：「用 Dify 解锁 Agentic AI——为任何规模的团队轻松开发、部署和管理自主 Agent、RAG 管道等。」",
+"重点领域：LLM 编排（LLM Orchestration）、Agent 框架、检索增强生成（RAG）。目标市场：独立开发者、中小团队、企业。",
+"§ 收录的动态",
+"2026 年 3 月 9 日：Dify 完成 3000 万美元 Pre-A 轮融资（Business Wire）。2025 年 7 月 1 日：Dify 与 Takin.ai 合作，让生成式 AI 教育更易获得。2024 年 8 月 1 日：阿里云对 LangGenius（Dify.ai）进行战略投资（IT桔子记录）。2023 年 5 月 11 日：Dify.ai 发布开源 LLM 开发平台（Medium）。",
+"§ 产品与服务",
+"App Studio：包含 Chatbot、文本生成器、Agent、Chatflow 和 Workflow 构建器的完整套件。知识库（RAG）：高质量 RAG 管道管理，支持批量文档上传与自动清洗。Agentic Workflow：构建自主 AI Agent 与复杂工作流的可视化编排工具。Dify API：把 LLM 能力集成进现有应用的生产级 API。",
+"§ 市场定位与团队",
+"档案将 Dify 定位为「对开发者友好、开源的专有 AI 应用平台替代品」，强调可靠性、简单性和 agentic workflow 的可视化编排层。",
+"创始人：Luyu Zhang（创始人&CEO，曾任腾讯云产品总监 2018–2022，档案标注为 UC Irvine 校友）；Richard Yan（联合创始人，曾供职腾讯云 DevOps CODING 团队）；John Wang（联合创始人，腾讯云 DevOps 团队出身，中国 DevOps 老兵）。董事会：Jia (Jake) Xie（华创资本合伙人，投资人/顾问）与 Luyu Zhang。",
+"§ 提醒",
+"此为第三方开发者媒体整理的档案，个别细节（如教育背景、总部城市表述）与官方口径可能有出入，数字与事实以官方信息为准。"
+],
+
+nf26:[
+"§ 全文编译 · 从开源项目到全球平台（NeuronFeed 初创公司档案）",
+"Dify 于 2023 年 3 月发布，创始人张路宇此前领导腾讯云 CODING.NET 的 DevOps 平台。名字代表「Define + Modify」。它已成为 GitHub 上最受关注的开源项目之一：运行在 175 个以上国家和地区的 140 多万台机器上，有超过 800 名贡献者——因为它把交付 LLM 应用所需的一切打包进了一个平台。",
+"§ 它做什么",
+"Dify 把可视化的无代码 workflow 构建器与生产级基础设施结合在一起：agentic workflow、带内置知识引擎的 RAG 管道、支持任意供应商的数百种模型、prompt 管理、MCP 集成、插件和完整的可观测性。团队可以通过 Docker 自托管部署，也可以使用带免费档的 Dify Cloud 托管服务。沃尔沃汽车、马士基、理光、ETS 等企业用它做文档审阅、知识 copilot、客服自动化和发票审计。",
+"§ 融资",
+"LangGenius 完成 3000 万美元 Pre-A 轮，由 HSG（红杉中国）领投，报道估值 1.8 亿美元，GL Ventures、五源资本及瑞穗关联基金等参与——资金用于在日本、美国和欧洲的扩张。",
+"档案标注：成立 2023 年；阶段 Pre-A；定价 Freemium（每月 59 美元起）；Agent 就绪（MCP · API）。"
+],
+
+dot26:[
+"§ 全文编译 · Dify 的运营公司到底是谁？LangGenius 完全解说（DotAI TIMES，2026 年 4 月 2 日，日文）",
+"本文为 .AI 社区代表董事室谷与 DotAI 认证讲师的对谈式解说。「Dify 是哪家公司做的？」是社区里被问得最多的问题之一——「是中国公司吗？是美国公司吗？」很多学员答不上来。",
+"§ 公司档案",
+"运营方是美国公司 LangGenius, Inc.（ラングジーニアス），总部在加州门洛帕克——硅谷的中心地带。名字大概是「Language Genius（语言的天才）」的意味：用大规模语言模型做产品开发的专家集团。Dify 于 2023 年创立，创始人是 Luyu Zhang（日文写作「張陸宇」）与 John Wang。",
+"GitHub Star 数超 13.5 万，进入全球开源项目前 52 位：2023 年 5 月开源，2025 年 6 月突破 10 万 Star——「两年多一点达到这个规模，是非同寻常的增长」。社区成员选择 Dify 的常见理由是「在 GitHub 上很火所以试了试」，Star 数已成为开源可信性的指标之一。",
+"目前 Dify 运行在全球 140 万台以上机器上，2000 个以上团队、280 家以上企业使用商用版，Maersk、ETS、Anker Innovations、Novartis 等全球大企业均已导入。员工约 100 人。",
+"§ 创始人其人",
+"据 Forbes 2026 年 2 月报道：张路宇出身中国安徽省，中学辍学。中学时代做网站月入约 1000 美元，比当公务员的父亲收入还高；本人说「无法忍受中国划一的教育体系」，因为经济独立，父母也无法强制他返校。",
+"此后历经多家创业公司，2018 年进入腾讯，管理大规模工程团队，负责腾讯云 DevOps「CODING」的产品管理——Dify 早期团队的许多人即出自 CODING 团队。「腾讯出身的团队有企业级产品开发的 know-how，这大概正是 Dify 产品品质的来源。」",
+"2022 年接触生成式 AI，确信「开发者需要能轻松构建 LLM 应用的工具」而创业。2023 年参加英伟达 GTC 大会后决心移居硅谷——「那里的能量完全不一样」。几乎不会英语却在硅谷打胜负：「工作太忙，没时间学英语。」但其本质是志向——「精英运动员不会只想赢本地比赛，而是想在奥运会赢。硅谷就是 AI 行业的奥林匹克竞技场。」",
+"§ 名字的由来",
+"据联合创始人 Richard Yan 的访谈，Dify 是「Define（定义）+ Modify（改良）」的合成词，且这个名字本身也是用 GPT 起的。官方读音是「ディファイ（Difai）」。「把产品哲学直接写进名字的产品，用户也会有信赖感。」",
+"§ 融资与商业模式",
+"2026 年 3 月完成 3000 万美元（约 45 亿日元）Pre-A 轮，估值 1.8 亿美元（约 270 亿日元）。领投 HSG（原红杉资本中国），跟投 GL Ventures、Alt-Alpha Capital（Bessemer Venture Partners 分拆）、五源资本、Mizuho Leaguer Investment、NYX Ventures。",
+"值得注意的是：融资时 Dify 已经盈利——不是 OpenAI、Anthropic 那种「亏损换规模」，而是作为开源业务扎实地实现了收入。商业模式是「开放核心」（open core）：云 SaaS 订阅（Sandbox 免费、Professional、Team）加企业级自托管授权，与 HashiCorp、Elastic 同一模式。MYUUU 自己也在用自托管版——「不想把内部数据拿出公司的企业很多」。",
+"融资的四个用途：把最先进的 Agent 功能整合进核心产品；建设企业团队（性能与合规强化）；启动支持 builder 社区的新举措；进一步降低开发门槛的产品投入。日本法人株式会社 LangGenius 于 2025 年 2 月设立。"
+]
+});
+</script>
+
+<script>
+/* 卷肆 · 产品与官方页面 */
+Object.assign(FULL, {
+
+agent26:[
+"§ 出版信息",
+"Dify 官方博客 2026 年 8 月 27 日的产品发布文章，产品团队署名（非张路宇本人）。发布「全新 Dify Agent」：Agent 从 Workflow 里的一个节点，升级为可独立维护、跨应用复用的一等资源。以下为全文中文编译。",
+"§ 为什么重做 Agent",
+"AI Agent 正在快速从概念验证（PoC）走向真实业务。麦肯锡 2025 年《State of AI》调查显示，62% 的受访者称其组织至少在试验 AI Agent。采用率上升带来新的问题：谁来维护一个 Agent？它被用在了哪些地方？团队如何安全地更新它、并搞清楚某次运行出错时到底发生了什么？这些问题促使 Dify 重新思考「Agent 应该是什么」。New Agent 就是答案。",
+"§ 从节点到独立的 Agent",
+"2025 年 3 月，Dify 引入了 Agent 节点与 Agent 策略，让模型在 Workflow 内部获得更大的自主推理与工具使用能力。但每个 Agent 都被绑在它出生的那条 Workflow 里——想在别处复用同样的能力，就得把 Prompt、工具等设置重建一遍。",
+"现在，每个 Agent 有了自己的模型、Prompt、工具设置的单一事实来源，在一处维护，点击几下即可复用到不同应用与 Workflow 中。Agent 成为独立应用或 Workflow 的可复用资源：有自己的配置与生命周期，一次构建、持续打磨，可发布为 Web 应用、通过 API 开放、或复用于多条 Workflow。",
+"§ Build：在真实工作中打磨",
+"好的 Agent 是被它实际做的工作塑造出来的。你可能带着清晰的目标开始，但仍需要发现：该用哪些工具、边界应该在哪、哪些方法值得沉淀。",
+"Dify 提供两种上手方式，其中 Build 模式让你用对话方式起草配置：改动先保存到 Build Draft 并同步反映在配置面板，你可以保留想要的、丢弃不想要的。Agent 同时维护一份 build_note.md——一份持续更新的记录，记下它配置了哪些东西、还有哪些需要留意。随时可以用 Preview 以真实用户的视角试用，满意后再发布。",
+"§ Agent 不只是一段 Prompt",
+"一段 Prompt 对简单任务也许够用；但当它同时要装下业务规则、参考资料、工具说明和详细操作流程时，就会变得难以维护。New Agent 把每项能力拆成清晰、可独立维护的部分：可以换掉一个工具、打磨一个 Skill，而不用重写整段 Prompt。",
+"§ 三种扩展方式：Tools、Skills、CLI",
+"一、Tools，用于受管理的集成：可以插入 Marketplace 扩展、连接自定义 API 或 MCP server，也可以把已有的 Workflow 包装成工具。工具在工作区级统一管理、跨 Agent 共享——一个画图工具只需配置一次，不同的 Agent 都能用它分析数据、做周报、搭内部仪表盘。需要额外配置的能力，集中在 Advanced Settings 里管理环境变量，端点或默认值变化时一处更新、处处生效。",
+"二、Skills，用于可复用的方法：一个 Skill 把「指令、参考资料、脚本」打包在一起。比如一个增长分析 Skill，可以包含 CTR、CPA、ROAS 的定义和统一计算它们的脚本——Agent 跨任务复用同一套方法，Prompt 不再臃肿。官方预告：Skill 管理功能正在开发中，Skills 将成为工作区级共享资源，可统一管理、版本化，跨 Agent 复用；流程演进时，背后的 Skills 同步演进，依赖同一方法的所有 Agent 自动对齐。",
+"三、CLI 工具，用于一次性任务：有些工具只需要用一次，Agent 可以直接在当前 Sandbox 会话里安装并运行 CLI 工具。比如你要一份可编辑的增长汇报 deck，Agent 会在 Sandbox 里装好所需工具并产出文件；解析日志、转换文件、处理数据集同理。文章给出一条能力演进路径：同一个 CLI 配置反复出现，就把它固化成 Skill；当这项能力需要跨 Agent 稳定工作时，再通过 API、MCP server、插件或 Workflow 工具变成共享的 Dify 能力。",
+"§ 修复哲学：先问「修复应该落在哪里」",
+"发布不是构建的终点。一旦 Agent 开始做真实工作，新的运行会暴露缺口：一条说不清的指令、一段缺失的上下文、一个需要打磨的方法。此时有用的问题不是「怎么修复这个回答」，而是「这个修复应该落在哪里」。",
+"文章举了一个产品对比 Agent 的例子：测试中它把两款产品的营养成分混在了一起。最简单的做法是在 Prompt 里再加一条指令——能修好这一次回答，但治不了本。团队的实际做法是：把每款产品的信息拆成独立记录，并更新 Skill，让它分别检索产品、先核验证据、不推断不存在的信息。下一轮测试里，Agent 不仅分清了产品，还在过敏原、库存、退款、隐私问题上守住了正确的边界。「不是修补一个答案，而是改进 Agent 处理这项任务的方式——这个改进会带进此后的每一次运行。」",
+"§ Manage：一次构建，处处复用",
+"复制一个 Agent 很容易，让每份拷贝保持最新则意味着把同样的修改重复很多遍。当同一套 Prompt、Skill、工具与配置散布在多个应用里，每次更新都要重来，团队逐渐搞不清哪份拷贝才是当前的。新体验用一个共享 Agent 取代所有拷贝：Agent 页面提供集中入口，按状态、创建者、更新时间查找与管理，每个 Agent 有自己的名称、描述、配置与发布状态。",
+"§ Track：白盒可观测",
+"可复用的 Agent 需要的不只是配置页：团队需要在真实任务中打磨它、在不同上下文中应用它、并从它在生产中的行为里学习改进。Track 提供完整的白盒可观测性——单次运行的完整链路追踪，加上长期的行为监控。",
+"§ 一句话总结",
+"Agent 负责任务内的动态判断；Workflow 负责它何时运行、运行前后的检查、审批与输出去向。两者各司其职，这是 Dify 对「企业级 Agentic Workflow」的完整回答。"
+],
+
+price:[
+"§ 全文编译 · Dify 定价页（常更页面，编译自抓取时点的内容）",
+"Dify Cloud 采用 Freemium 模式，分为 Sandbox（免费）、Professional、Team 与 Enterprise 四档；自托管另有 Community（开源免费）与企业版授权。",
+"§ Sandbox（免费）",
+"面向试用与个人探索：提供消息额度（message credits），可直接体验 OpenAI、Anthropic、Gemini、xAI、通义等模型；额度按模型类型消耗，用完后可切换为自己的 API Key。",
+"§ Professional（约 59 美元/工作区/月，页面抓取时显示年付 590 美元）",
+"面向独立开发者与构建生产级 AI 应用的小团队：每月 5000 消息额度、1 个团队工作区、3 名团队成员、50 个应用、500 篇知识库文档、5GB 知识库存储、知识库请求限频 100 次/分钟、优先文档处理、每月 2 万次触发事件（插件/定时/Webhook 触发）、单个 workflow 内触发器不限量、更快的执行队列、2000 条标注额度、不限日志历史、Dify API 不限速。",
+"§ Team（约 159 美元/工作区/月）",
+"面向协作团队：更高的成员数、应用数、知识库容量与触发额度。",
+"§ Enterprise（联系销售）",
+"面向大组织：可扩展部署、多工作区管理；SLA 由合作伙伴协商提供，官方负责更新维护与专业支持。",
+"§ 解读要点",
+"定价页显示 Dify 的商业模型是典型的开放核心 + 用量分档：免费层做获客与生态，Enterprise 层把交付与 SLA 交给伙伴体系——伙伴不是补充渠道，而是商业模式的一部分。"
+],
+
+ent:[
+"§ 全文编译 · Dify 企业版官方页面（中文版页面，常更）",
+"页面主张：构建企业级 Agentic AI 的基础设施。在企业自有的 VPC、本地或隔离网络中部署 Dify，支持 SSO、RBAC 与审计日志，可用 Helm Chart 快速部署至 K8s 环境，专为 CISO、CFO 与工程团队的生产级需求而设计。",
+"§ 客户证言",
+"A.P. 穆勒-马士基：「在这个持续试验的时代，能快速验证想法的工具不只是锦上添花，而是不可或缺。对沃尔沃汽车来说，在战略性推进 AI 布局的过程中，Dify 正是在这个关键位置上发挥了不可替代的价值。」（页面同时引用了马士基与沃尔沃视角的证言。）另有证言称：「Dify 的独特之处在于它让 AI agent 开发触手可及。强大的 AI/ML 能力结合无代码平台，让快速部署和直观操作成为可能，即使初学者也能轻松上手，显著推动了全员数字化开发。」「Dify 直观的界面让团队能快速设计和部署复杂的自然语言处理管道，在降低成本、缩短上市时间的同时提升评估产品的质量。」（ETS）",
+"§ 六大能力板块",
+"身份与访问：通过 SAML/OIDC 实现 SSO；细粒度 RBAC，精确到 Workflow 级别；SCIM 账号同步；会话策略管理。",
+"审计与可观测性：防篡改审计日志，实时传输至企业 SIEM；支持单次调用级别的全追踪；对 Prompt 历史中的 PII 进行脱敏处理。",
+"按需部署：支持 K8s Helm Chart 部署；提供适用于 AWS 的 Terraform 模块；支持敏感业务场景的隔离网络部署。",
+"数据主权：数据始终留存于企业 VPC、所在区域与安全边界内；支持自带密钥加密（BYOK）；无模型训练数据泄露风险。",
+"多租户隔离：单个 Dify 集群支持多业务单元独立运行；租户级别的配额、计费与访问策略管理。",
+"5×8 专业支持：客户经理服务、工单及合作伙伴支持、Sev-1 级别故障迅速响应。",
+"§ 效率数据",
+"页面给出的对照：每个 AI 应用自研原本需 4 个月，用 Dify 约 2 周（马士基口径）；页面同时列出 Maersk、Mizuho、Panasonic、Novartis、Volvo 等客户标识。"
+],
+
+partners:[
+"§ 全文编译 · Dify 合作伙伴计划（官方中文页面，常更）",
+"加入 Dify 全球合作伙伴网络，共同构建 AI 解决方案，拓展市场覆盖，为客户创造更大价值。战略伙伴包括 AWS、NVIDIA、Microsoft Azure、PingCAP、Zilliz 和阿里云。",
+"§ 为何与 Dify 合作",
+"把握新增长机遇：把握这一轮技术创新浪潮，为业务开拓新的增长空间。扩展服务范围：通过提供生成式 AI 领域的创新解决方案，扩大服务边界、吸引新客户。支持与认可：提供培训、业务支持材料及贡献认可。",
+"§ 三类伙伴",
+"经销商：适合提供商业咨询或其他专业服务、并认识到 GenAI 应用开发平台对客户重要价值的机构；通过转售 Dify 企业版获得利润。",
+"服务合作伙伴：适合有技术专长的 IT 服务商、系统集成商（SI）或独立软件开发商（ISV）；除转售利润外，还可以自有定价提供付费技术服务与培训，并可自定义价格联合销售向量数据库、云用量、定制模型等其他产品。官方特别说明：「我们身处快速发展的 GenAI 前沿。由于我们并非传统巨头，我们更看重理解这一领域动态特性、愿意与我们共同迎接挑战、携手成长的合作伙伴。」",
+"市场（Marketplace）合作伙伴：拥有知识产权或持有必要可验证许可的公司、组织或开发者，均可把应用/插件提交至 Dify Marketplace；获得官方专区上架、文档与技术资源，实现产品变现。",
+"§ 已列出的伙伴（节选）",
+"钻石伙伴：安思派 Anspire（安畅网络全资子公司，AI 基础设施与应用集成，覆盖医药零售金融）；JOTO 聚托（AI 私有化部署，医药/金融/汽车/央国企）。",
+"金牌伙伴：伊克罗德 eCloudrover、CI&T（纽交所上市）、Atos 源讯、酷美科技、软通动力、赛博威、昆仑联通、Nova Tech（微软十余年首席云解决方案合作伙伴）、悠尼客、DXC Technology、明略科技（秒针）、钱拓科技（Agent 私有化，金融客户）等。",
+"§ 常见问题",
+"如何申请：页面入口提交或邮件 business@dify.ai；通常五个工作日内回复。伙伴可获得产品培训、技术赋能、联合营销材料、专属伙伴经理支持，以及产品路线图优先知情权与技术支持优先级。加入计划本身免费，产品与许可证费用按标准方案计收。三类伙伴身份可随业务发展灵活切换。"
+],
+
+join:[
+"§ 出版信息",
+"join.dify.ai 是 Dify（LangGenius）的官方招聘页，也是一份罕见的公司文化宣言。页面为英文，长期更新。以下为全文中文编译。",
+"§ 开篇：一座桥",
+"「Build the bridge between AI and the real world.」（在 AI 与真实世界之间，建一座桥。）",
+"大多数职业生涯是围绕「等待」建造的——等对的项目、对的规模、工作终于能触达人的那个时刻。在这里，那个时刻每周都在发生：你写的代码运行在超过一百万台机器上；你在一个普通周二下午做的决定，会改变 175 个国家的开发者构建 AI 应用的方式。这种杠杆不是熬很多年才能挣到的——从第一天起，它就在那里。",
+"§ 链子的另一端是谁",
+"想一想链条末端的人：马士基的一位物流协调员，答案从几小时变成几秒钟；诺华的一位实验室研究员，在数据一直存在的关联里发现了新线索；安克创新的一位客服专员，下班时不再精疲力竭。他们以前从没用过 AI 工具——现在用上了，因为有人建了让这一切可部署的那一层。「这就是这份工作的意义。全世界 84% 的人还没有跨过这条线，你将帮助他们跨过去。」",
+"客户评价（马士基 AI 解决方案工程总监）：「Dify 给了我们一条务实路径，越过原型、真正把 AI 工作流运营起来。我们把真实业务流程变成了可维护的系统。」",
+"§ 使命",
+"打造「AI—人—数据—工具」协作新范式下，最受欢迎的开源平台。",
+"§ 五条价值观",
+"一、Simple & Sincere（简单与真诚）；二、Hands-on（亲手干）；三、Explore the Edge（探索边缘）；四、Ask Why to Bedrock（追问到底，直到基岩）；五、Honor Your Commitments（信守承诺）。",
+"「这些不是挂在墙上的价值观，它们是真正的操作系统——一个小团队能比十倍的组织跑得更快的原因，也是加入这里的人往往留下来的原因。第一周结束前你就会感觉到不同。」",
+"§ 工作原则",
+"Builders First：Builder 的时间与创造力是公司最稀缺的资源，每一个流程、层级、规则都必须通过一个测试——它让 Builder 创造价值更容易了，还是更难了？",
+"其他原则包括：单一负责人制（一件事一个人负责到底）；小而锐利的团队；唤醒善意而非强制合规。",
+"§ Fast-Track 机制",
+"任何想法可以用一页纸直接提给 CEO，48 小时内决定是否启动；一旦启动，最长三周的冲刺验证；失败了不算职业代价。这是「探索边缘」价值观的制度化。",
+"§ 摩擦清零",
+"「你职业生涯中最好的作品，不应该被错误的配置、缺失的工具、或一个没理由存在的流程打断。我们尽量在你到来之前，就把所有这些摩擦清除掉——一切本可能拖慢你的东西：已清除。」",
+"§ 四地办公",
+"你的队友分布在门洛帕克、东京、苏州和上海。「你会知道什么时候同处一室很重要、什么时候远程一样好——在场从来不是重点。」",
+"§ 超过 60% 的代码由 LLM 构建",
+"团队自己就是 AI 原生工作方式的试验场：超过 60% 的代码由大模型构建，人负责定义问题、约束与验收。",
+"§ 不是每个人都适合",
+"「不是每个人都在寻找这样一个地方。但如果是你——你看到它的那一刻，就会知道。」",
+"§ 如何申请",
+"页面上没有你的职位？也写信来。「我们每一封都读。对的人不总是恰好装进一份职位描述里，我们也不打算假装不是这样。」联系邮箱：joinus@dify.ai。"
+],
+
+about:[
+"§ 全文编译 · 关于 Dify（dify.ai/about-us，常更）",
+"使命：为 AI、人、数据与工具协作的新范式，打造最受欢迎的开源平台。愿景：成为 AI 时代组织的「操作系统」——每个组织默认使用的基础设施。",
+"§ 核心数字（抓取时点）",
+"GitHub Stars 15.8 万+，全球开源历史 Top 60；3000 万美元 Pre-A（2026），1.8 亿美元估值，HSG 领投；280+ 企业客户（Maersk、ETS、Anker、Novartis）；140 万+台机器在全球运行 Dify。",
+"马士基 AI 解决方案工程总监 Mark Sear 的证言被置于页面显眼位置：「Dify 给了我们一条务实的路，超越原型、真正把 AI workflow 运营化。我们把真实业务流程变成了可维护的系统。」",
+"§ 四城布局",
+"门洛帕克：总部，产品、设计、工程与研发——「全球 AI 生态的心脏」。东京（LangGenius K.K.）：研发、亚洲企业与伙伴——「日本市场的领导者」。苏州：工程——「深度技术执行」。上海：APAC 市场（GTM）与企业销售。远程岗位完全支持，混合政策：「协作需要时到办公室，不需要时远程。」",
+"页面同时完整呈现了与 join.dify.ai 一致的五条价值观与工作原则（Simple & Sincere、Hands-on、Explore the Edge、Ask Why to Bedrock、Honor Your Commitments；Builders First、单一负责人、Fast-Track 机制、超过 60% 代码由 LLM 构建等）。"
+]
+});
+</script>
+
+<script>
+/* 卷伍 · 区域动态 / 卷陆 · 资料库 */
+Object.assign(FULL, {
+
+awsj25:[
+"§ 全文编译 · Dify 亮相 2025 AWS Summit Japan（Dify 官方博客，2025 年）",
+"LangGenius, Inc.（总部位于美国加州）将在 2025 年 6 月 25–26 日于幕张展览馆举行的 AWS Summit Japan 2025 上展示企业级 AI 开发平台 Dify.AI，展位号 100。",
+"§ 平台介绍",
+"Dify.AI 通过开源社区版、云 SaaS 服务和企业部署选项，帮助组织轻松构建和部署基于大语言模型的应用。核心优势：简化的 AI 应用开发（直观可视化界面，无需深厚编程功底）；强大的工作流编排（多步骤智能任务自动化）；完整的 Agent 能力（支持自主推理与工具调用）；企业级安全与合规（满足各行业的数据安全与隐私要求）；开放生态与插件系统（260+ 插件，与现有 IT 系统无缝集成）。",
+"凭借创新能力，Dify.AI 入选 2024 年 TechCrunch Startup Battlefield 200，被评为「2024 年 20 大最热门开源初创公司」之一，并在 Runa 开源初创公司指数（ROSS Index）排名第三。",
+"§ 日本法人",
+"自发布以来，Dify.AI 在日本获得了 AI 开发者与数字化转型企业的广泛认可。为更好地服务日本市场、提供本地化支持，LangGenius, Inc. 于 2025 年 2 月 5 日在东京中央区日本桥正式设立子公司 LangGenius K.K.，致力于帮助日本企业克服数字化转型挑战，并与日本本地伙伴紧密合作。",
+"§ 与 AWS 的集成",
+"Dify.AI 与 AWS 基础设施无缝集成，提供企业级云原生 AI 解决方案：Dify Premium 自 2024 年起已在 AWS Marketplace 上架，日本企业可直接通过 AWS 采购与部署。"
+],
+
+ifcon:[
+"§ 全文编译 · IF Con Tokyo 2026：把「如果」变成生产（Dify 官方博客，2026 年 7 月 24 日）",
+"2026 年 9 月 10 日，LangGenius K.K. 将在东京举办年度旗舰大会 IF Con Tokyo 2026——完整的一天，致力于把生成式 AI 从孤立的试点变成真实的日常运营。报名已开放。",
+"第二届 IF Con 把 Dify 社区聚到一起：合作伙伴、已经在生产环境运行 Dify 的团队、以及仍在摸索从何入手的人。「Dify 让任何人都能构建生产级的 agentic workflow，这一天我们聚在一个房间里，谈谈到底什么管用。」",
+"§ 大会定位",
+"把生成式 AI 和 AI Agent 投入使用的公司比以往任何时候都多。但难的部分通常不是第一个 PoC，而是从试点走到整个团队、整个公司每天都依赖的东西。IF Con Tokyo 2026 正是围绕这一步展开：少一点理论，多一点真实团队已经交付的东西。",
+"§ 两条主线",
+"真实案例线：Dify 用户分享他们如何推动落地及取得的成果，覆盖业务侧与开发者侧。技术深潜线：构建 AI Agent、实现 RAG、设计 workflow 的动手环节。",
+"此外还包括：Dify 团队的新产品发布（名称未披露）；业务侧的落地与全公司推广议题；开发者侧的实现与真实用例议题；更多嘉宾与议程将随会期临近公布。",
+"§ 活动信息",
+"时间：2026 年 9 月 10 日（周四）10:00–18:00（JST），会后设交流酒会。地点：东京 Convention Hall（东京 Square Garden 5F，中央区京桥 3-1-1）。入场免费，需提前注册。面向：Dify 合作伙伴、使用 Dify 的团队、DX/AI 负责人与开发者。"
+],
+
+prt:[
+"§ 全文编译 · IF Con Tokyo 2026 开幕公告（PR TIMES，日文新闻稿，2026 年 7 月 24 日）",
+"株式会社 LangGenius（总部：东京都中央区，代表取缔役社长：キジ マルダン）宣布，生成式 AI 大会「IF Con Tokyo 2026」将于 2026 年 9 月 10 日（周四）在东京 Convention Hall 举行，免费、事前登记制。",
+"§ 大会主旨",
+"本届主题为「本番活用」（生产级落地）——面向不想让生成式 AI 止步于 PoC、而想在组织、业务与产品中真正用起来的人。在人与 AI Agent 协作的时代，分享把企业的想象变为可信业务基础设施的实践知识。",
+"§ 举办背景",
+"生成式 AI 的运用正从实验验证阶段走向业务嵌入、生产运营与全公司推广。但要把 AI 持续转化为成果，需要跨越开发环境、运营体制、治理、安全、现场落地等多重课题。大会将围绕以 Dify 为中心的 AI 应用开发、AI Agent 运用与企业导入的最新动向，分享企业 AI 落地的真实经验。",
+"§ 三个看点",
+"一、聚焦 Dify 与 AI Agent 的「生产级活用」：通过 AI workflow、RAG、AI Agent 的设计与运营，提供让企业把「如果」在生产中跑起来的具体线索。二、分享企业 AI 落地的真实经验：Dify/LangGenius 官方、伙伴企业、用户企业与开发者多视角，涵盖 AI Agent 嵌入业务的课题、从 PoC 到生产的过程、治理与安全、现场落地。三、高质量社区交流：与赞助商企业及参会者直接 networking。钻石赞助商包括伊藤忠 TechnoSolutions（CTC）、日本电子计算（JIP）、理光、TDSE、UPGRADE。",
+"§ 已确认演讲者",
+"张路宇（チャン・ルーユー）：Dify 创始人&CEO。2023 年创立开源 LLM 应用开发平台 Dify，将其发展为 175 个以上国家、100 万以上开发者使用的基础设施。キジ マルダン：株式会社 LangGenius 代表取缔役社长，冈山大学智能机电专业博士，统括 Dify 企业版的开发与企业业务。其他嘉宾陆续公布。",
+"§ 关于 Dify（新闻稿口径）",
+"Dify 是获得全球 13 万以上 GitHub Stars 的 Agentic AI 开发平台，无需编程即可构建 AI Agent 与业务自动化 workflow，被包括财富 500 强在内的全球企业采用。不依赖特定 AI 模型或云服务的中立设计，可按组织方针灵活运营。企业版提供多工作区、高级安全与治理功能、国内数据中心自托管运行等大规模组织所需能力。",
+"株式会社 LangGenius 于 2025 年 2 月设立，地址为东京都中央区日本桥 3 丁目 6 番 2 号。",
+"§ 提醒",
+"本稿件未公开主题演讲内容与新产品名称；任何关于大会具体演讲内容或新品的说法，在本稿件中没有依据。"
+],
+
+kddi:[
+"§ 全文编译 · KDDI Digital Life 在 povo2.0 客服中采用 Dify（DIME 刊载官方新闻稿，2026 年 8 月 5 日，日文）",
+"株式会社 LangGenius 宣布，其开发提供的生成式 AI 应用与 AI Agent 开发平台「Dify」，经由官方销售与构建伙伴 TDSE 株式会社，导入 KDDI Digital Life 株式会社，并在 KDDI 在线专属套餐「povo2.0」的部分客服场景投入使用。",
+"KDDI Digital Life 用 Dify 自建（内製）了 AI 聊天机器人，并基于真实客户反馈建立了快速改善循环，以此提升客服体验、提高 AI 应答业务的效率。",
+"§ 导入背景",
+"KDDI Digital Life 负责 povo2.0 的商品服务企划、市场营销与客户支持。在推进 povo2.0 客服领域应用 Dify 的过程中，为提供更稳定的服务，开始探讨强化持续运营、维护与支持体制。TDSE 凭借 Dify 导入运营的实绩，以及从需求梳理、环境搭建到导入后运营的一贯支援能力，被选定为导入支援伙伴。",
+"§ 活用内容",
+"在 povo2.0 的部分客服中使用基于 Dify 构建的 AI 聊天机器人。借助 Dify 的可视化开发环境实现聊天机器人内製，并建立「把真实客户反应反馈到改善中」的循环。今后还探讨在营销自动化（与营销工具联动）及各类内部工具等更广领域应用。",
+"§ 三方分工",
+"KDDI Digital Life：在 povo2.0 客服领域活用 Dify，内製 AI 聊天机器人并持续改善。TDSE：提供 Dify、需求梳理、环境搭建、导入后的运营支援。LangGenius：Dify 的开发与提供。",
+"§ 展望",
+"LangGenius 将通过与 TDSE 等伙伴的协作，支持企业自主构建和改善生成式 AI 应用，让其在真实业务与客户触点中持续创造价值的环境建设。"
+],
+
+osaka:[
+"§ 全文编译 · LangGenius 支持大阪府行政 AI Agent 联盟（DIME 刊载官方新闻稿，2026 年 8 月 7 日，日文）",
+"株式会社 LangGenius（总部：东京都，代表取缔役社长：キジ マルダン）宣布：将通过提供生成式 AI 应用开发平台「Dify」的授权等方式，支持理光日本株式会社参与「大阪府行政 AI Agent 联盟」的相关工作。",
+"理光日本将通过提供 Dify 及使用支援，推动大阪府及府内自治体行政业务的高度化与效率化。LangGenius 将与理光日本协作，支持 AI Agent 在自治体的落地与运营，助力建立可持续、可复制的自治体 AI 活用模型。",
+"§ LangGenius 的支援内容",
+"作为 Dify 的开发方，LangGenius 配合理光日本在本项目中的 Dify 授权提供等工作。Dify 支持自托管，可按各自治体的安全要求与网络要求灵活运营；不依赖特定 AI 模型的架构，可使用包括国产 LLM 在内的多种模型。",
+"Dify 的技术底座将与理光日本积累的实践知识与陪伴式服务能力相结合，支持大阪府及府内自治体的 AI Agent 落地与运营，通过两家协作推动行政业务的高度化、效率化。",
+"§ 理光日本评论（数字服务企划本部 AI 服务事业中心 中心主任 児玉哲）",
+"「此次在 LangGenius 的协作下，能通过『大阪府行政 AI Agent 联盟』向大阪府及府内自治体提供 Dify，我们非常高兴。LangGenius 在授权提供以及行政领域 AI Agent 运用的技术层面给予了支援，由衷感谢。」",
+"「理光日本在自身实践中积累了丰富经验——理光集团国内约 3 万人使用的 Dify 环境运营、公司内部约 10,200 个业务应用的创建（截至 2026 年 7 月 27 日）——并以此开展从导入到落地定着的陪伴式服务。这些实践知识与贴近客户的支援体制，是把行政领域的 AI 活用扎实扎根于现场的重要力量。」",
+"§ 日本法人定位（新闻稿口径）",
+"株式会社 LangGenius 作为 LangGenius Inc. 的日本法人，通过 Dify Enterprise 授权的销售与推广、与国内伙伴的协作，支持日本企业与自治体导入和用好生成式 AI。"
+],
+
+ons:[
+"§ 全文编译 · ONS 在 AI EXPO Korea 展示 Dify（traeai 收录的 Dify 官方 X 动态，2026 年 5 月 6–8 日）",
+"Dify 官方账号（@dify_ai）宣布：LangGenius K.K.（日本法人）的官方合作伙伴 Open Network System（ONS）于 5 月 6–8 日亮相 AI EXPO Korea，现场展示 Dify 平台，并邀请参会者到展位体验演示。",
+"traeai 对该动态的评注：「Dify 官方合作伙伴 ONS 将在韩国 AI 展会展示 Dify 平台，属于商业推广内容，无技术深度。」",
+"§ 现场可见信息",
+"收录页面附展位照片：展台主视觉为「Build Production-Ready Agentic Workflow」与韩语标语「让每一位职员拥有自己的 AI——从原型到生产，从开发到运营，用一个 Dify 制作并自动化公司内的 AI 应用」；展板列出 AI 编排器、AI Persona Studio 等演示主题；立牌活动「Dify? Differently.」为 ONS 联合扫码问卷赠礼；展板底部列有三星、SK Broadband、HAVER FINANCIAL、LS Mtron、东元、韩国原子力研究院（KIOST）等标识。",
+"§ 背景",
+"ONS（Open Network System）是 Dify 日本法人的官方伙伴，此次代表 Dify 出现在韩国展会，显示韩国市场的伙伴拓展目前由日本法人体系覆盖。"
+],
+
+aiwiki:[
+"§ 全文编译 · Dify 条目（AIWiki，百科式条目，2026 年 7 月更新）",
+"Dify（风格化写作 Dify.AI）是构建、部署和运营大语言模型驱动的应用与 Agent 的开源平台，由 LangGenius, Inc. 开发。它把可视化工作流构建器、prompt IDE、检索增强生成（RAG）管道、AI Agent 框架、模型管理与可观测性组合进一个可自托管的系统，这个品类常被称为 LLMOps。项目 2023 年 5 月 15 日在 GitHub 开源，2025 年 6 月突破 10 万 Star，2026 年年中超过 14.4 万。",
+"§ 概览",
+"Dify 自我定位为「生产级 agentic workflow 开发平台」，目标是让团队从原型走到生产，而不必自行拼装编排代码、向量库、prompt 管理工具与服务基础设施。平台是模型中立的：集成数十家推理供应商的数百种专有与开源模型——OpenAI GPT 系列、Anthropic Claude、Google Gemini、Mistral、Meta Llama、Azure OpenAI、Hugging Face、Replicate，以及任何 OpenAI API 兼容端点，还有经 Ollama 等工具本地托管的模型。Dify 上构建的应用暴露 API，可嵌入现有产品——公司强调这种 BaaS 模式便于企业集成。",
+"§ 历史",
+"LangGenius 2023 年由张路宇（创始人&CEO）与 John Wang（联合创始人&总工程师，GitHub 上的「takatost」）创立。创办 Dify 前，张路宇在中国担任产品领导岗位，最知名的是腾讯旗下 DevOps 平台 CODING 的产品总监；更早他创办了测试流程管理协作工具「飞蛾」。他 2022 年开始试验生成式 AI，次年创立 Dify，理由是这项技术「应该平等地触达每个人」。",
+"团队在 ChatGPT 引发的热潮后不久，于 2023 年 5 月 15 日开源 Dify。产品从第一天起就设计为可自托管平台而非封闭 SaaS——想把控模型使用与数据的开发者因此快速采纳。公司注册于美国，在旧金山湾区运营；随国际化扩张张路宇迁居美国，工程与相当部分社区仍分布全球。",
+"§ 增长里程碑",
+"GitHub 仓库 langgenius/dify 是平台史上增长最快的项目之一：2025 年 6 月 5 日宣布突破 10 万 Star，2026 年年中约 14.4 万 Star、2.2 万以上 fork、超过 800 名贡献者。公司报告软件运行在 175 个以上国家和地区的 140 多万台机器上，下载量超 500 万次。",
+"重要节点：2025 年 2 月 28 日发布 Dify v1.0.0，引入插件系统（模型与工具同核心平台解耦）并上线 Dify Marketplace；2025 年获评 AWS 年度社会影响力伙伴；亮相 NVIDIA GTC 2025。",
+"§ 融资",
+"种子轮：2023 年 6 月，金额未披露（Crunchbase 记录投资方为 Delian Capital、FutureX Capital）。Pre-A 轮：2026 年 3 月 9 日，3000 万美元，报道估值约 1.8 亿美元，HSG（红杉中国，现名 Hongshan）领投，GL Ventures（高瓴创投，高瓴的早期投资品牌）、Alt-Alpha Capital（公告称系 Bessemer Venture Partners 分拆）、五源资本、Mizuho Leaguer Investment、NYX Ventures 跟投。Crunchbase 统计累计融资约 4150 万美元。",
+"§ 常见对比",
+"条目整理了 Dify 与 LangChain（代码优先的编排库）、Flowise、Langflow（可视化但偏原型）的常见对比，差异集中在生产级能力、自托管与企业功能上。",
+"§ 提醒",
+"百科条目适合快速查时间线与数字，但并非张路宇本人观点来源；条目中的数字以官方信息为准。"
+],
+
+yes:[
+"§ 全文编译 · Dify 产品档案（YesPress，2026 年 9 月更新）",
+"§ 它解决什么问题",
+"「AI 演示很便宜。账单在演示需要私有数据、第二个模型、一个审批环节、一个 API、一条重试策略、以及对『它为什么这么做』的有用回答时到来。」Dify 就存在于这道昂贵的缝隙里：它是一个可视化工作间，产品经理能看懂逻辑，工程师能插入代码，运营负责人能指出必须由人接管的节点。成果可以以 Web 应用、嵌入、API 或 MCP 工具的形态离开工作间。",
+"§ 适合谁",
+"最佳画像：小型的跨学科团队，构建真实的内部 copilot、文档助手、客服流程、研究流程或后台自动化。Dify 让懂业务流程的人与懂基础设施的人读同一张画布：政策检查是一个框，模型调用是一个框，检索、代码、分支、循环、人工审查都是框——图成为共同语言，而不是一张画完就和软件脱节的幻灯片。",
+"也适合想要模型选择权、又不想背上永久集成项目的工程团队：支持商业模型、开源模型、本地模型与 OpenAI 兼容端点。只需要一个私有聊天窗口的团队会觉得它过大；想要完全定制界面或极细粒度控制的团队会转向代码优先的库。「当流程的活动部件多到值得一个控制室时，Dify 就值回票价。」",
+"§ 画布之下",
+"可视化构建器拿走了截图版面，但「地下室」更关键：Dify 打包了应用状态、模型配置、知识摄入、检索、执行、发布与监控。Knowledge Pipeline 能收集文件、网站、在线文档、网盘或外部来源，再完成抽取、清洗、分块、索引与测试——把 RAG 从神秘的缩写变成团队可检视的序列；普通向量相似度不够时，还有混合检索与重排。",
+"Workflow Studio 负责编排：prompt、变量、if/else 路由、循环、工具、代码、触发器与输出。Human Input 节点可以暂停一次运行等待人工审查——1.17 版本起循环内部也支持，这对发票核对、合同审查、客服升级这类「大致正确」不能悄悄变成「已发给客户」的场景至关重要。插件系统为画布扩展模型供应商、可调用工具、数据源、触发器、自定义端点与 Agent 策略，可从 Marketplace 安装或自制。",
+"§ 重新设计的 Agent",
+"新版 Agent 是另一种工作者：可以通过对话构建，保存为独立应用，单独发布，或放进更大的 workflow。底层是带工具的 ReAct 式循环和隔离的 shell/代码执行。1.17 版本增加了可复用、带版本的工作区级技能（skills）、E2B 云沙盒支持，以及能为已发布运行还原预置主目录的快照。长会话可以压缩较早历史，避免直接撞上模型的上下文窗口。「这些都是运营细节——而这正是它们有趣的原因。」",
+"§ 数字（2026 年 9 月口径）",
+"GitHub 仓库超过 15.4 万 Star、2.4 万 fork；公司称 Dify 运行在 175 个以上国家和地区的 140 多万台机器上，超过 2000 个团队与 280 家企业客户。2026 年 3 月 LangGenius 完成 HSG 领投的 3000 万美元 Pre-A，报道估值 1.8 亿美元。档案同时提醒：「流行度是注意力的证据，不是可靠性的基准。」",
+"§ 客户故事",
+"档案以马士基为「最有内容」的客户案例：不只是 logo，而是把真实业务流程变成可维护系统的完整叙述。档案按月收录了近一年的产品节奏：1.13 的人工介入节点、Creator Center 与模板市场、官方 CLI「difyctl」、1.17 重构 Agent，以及 SOC 2 Type II 与 ISO 27001 合规进展。",
+"§ 适用判断",
+"选 Dify 如果：你需要可见、可复用的 AI 流程，要 RAG、工具、测试、日志、部署选择，还要给非工程师参与的空间。暂缓如果：你的任务只是一个 prompt 一个输出、前端必须深度定制、或者团队没人愿意运营多服务的技术栈。"
+]
+});
+
+/* ============ inject fulltext panels ============ */
+window.injectFull = function(){
+  document.querySelectorAll('.article').forEach(el=>{
+    const id = el.id, data = FULL[id];
+    if(!data || el.querySelector('.ft-toggle')) return;
+    const body = el.querySelector('.body');
+    const foot = body.querySelector('.foot');
+    const btn = document.createElement('button');
+    btn.className = 'ft-toggle';
+    btn.innerHTML = '<span class="tri">▶</span>展开全文编译<span style="opacity:.6;font-weight:400">· ' + data.length + ' 节</span>';
+    const panel = document.createElement('div');
+    panel.className = 'fulltext';
+    panel.innerHTML = data.map(p=>{
+      if(p.startsWith('§ ')) return '<p class="sec">' + esc(p.slice(2)) + '</p>';
+      return '<p>' + esc(p) + '</p>';
+    }).join('') +
+    '<p class="ft-note">本栏为中文编译稿：忠实覆盖原文全部主线与关键引语，经压缩与重组，非逐字翻译；原文版权归原刊所有，引用请以上方「阅读原文」链接为准。</p>';
+    const fp = panel.querySelector('p:not(.sec)'); if(fp) fp.classList.add('lead');
+    body.insertBefore(panel, foot);
+    body.insertBefore(btn, panel);
+    btn.addEventListener('click', ()=>{
+      el.classList.toggle('open');
+      btn.querySelector('.tri').nextSibling; 
+      btn.childNodes[1].textContent = el.classList.contains('open') ? '收起全文编译' : '展开全文编译';
+    });
+  });
+};
+window.injectFull();
+</script>
+
+<script>
+/* ============ 术语表 ============ */
+const TERMS = [{"t": "LLM", "e": "大语言模型", "d": "GPT、Claude、DeepSeek 这类用海量文本训练出的模型，是这一切应用的发动机。它擅长理解与生成语言，但本身不会「做事」，需要被编排进流程才能干活。", "ids": ["qb24", "state26"]}, {"t": "Prompt", "e": "提示词", "d": "写给模型的指令。同一个模型，提示词不同，结果天差地别。Dify 团队自嘲内部不写 Prompt 工程师，叫「Prompt 艺术家」。", "ids": ["hn25", "agent26"]}, {"t": "Token", "e": "词元", "d": "模型处理文本的最小单位，也是计费单位。大致 1 个汉字 ≈ 1–2 个 Token。谈模型成本、上下文长度都离不开它。", "ids": ["qb24"]}, {"t": "RAG", "e": "检索增强生成", "d": "先从你的资料库里查出相关内容，再让模型据此回答——专治「模型不知道你公司内部的事」。Dify 的起点就是一个 RAG 聊天机器人。", "ids": ["hc24", "qb24"]}, {"t": "Embedding", "e": "向量化", "d": "把文字变成一串数字（向量），语义相近的文字向量也相近，机器因此能「按意思」搜索。张路宇判断：未来所有数据都会被向量化一遍。", "ids": ["hn25"]}, {"t": "Fine-tuning", "e": "微调", "d": "用专门数据继续训练模型，让它更懂某个领域。与 RAG 互补：微调改模型的「脑子」，RAG 给模型「查资料」的能力。", "ids": ["hc24"]}, {"t": "Agent", "e": "智能体", "d": "不只聊天，还能自己拆解任务、调用工具、多步执行并检查结果的 AI 程序。2026 年 8 月起，Agent 在 Dify 里成为可独立维护、跨应用复用的一等资源。", "ids": ["agent26", "letter26"]}, {"t": "Agentic Workflow", "e": "智能体工作流", "d": "Agent 负责动态判断，Workflow 负责流程骨架：何时运行、谁来审批、结果去哪。这是 Dify 的核心叙事，也是本轮融资的主打方向。", "ids": ["letter26", "bw26", "agent26"]}, {"t": "Workflow", "e": "工作流 / 编排", "d": "Dify 的核心形态：在可视化画布上把 LLM、工具、代码、条件分支连成一条流水线，每个节点可单独测试。张路宇打赌：未来的编程，编的就是 flow。", "ids": ["qb24", "42z25"]}, {"t": "DSL", "e": "领域特定语言", "d": "Dify 的 Workflow 可以导出成 DSL 文件、再导入别的工作区。张路宇称它是「最酷的功能之一」，也是他想建立的技术标准——就像 Docker 之于容器。", "ids": ["qb24", "hc24"]}, {"t": "LLMOps", "e": "中间层 / 大模型应用运维", "d": "夹在「模型」与「应用」之间的一层：负责编排、数据接入、提示词管理、评估与运维——Dify 所在的位置。2023 年初他们提出这个词时，全球几乎搜不到。", "ids": ["hc24"]}, {"t": "MCP", "e": "模型上下文协议", "d": "让 AI 应用以统一方式连接外部工具与数据源的开放协议，相当于 AI 世界的 USB-C 接口。Dify 的 Agent 可以直接接入 MCP server。", "ids": ["agent26"]}, {"t": "AGENTS.MD", "e": "给 AI 的项目说明书", "d": "放在代码仓库根目录的 Markdown 文件，写给 AI 编程代理看。在《分与合》里，张路宇把它当作约束 AI 行为的「单一事实来源」。", "ids": ["dc26"]}, {"t": "开源", "e": "Open Source / OSS", "d": "源代码公开、人人可用可改。Dify 第一天就 99% 开源；张路宇视开源为一种「市场补贴」——用它换全球渗透率与企业信任。", "ids": ["hc24", "hn25"]}, {"t": "PLG", "e": "产品驱动增长", "d": "不靠销售大军，靠产品本身的口碑和免费使用带来增长，再向其中的企业用户收费。Dify 创立头两年市场费用不到 40 万元人民币，却服务了 40 家全球 500 强。", "ids": ["hn25"]}, {"t": "SaaS", "e": "云订阅软件", "d": "开箱即用、按月订阅的在线软件——对应 Dify Cloud。它的相对概念是「自托管」。", "ids": ["price"]}, {"t": "自托管", "e": "私有化部署 / VPC", "d": "把软件装进客户自己的服务器或 VPC，数据不出内网。中国政企与金融客户的硬需求，也是 Dify 企业版的主打能力。", "ids": ["ent", "fb26"]}, {"t": "SSO·RBAC·SCIM", "e": "企业权限三件套", "d": "单点登录、按角色分配权限、自动同步员工账号开通与关闭。大客户采购清单上的常客。", "ids": ["ent"]}, {"t": "SLA", "e": "服务等级协议", "d": "对可用性与响应时间的合同承诺。Dify 企业版的 SLA 由合作伙伴协商提供——这正是渠道体系的价值位。", "ids": ["price", "partners"]}, {"t": "SOC 2 / ISO 27001", "e": "安全合规认证", "d": "两项国际安全合规标准，大客户采购的入场券。Dify 已连续两年通过 SOC 2 Type II 与 ISO 27001，并符合 GDPR。", "ids": ["yes", "ent"]}, {"t": "Pre-A 轮", "e": "融资阶段", "d": "介于天使轮与 A 轮之间的一轮融资。Dify 本轮 3000 万美元，红杉中国（HSG）领投；媒体报道投后估值约 1.8 亿美元。", "ids": ["bw26", "vb26", "letter26"]}, {"t": "北极星指标", "e": "North Star Metric", "d": "团队唯一最重要的那个数字。Dify 的不是 Star 数，而是「用 Dify 真正投产并赚到钱、获得 PMF（产品市场匹配）的用户数」。", "ids": ["hc24", "hn25"]}, {"t": "状态基础设施", "e": "SIG · State Infrastructure Gap", "d": "张路宇理论长文的核心概念：我们缺少一层记录「现实世界某对象现在处于什么状态」的基础设施，大量白领工作因此变成手工的「状态同步」。", "ids": ["state26"]}, {"t": "控制论", "e": "Cybernetics / Harness Engineering", "d": "研究「系统如何根据反馈自我纠偏」的学科（维纳，1948）。张路宇认为 AI 时代的工程师必须掌握它，把流水线设计成能自我纠偏的反馈闭环。", "ids": ["dc26"]}, {"t": "数字孪生", "e": "Digital Twin", "d": "给现实对象建一个实时同步的数字副本。状态长文借用它说明「状态基础设施」应该长什么样。", "ids": ["state26"]}, {"t": "Goodhart 定律", "e": "古德哈特定律", "d": "「一项指标一旦成为目标，它就不再是好指标。」状态长文提醒：团队若只优化可量化的东西，就会偏离真实目标。", "ids": ["state26"]}];
+const SMAP = {}; S.forEach(x=>SMAP[x.id]=x);
+(function(){
+  const g = document.getElementById('glossGrid'); if(!g) return;
+  g.innerHTML = TERMS.map((x,i)=>'<div class="gloss-card" id="term-'+i+'">'+
+    '<div class="gt">'+esc(x.t)+' <span class="ge">'+esc(x.e)+'</span></div>'+
+    '<div class="gd">'+esc(x.d)+'</div>'+
+    (x.ids.length?'<div class="grefs">'+x.ids.map(id=>'<a href="#'+id+'">⑂ '+esc(SMAP[id]?SMAP[id].src:id)+'</a>').join('')+'</div>':'')+
+    '</div>').join('');
+})();
+
+/* ============ 正文术语标注 + 弹卡 ============ */
+const termWords = TERMS.map((x,i)=>({w:x.t, i})).sort((a,b)=>b.w.length-a.w.length);
+function annotate(root){
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){ return (n.parentElement && n.parentElement.closest('.term,.sec,.ft-note,a,button')) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; }
+  });
+  const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+  const used = new Set();
+  nodes.forEach(node=>{
+    let txt = node.nodeValue, cur = node;
+    for(const {w,i} of termWords){
+      if(used.size>40) break;
+      const idx = txt.indexOf(w);
+      if(idx<0 || used.has(i)) continue;
+      used.add(i);
+      const after = cur.splitText(idx);
+      after.nodeValue = after.nodeValue.slice(w.length);
+      const b = document.createElement('button');
+      b.className='term'; b.textContent=w; b.dataset.i=i;
+      cur.parentNode.insertBefore(b, after);
+      cur = after; txt = after.nodeValue;
+    }
+  });
+}
+function annotateAll(){
+  document.querySelectorAll('.article .sum:not([data-ann]), .article .fulltext:not([data-ann])').forEach(el=>{
+    el.dataset.ann='1'; annotate(el);
+  });
+}
+/* 术语弹卡 */
+const pop = document.createElement('div'); pop.className='term-pop'; pop.style.display='none'; document.body.appendChild(pop);
+function showPop(btn){
+  const x = TERMS[+btn.dataset.i];
+  pop.innerHTML = '<div class="tp-t">'+esc(x.t)+' · '+esc(x.e)+'</div><div>'+esc(x.d)+'</div>'+
+    (x.ids.length?'<div class="tp-refs">'+x.ids.map(id=>'<a href="#'+id+'">相关：'+esc(SMAP[id]?SMAP[id].t.slice(0,12):id)+'</a>').join('')+'</div>':'');
+  pop.style.display='block';
+  const r = btn.getBoundingClientRect();
+  const pw = Math.min(340, innerWidth-32);
+  pop.style.maxWidth = pw+'px';
+  let top = r.bottom + 10, left = Math.min(Math.max(16, r.left), innerWidth - pw - 16);
+  if(top + pop.offsetHeight > innerHeight - 10) top = Math.max(10, r.top - pop.offsetHeight - 10);
+  pop.style.top = top+'px'; pop.style.left = left+'px';
+}
+document.addEventListener('click', e=>{
+  const b = e.target.closest('.term');
+  if(b){ e.preventDefault(); e.stopPropagation();
+    if(pop.style.display==='block' && pop._b===b){ pop.style.display='none'; pop._b=null; } else { showPop(b); pop._b=b; }
+    return; }
+  if(!e.target.closest('.term-pop')) { pop.style.display='none'; pop._b=null; }
+});
+pop.addEventListener('click', e=>{ if(e.target.tagName==='A'){ pop.style.display='none'; pop._b=null; } });
+
+/* 包住 injectFull，渲染后补标注 */
+if(window.injectFull){
+  const _inj = window.injectFull;
+  window.injectFull = function(){ _inj(); annotateAll(); };
+  annotateAll();
+}
+
+/* ============ 目录抽屉 ============ */
+const tocMask = document.createElement('div'); tocMask.className='toc-mask';
+const toc = document.createElement('div'); toc.className='toc';
+let tocHTML = '<div class="toc-head"><b>目 录</b><button id="tocClose" aria-label="关闭">×</button></div><div class="toc-list">'+
+  '<div class="tg">导读</div>'+
+  '<a class="ti2" href="#primer">01 · 三分钟入门</a>'+
+  '<a class="ti2" href="#glossary">04 · 术语速查</a>'+
+  '<a class="ti2" href="#extra">05 · 拓展阅读</a>';
+Object.keys(CATS).forEach(k=>{
+  tocHTML += '<div class="tg">卷'+CATS[k].cn+' · '+esc(CATS[k].n)+'</div>';
+  S.forEach(x=>{ if(x.v!==k) return;
+    const n = S.indexOf(x)+1;
+    tocHTML += '<a class="ti'+(done.has(x.id)?' is-done':'')+'" href="#'+x.id+'"><span class="tn">'+String(n).padStart(2,'0')+'</span><span class="tt">'+esc(x.t)+'</span>'+(x.must?'<span class="tm">必读</span>':'')+'</a>';
+  });
+});
+tocHTML += '</div>';
+toc.innerHTML = tocHTML;
+document.body.appendChild(tocMask); document.body.appendChild(toc);
+function tocOpen(o){ toc.classList.toggle('open',o); tocMask.classList.toggle('open',o); }
+tocMask.addEventListener('click',()=>tocOpen(false));
+document.getElementById('tocBtn').addEventListener('click',()=>tocOpen(true));
+document.getElementById('tocClose').addEventListener('click',()=>tocOpen(false));
+toc.addEventListener('click',e=>{ if(e.target.closest('a')) tocOpen(false); });
+
+/* ============ 夜间模式 / 字号 ============ */
+const NT='dify-night', FS='dify-fs';
+if(localStorage.getItem(NT)==='1') document.body.classList.add('night');
+document.getElementById('nightBtn').addEventListener('click',()=>{
+  document.body.classList.toggle('night');
+  localStorage.setItem(NT, document.body.classList.contains('night')?'1':'0');
+});
+const fsSteps=['','fs1','fs2','fsm']; let fsIdx=+(localStorage.getItem(FS)||0);
+function applyFs(){ document.body.classList.remove('fs1','fs2','fsm'); if(fsSteps[fsIdx]) document.body.classList.add(fsSteps[fsIdx]); localStorage.setItem(FS,fsIdx); }
+applyFs();
+document.getElementById('fontBtn').addEventListener('click',()=>{ fsIdx=(fsIdx+1)%fsSteps.length; applyFs(); });
+
+/* ============ 浮动按钮 + 顶部进度 ============ */
+const fabCol = document.createElement('div'); fabCol.className='fab-col';
+fabCol.innerHTML='<button class="fab" id="fabToc" title="目录">目</button><button class="fab" id="fabTop" title="回到顶部">↑</button>';
+document.body.appendChild(fabCol);
+document.getElementById('fabToc').addEventListener('click',()=>tocOpen(true));
+document.getElementById('fabTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+const topBar = document.getElementById('topBar');
+addEventListener('scroll',()=>{
+  const h=document.documentElement, p=h.scrollTop/(h.scrollHeight-h.clientHeight);
+  if(topBar) topBar.style.width=(p*100)+'%';
+  fabCol.classList.toggle('show', h.scrollTop>600);
+},{passive:true});
+</script>
+</body>
+</html>
