@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>APAC 领航学院</title>
 <style>
 :root{--bg:#F2F4F7;--card:#FFFFFF;--ink:#101828;--ink2:#354052;--muted:#676F83;--line:#E9EBF0;--accent:#0033FF;--accent-h:#002CDE;--accent-ink:#FFFFFF;--bad:#D92D20;--ok:#079455;--field:rgba(200,206,218,.25);--dot:#D0D5DD;--glow:rgba(0,51,255,.14);--shadow:0 12px 16px -4px rgba(9,9,11,.08),0 4px 6px -2px rgba(9,9,11,.03)}
@@ -132,7 +133,7 @@ function encryptContent(html,dek){var iv=rnd(12);return pipe(te.encode(html),Com
 function makeVault(user,pass,dek){var salt=rnd(16),iv=rnd(12);return kek(user,pass,salt,ITER).then(function(k){return crypto.subtle.wrapKey('raw',dek,k,{name:'AES-GCM',iv:iv,additionalData:aadWrap(user)})}).then(function(w){return {v:1,user:user,kdf:{name:'PBKDF2',hash:'SHA-256',iter:ITER,salt:b64e(salt)},wrap:{alg:'AES-256-GCM',iv:b64e(iv),ct:b64e(new Uint8Array(w))},mustChange:false,updated:new Date().toISOString()}})}
 function exportDek(dek){return crypto.subtle.exportKey('raw',dek).then(function(r){return b64e(new Uint8Array(r))})}
 function importDek(s){return crypto.subtle.importKey('raw',b64d(s),{name:'AES-GCM'},true,['encrypt','decrypt'])}
-function getJSON(u){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(u+' '+r.status);return r.json()})}
+function getJSON(u,n){n=n||0;return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(u+' '+r.status);return r.json()}).catch(function(e){if(n>=3)throw e;busy('网络不稳定，正在重试（'+(n+1)+'/3）…');return new Promise(function(ok){setTimeout(ok,[800,2000,4000][n])}).then(function(){return getJSON(u,n+1)})})}
 
 // ---------- open the site
 function saveSession(dek,stamp,pendingContent){return exportDek(dek).then(function(k){var o={dek:k,stamp:stamp};if(pendingContent)o.content=pendingContent;ss(SKEY,JSON.stringify(o))})}
@@ -251,7 +252,7 @@ function boot(){
       ss(SKEY,null);
     }
     show('vLogin');setTimeout(function(){$('u').focus()},30);
-  }).catch(function(err){busy('无法加载站点文件：'+err.message)});
+  }).catch(function(err){busy('暂时无法加载站点文件（'+err.message+'）。请检查网络后重试。');var b=document.createElement('button');b.type='button';b.textContent='重试';b.style.justifySelf='center';b.onclick=function(){b.remove();boot()};$('vBusy').appendChild(b)});
 }
 $('loginForm').addEventListener('submit',onLogin);
 $('chgForm').addEventListener('submit',onChange);
