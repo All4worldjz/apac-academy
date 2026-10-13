@@ -1,0 +1,50 @@
+name: 发布加密站点
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 检查：站点目录里不能有明文
+        run: |
+          set -e
+          allowed="index.html vault.json content.enc.json .nojekyll"
+          for f in $(cd site && find . -type f | sed 's|^\./||'); do
+            case " $allowed " in *" $f "*) ;; *) echo "::error::site/ 中出现不允许的文件：$f"; exit 1;; esac
+          done
+          if git ls-files | grep -E '^plain/|\.plain\.html$'; then echo "::error::明文文件被提交到了仓库"; exit 1; fi
+          if grep -q '张路宇' site/index.html; then echo "::error::site/index.html 含有明文内容"; exit 1; fi
+          node -e '
+            const fs=require("fs");
+            const c=JSON.parse(fs.readFileSync("site/content.enc.json","utf8"));
+            const v=JSON.parse(fs.readFileSync("site/vault.json","utf8"));
+            if(c.alg!=="AES-256-GCM"||!c.ct||!c.iv) throw new Error("content.enc.json 格式不对");
+            if(!v.wrap||!v.kdf||v.kdf.iter<300000) throw new Error("vault.json 格式不对");
+            console.log("加密文件检查通过；强制改口令="+v.mustChange+"；更新于 "+v.updated);
+          '
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

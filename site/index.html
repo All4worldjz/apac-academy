@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>APAC 领航学院</title>
+<style>
+:root{--bg:#F2F4F7;--card:#FFFFFF;--ink:#101828;--ink2:#354052;--muted:#676F83;--line:#E9EBF0;--accent:#0033FF;--accent-h:#002CDE;--accent-ink:#FFFFFF;--bad:#D92D20;--ok:#079455;--field:rgba(200,206,218,.25);--dot:#D0D5DD;--glow:rgba(0,51,255,.14);--shadow:0 12px 16px -4px rgba(9,9,11,.08),0 4px 6px -2px rgba(9,9,11,.03)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1D20;--card:#222225;--ink:#FBFBFC;--ink2:#D9D9DE;--muted:#A3A8B5;--line:#323238;--accent:#3072FF;--accent-h:#5287FF;--accent-ink:#FFFFFF;--bad:#F97066;--ok:#47CD89;--field:rgba(255,255,255,.08);--dot:#3A3A40;--glow:rgba(48,114,255,.18);--shadow:0 12px 24px -6px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#1D1D20;--card:#222225;--ink:#FBFBFC;--ink2:#D9D9DE;--muted:#A3A8B5;--line:#323238;--accent:#3072FF;--accent-h:#5287FF;--accent-ink:#FFFFFF;--bad:#F97066;--ok:#47CD89;--field:rgba(255,255,255,.08);--dot:#3A3A40;--glow:rgba(48,114,255,.18);--shadow:0 12px 24px -6px rgba(0,0,0,.5)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:radial-gradient(640px 340px at 85% -5%,var(--glow),transparent 70%),radial-gradient(520px 300px at 5% 105%,rgba(135,91,247,.10),transparent 70%),radial-gradient(circle,var(--dot) 1px,transparent 1.2px) 0 0/20px 20px,var(--bg);color:var(--ink2);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Roboto,sans-serif;display:grid;place-items:center;min-height:100vh;padding:24px 16px}
+[hidden]{display:none!important}
+.card{width:min(440px,100%);background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:30px 28px;display:grid;gap:18px}
+.card.wide{width:min(560px,100%)}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{width:40px;height:40px;border-radius:10px;background:var(--accent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2),0 6px 14px -6px var(--accent);display:grid;place-items:center}
+.mark svg{width:22px;height:22px}
+.brand b{font-size:17px;display:block;line-height:1.25;color:var(--ink);letter-spacing:-.01em}
+.brand span{font-size:12px;color:var(--muted)}
+h2{margin:0;font-size:20px;color:var(--ink);letter-spacing:-.01em}
+p{margin:0}
+.muted{color:var(--muted);font-size:13.5px}
+form{display:grid;gap:12px}
+label{display:grid;gap:6px;font-size:13px;font-weight:500;color:var(--ink2)}
+input{font:inherit;color:var(--ink);background:var(--field);border:1px solid transparent;border-radius:8px;padding:11px 13px;width:100%;min-height:44px}
+input:focus{outline:none;border-color:var(--accent);background:var(--card);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+button{font:inherit;border:0;border-radius:10px;padding:11px 16px;min-height:44px;cursor:pointer;background:var(--accent);color:var(--accent-ink);font-weight:600;box-shadow:0 1px 2px rgba(16,24,40,.05),inset 0 -1px 0 rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.18)}
+button:not(:disabled):hover{background:var(--accent-h)}
+button.ghost{background:var(--card);color:var(--ink2);border:1px solid var(--line);font-weight:500;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+button.ghost:not(:disabled):hover{background:var(--bg)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.msg{font-size:13.5px;min-height:1.2em}
+.msg.bad{color:var(--bad)}.msg.ok{color:var(--ok)}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.rules li::before{content:"○ ";}
+.rules li.on{color:var(--ok)}.rules li.on::before{content:"● "}
+.box{border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--bg) 40%,var(--card));padding:16px;display:grid;gap:12px}
+.box h3{margin:0;font-size:15px;color:var(--ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.card{padding:24px 18px}.row{grid-template-columns:1fr}}
+.foot{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:14px}
+.spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:sp 1s linear infinite;justify-self:center}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <section class="card" id="vBusy">
+    <div class="spin" aria-hidden="true"></div>
+    <p class="muted" id="busyText" style="text-align:center">正在加载…</p>
+  </section>
+
+  <section class="card" id="vLogin" hidden>
+    <div class="brand"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="color:var(--accent-ink)"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div><b>APAC 领航学院</b><span>受保护内容 · 请登录</span></div></div>
+    <form id="loginForm" autocomplete="on">
+      <label>用户名<input id="u" name="username" autocomplete="username" required autocapitalize="off" spellcheck="false"></label>
+      <label>口令<input id="p" name="password" type="password" autocomplete="current-password" required></label>
+      <button id="loginBtn" type="submit">登录</button>
+      <p class="msg" id="loginMsg" role="alert"></p>
+    </form>
+    <p class="foot">内容以 AES-256 加密存放，只在你的浏览器里解密。口令不会发送到任何服务器。</p>
+  </section>
+
+  <section class="card" id="vChange" hidden>
+    <div><h2 id="chgTitle">设置新口令</h2><p class="muted" id="chgLead" style="margin-top:6px">首次登录必须把初始口令换成你自己的口令。</p></div>
+    <form id="chgForm" autocomplete="off">
+      <input type="text" name="username" autocomplete="username" id="chgUser" hidden>
+      <label>新口令<input id="n1" type="password" autocomplete="new-password" required></label>
+      <label>再输入一次<input id="n2" type="password" autocomplete="new-password" required></label>
+      <ul class="rules" id="rules">
+        <li data-r="len">至少 10 个字符</li>
+        <li data-r="mix">同时包含字母和数字</li>
+        <li data-r="diff">不同于当前口令，且不包含用户名</li>
+        <li data-r="same">两次输入一致</li>
+      </ul>
+      <button id="chgBtn" type="submit" disabled>生成新密钥</button>
+      <p class="msg" id="chgMsg" role="alert"></p>
+    </form>
+  </section>
+
+  <section class="card wide" id="vSave" hidden>
+    <div><h2>保存新口令</h2><p class="muted" style="margin-top:6px">新口令已在本机生效。把新的密钥文件发布到站点后，所有设备都要用新口令登录，旧口令随即失效。</p></div>
+    <div class="box">
+      <h3>方式一：直接发布到 GitHub</h3>
+      <div class="row">
+        <label>仓库（owner/name）<input id="ghRepo" placeholder="your-name/your-repo" autocapitalize="off" spellcheck="false"></label>
+        <label>分支<input id="ghBranch" value="main" autocapitalize="off" spellcheck="false"></label>
+      </div>
+      <label>站点文件所在目录<input id="ghDir" value="site/" autocapitalize="off" spellcheck="false"></label>
+      <label>GitHub 令牌（只需该仓库的 Contents 读写权限，用完即弃，不会被保存）<input id="ghToken" type="password" autocomplete="off"></label>
+      <button id="ghBtn" type="button">发布到 GitHub</button>
+      <p class="msg" id="ghMsg" role="status"></p>
+    </div>
+    <div class="box">
+      <h3>方式二：下载后手动上传</h3>
+      <p class="muted">下载 vault.json 和 content.enc.json，替换仓库站点目录下的同名文件后提交。</p>
+      <button id="dlBtn" type="button" class="ghost">下载两个文件</button>
+    </div>
+    <button id="enterBtn" type="button" disabled>进入学院</button>
+    <p class="muted" id="enterHint">完成上面任一方式后即可进入。</p>
+  </section>
+</main>
+
+<script>
+(function(){
+'use strict';
+var CFG={vault:'vault.json',content:'content.enc.json',dir:'site/',branch:'main',repo:''};
+var SKEY='apac-vault-session',FKEY='apac-vault-fail',DEFAULT_PASS='passwd123',ITER=600000;
+var te=new TextEncoder(),td=new TextDecoder();
+var S={vault:null,content:null,user:'',pass:'',dek:null,html:'',pending:null,forced:false};
+function $(id){return document.getElementById(id)}
+function show(id){['vBusy','vLogin','vChange','vSave'].forEach(function(v){$(v).hidden=(v!==id)})}
+function busy(t){$('busyText').textContent=t;show('vBusy')}
+function b64e(u8){var s='';for(var i=0;i<u8.length;i+=0x8000)s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000));return btoa(s)}
+function b64d(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u}
+function rnd(n){return crypto.getRandomValues(new Uint8Array(n))}
+function aadWrap(u){return te.encode('apac-vault/v1/wrap/'+u)}
+var AAD_C=te.encode('apac-vault/v1/content');
+function ss(k,v){try{if(v===undefined)return sessionStorage.getItem(k);if(v===null)sessionStorage.removeItem(k);else sessionStorage.setItem(k,v)}catch(e){return null}}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+
+function kek(user,pass,salt,iter){return crypto.subtle.importKey('raw',te.encode(user+'\u0000'+pass),'PBKDF2',false,['deriveKey']).then(function(base){return crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt:salt,iterations:iter},base,{name:'AES-GCM',length:256},false,['wrapKey','unwrapKey'])})}
+function unwrapDek(v,user,pass){return kek(user,pass,b64d(v.kdf.salt),v.kdf.iter).then(function(k){return crypto.subtle.unwrapKey('raw',b64d(v.wrap.ct),k,{name:'AES-GCM',iv:b64d(v.wrap.iv),additionalData:aadWrap(v.user)},{name:'AES-GCM'},true,['encrypt','decrypt'])})}
+function pipe(u8,T){return new Response(new Blob([u8]).stream().pipeThrough(new T('gzip'))).arrayBuffer().then(function(b){return new Uint8Array(b)})}
+function decryptContent(c,dek){return crypto.subtle.decrypt({name:'AES-GCM',iv:b64d(c.iv),additionalData:AAD_C},dek,b64d(c.ct)).then(function(b){var u=new Uint8Array(b);return c.gz?pipe(u,DecompressionStream):u}).then(function(u){return td.decode(u)})}
+function encryptContent(html,dek){var iv=rnd(12);return pipe(te.encode(html),CompressionStream).then(function(gz){return crypto.subtle.encrypt({name:'AES-GCM',iv:iv,additionalData:AAD_C},dek,gz)}).then(function(ct){return {v:1,alg:'AES-256-GCM',gz:true,iv:b64e(iv),ct:b64e(new Uint8Array(ct))}})}
+function makeVault(user,pass,dek){var salt=rnd(16),iv=rnd(12);return kek(user,pass,salt,ITER).then(function(k){return crypto.subtle.wrapKey('raw',dek,k,{name:'AES-GCM',iv:iv,additionalData:aadWrap(user)})}).then(function(w){return {v:1,user:user,kdf:{name:'PBKDF2',hash:'SHA-256',iter:ITER,salt:b64e(salt)},wrap:{alg:'AES-256-GCM',iv:b64e(iv),ct:b64e(new Uint8Array(w))},mustChange:false,updated:new Date().toISOString()}})}
+function exportDek(dek){return crypto.subtle.exportKey('raw',dek).then(function(r){return b64e(new Uint8Array(r))})}
+function importDek(s){return crypto.subtle.importKey('raw',b64d(s),{name:'AES-GCM'},true,['encrypt','decrypt'])}
+function getJSON(u){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(u+' '+r.status);return r.json()})}
+
+// ---------- open the site
+function saveSession(dek,stamp,pendingContent){return exportDek(dek).then(function(k){var o={dek:k,stamp:stamp};if(pendingContent)o.content=pendingContent;ss(SKEY,JSON.stringify(o))})}
+function lockUi(){
+  return '<style>#vaultDock{position:fixed;top:calc(9px + env(safe-area-inset-top,0px));right:12px;z-index:9999;display:flex;gap:6px}#vaultDock button{font:500 12.5px/1 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:8px 12px;border-radius:8px;border:1px solid #e9ebf0;background:#ffffff;color:#354052;box-shadow:0 4px 8px -2px rgba(16,24,40,.1);cursor:pointer;min-height:32px}#vaultDock button:hover{border-color:#0033ff;color:#0033ff}@media (prefers-color-scheme:dark){#vaultDock button{background:#222225;color:#d9d9de;border-color:#323238}}@media (min-width:1024px){#vaultDock{top:auto;right:auto;left:18px;bottom:18px}}@media print{#vaultDock{display:none}}</style>'+
+  '<div id="vaultDock"><button type="button" onclick="try{sessionStorage.removeItem(\''+SKEY+'\')}catch(e){};location.replace(location.pathname)">锁定</button><button type="button" onclick="try{sessionStorage.removeItem(\''+SKEY+'\')}catch(e){};location.replace(location.pathname+\'?change=1\')">改口令</button></div>';
+}
+function openSite(html){
+  var inj=lockUi();
+  var i=html.toLowerCase().lastIndexOf('</body>');
+  html=i>=0?html.slice(0,i)+inj+html.slice(i):html+inj;
+  document.open();document.write(html);document.close();
+}
+
+// ---------- login
+function failState(){try{return JSON.parse(ls(FKEY)||'{"n":0,"until":0}')}catch(e){return {n:0,until:0}}}
+function onLogin(e){
+  e.preventDefault();
+  var f=failState(),now=Date.now();
+  if(f.until>now){$('loginMsg').className='msg bad';$('loginMsg').textContent='尝试次数过多，请 '+Math.ceil((f.until-now)/1000)+' 秒后再试。';return}
+  var user=$('u').value.trim(),pass=$('p').value;
+  $('loginBtn').disabled=true;$('loginMsg').className='msg';$('loginMsg').textContent='正在验证…';
+  unwrapDek(S.vault,user,pass).then(function(dek){
+    if(user!==S.vault.user)throw new Error('user');
+    S.user=user;S.pass=pass;S.dek=dek;ls(FKEY,null);
+    return decryptContent(S.content,dek);
+  }).then(function(html){
+    S.html=html;$('p').value='';
+    var wantChange=/[?&]change=1\b/.test(location.search);
+    if(S.vault.mustChange||wantChange){S.forced=!!S.vault.mustChange;startChange();return}
+    return saveSession(S.dek,S.vault.updated).then(function(){openSite(S.html)});
+  }).catch(function(err){
+    var g=failState();g.n++;if(g.n>=5)g.until=Date.now()+30000*Math.pow(2,Math.min(g.n-5,5));ls(FKEY,JSON.stringify(g));
+    $('loginMsg').className='msg bad';$('loginMsg').textContent='用户名或口令不正确。';$('loginBtn').disabled=false;
+  });
+}
+
+// ---------- change password
+function checks(){
+  var a=$('n1').value,b=$('n2').value,u=S.user.toLowerCase();
+  var r={len:a.length>=10,mix:/[A-Za-z]/.test(a)&&/\d/.test(a),diff:!!a&&a!==S.pass&&a!==DEFAULT_PASS&&a.toLowerCase().indexOf(u)<0,same:!!a&&a===b};
+  [].forEach.call($('rules').children,function(li){li.classList.toggle('on',!!r[li.dataset.r])});
+  var ok=r.len&&r.mix&&r.diff&&r.same;$('chgBtn').disabled=!ok;return ok;
+}
+function startChange(){
+  $('chgUser').value=S.user;
+  if(!S.forced){$('chgTitle').textContent='修改口令';$('chgLead').textContent='设置新口令后，旧口令会在新密钥文件发布后失效。'}
+  $('n1').value='';$('n2').value='';checks();show('vChange');setTimeout(function(){$('n1').focus()},30);
+}
+function onChange(e){
+  e.preventDefault();if(!checks())return;
+  var np=$('n1').value;$('chgBtn').disabled=true;busy('正在生成新密钥并重新加密内容…');
+  crypto.subtle.generateKey({name:'AES-GCM',length:256},true,['encrypt','decrypt']).then(function(dek){
+    return Promise.all([encryptContent(S.html,dek),makeVault(S.user,np,dek)]).then(function(r){S.pending={dek:dek,content:r[0],vault:r[1]}});
+  }).then(function(){
+    $('n1').value='';$('n2').value='';S.pass='';
+    prefillRepo();show('vSave');
+  }).catch(function(err){show('vChange');$('chgMsg').className='msg bad';$('chgMsg').textContent='生成失败：'+err.message;$('chgBtn').disabled=false});
+}
+
+// ---------- save: GitHub or download
+function prefillRepo(){
+  var h=location.hostname,m=/^([^.]+)\.github\.io$/i.exec(h);
+  if(!$('ghRepo').value){
+    if(CFG.repo)$('ghRepo').value=CFG.repo;
+    else if(m){var seg=location.pathname.split('/').filter(Boolean)[0];$('ghRepo').value=m[1]+'/'+(seg&&!/\.html?$/.test(seg)?seg:m[1]+'.github.io')}
+  }
+  try{var saved=JSON.parse(ls('apac-vault-gh')||'null');if(saved){if(!$('ghRepo').value)$('ghRepo').value=saved.repo||'';$('ghBranch').value=saved.branch||CFG.branch;$('ghDir').value=saved.dir!=null?saved.dir:CFG.dir}}catch(e){}
+}
+function gh(path,token,opt){opt=opt||{};var h={'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28'};if(opt.body)h['Content-Type']='application/json';
+  return fetch('https://api.github.com'+path,{method:opt.method||'GET',headers:h,body:opt.body?JSON.stringify(opt.body):undefined}).then(function(r){return r.text().then(function(t){if(!r.ok)throw new Error(r.status+' '+(t||'').slice(0,160));return t?JSON.parse(t):{}})})}
+function ghCommit(repo,branch,dir,token,files,message){
+  var base,baseTree,tree=[];var R='/repos/'+repo;
+  return gh(R+'/git/ref/heads/'+encodeURIComponent(branch),token).then(function(ref){base=ref.object.sha;return gh(R+'/git/commits/'+base,token)}).then(function(c){baseTree=c.tree.sha;
+    return files.reduce(function(p,f){return p.then(function(){return gh(R+'/git/blobs',token,{method:'POST',body:{content:f[1],encoding:'utf-8'}}).then(function(b){tree.push({path:dir+f[0],mode:'100644',type:'blob',sha:b.sha})})})},Promise.resolve());
+  }).then(function(){return gh(R+'/git/trees',token,{method:'POST',body:{base_tree:baseTree,tree:tree}})}).then(function(t){return gh(R+'/git/commits',token,{method:'POST',body:{message:message,tree:t.sha,parents:[base]}})}).then(function(c){return gh(R+'/git/refs/heads/'+encodeURIComponent(branch),token,{method:'PATCH',body:{sha:c.sha}}).then(function(){return c.sha})});
+}
+function pendingFiles(){return [[CFG.vault,JSON.stringify(S.pending.vault,null,2)+'\n'],[CFG.content,JSON.stringify(S.pending.content)+'\n']]}
+function markSaved(text){$('enterBtn').disabled=false;$('enterHint').textContent=text}
+function onGh(){
+  var repo=$('ghRepo').value.trim().replace(/^https?:\/\/github\.com\//,'').replace(/\.git$/,''),branch=$('ghBranch').value.trim()||'main',dir=$('ghDir').value.trim(),token=$('ghToken').value.trim();
+  if(dir&&!/\/$/.test(dir))dir+='/';if(dir==='/' )dir='';
+  if(!/^[\w.-]+\/[\w.-]+$/.test(repo)){$('ghMsg').className='msg bad';$('ghMsg').textContent='仓库格式应为 owner/name。';return}
+  if(!token){$('ghMsg').className='msg bad';$('ghMsg').textContent='请填写 GitHub 令牌。';return}
+  $('ghBtn').disabled=true;$('ghMsg').className='msg';$('ghMsg').textContent='正在提交…';
+  ghCommit(repo,branch,dir,token,pendingFiles(),'Rotate site password and re-encrypt content').then(function(sha){
+    $('ghToken').value='';ls('apac-vault-gh',JSON.stringify({repo:repo,branch:branch,dir:dir}));
+    $('ghMsg').className='msg ok';$('ghMsg').textContent='已提交 '+sha.slice(0,7)+'。GitHub Pages 重新部署通常需要 1–2 分钟，之后旧口令失效。';
+    markSaved('已发布。可以进入学院。');
+  }).catch(function(err){$('ghBtn').disabled=false;$('ghMsg').className='msg bad';$('ghMsg').textContent='提交失败：'+err.message})
+}
+function onDl(){
+  pendingFiles().forEach(function(f,i){setTimeout(function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([f[1]],{type:'application/json'}));a.download=f[0];document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000)},i*400)});
+  markSaved('已下载。替换仓库里的同名文件并提交后，新口令对所有设备生效。');
+}
+function onEnter(){
+  var p=S.pending;busy('正在进入…');
+  saveSession(p.dek,p.vault.updated,JSON.stringify(p.content)).then(function(){
+    if(/[?&]change=1\b/.test(location.search))history.replaceState(null,'',location.pathname+location.hash);
+    openSite(S.html);
+  });
+}
+
+// ---------- boot
+function boot(){
+  if(!window.crypto||!crypto.subtle||typeof CompressionStream==='undefined'){busy('当前浏览器不支持所需的加密功能，请使用最新版 Chrome、Edge、Safari 或 Firefox，并通过 HTTPS 访问。');return}
+  busy('正在加载…');
+  Promise.all([getJSON(CFG.vault),getJSON(CFG.content)]).then(function(r){
+    S.vault=r[0];S.content=r[1];
+    var raw=ss(SKEY),sess=null;try{sess=raw?JSON.parse(raw):null}catch(e){}
+    if(sess&&!/[?&]change=1\b/.test(location.search)){
+      var useContent=null;
+      if(sess.stamp===S.vault.updated)useContent=S.content;
+      else if(sess.content&&sess.stamp>S.vault.updated)useContent=JSON.parse(sess.content);
+      if(useContent)return importDek(sess.dek).then(function(dek){return decryptContent(useContent,dek)}).then(openSite).catch(function(){ss(SKEY,null);show('vLogin')});
+      ss(SKEY,null);
+    }
+    show('vLogin');setTimeout(function(){$('u').focus()},30);
+  }).catch(function(err){busy('无法加载站点文件：'+err.message)});
+}
+$('loginForm').addEventListener('submit',onLogin);
+$('chgForm').addEventListener('submit',onChange);
+$('n1').addEventListener('input',checks);$('n2').addEventListener('input',checks);
+$('ghBtn').addEventListener('click',onGh);$('dlBtn').addEventListener('click',onDl);$('enterBtn').addEventListener('click',onEnter);
+boot();
+})();
+</script>
+</body>
+</html>

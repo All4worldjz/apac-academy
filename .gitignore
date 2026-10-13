@@ -1,0 +1,4 @@
+plain/
+*.plain.html
+.DS_Store
+node_modules/

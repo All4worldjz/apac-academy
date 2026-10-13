@@ -1,0 +1,17 @@
+{
+  "v": 1,
+  "user": "all4world",
+  "kdf": {
+    "name": "PBKDF2",
+    "hash": "SHA-256",
+    "iter": 600000,
+    "salt": "4oCCCLiJQ7rAtAstcKUgoQ=="
+  },
+  "wrap": {
+    "alg": "AES-256-GCM",
+    "iv": "6kp6bXDbUadjJ7Ym",
+    "ct": "D64yC43DIFl5SLc9052DBtrkaz/YYDoBorJTPq6UCT+tunCfuOh7ZcycmVBjosrD"
+  },
+  "mustChange": false,
+  "updated": "2026-10-13T12:10:44.113Z"
+}
