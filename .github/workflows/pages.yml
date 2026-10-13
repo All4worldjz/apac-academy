@@ -3,7 +3,7 @@ name: 发布加密站点
 on:
   push:
     branches: [main]
-    paths: ["site/**", "sources-reading/**", "public/**", "hub/**", ".github/workflows/pages.yml"]
+    paths: ["site/**", "sources-reading/**", "public/**", "hub/**", "v2/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -53,6 +53,8 @@ jobs:
           cp sources-reading/index.html _deploy/sources-reading/index.html
           # 公开学院页面（不加密）：/genspark/ 与 /zilliz/
           for d in public/*/; do n=$(basename "$d"); mkdir -p "_deploy/$n"; cp "$d/index.html" "_deploy/$n/index.html"; done
+          # v2：新版学院（进门验证，不加密），独立地址 /v2/，不覆盖原版本
+          cp -r v2 _deploy/v2
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
