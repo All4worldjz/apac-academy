@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><script>(function(){var D="e2cb8d47afed7de9325d329f95ba98a5a1d55e55a4b8673630996a91a085327d";try{var e=localStorage.getItem("a4w-v2-cred")||D;if(localStorage.getItem("a4w-v2-auth")!==e)document.documentElement.className+=" a4w-gated"}catch(x){document.documentElement.className+=" a4w-gated"}})();</script><style>html.a4w-gated body>*:not(#a4wGate){display:none!important}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>市场情报总览 · 领航学院</title>
+<meta name="description" content="Genspark、Glean、Dify、Zilliz 四家 AI 公司的横向市场情报：估值与融资、收入轨迹、亚太布局、商业模式、定位、信号监测与实用工具。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%232F5BFF'/%3E%3Cpath d='M20 8l3.6 12L20 32l-3.6-12z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#F5F6F9;--paper:#FFFFFF;--ink:#0A0D18;--ink2:#3A4256;--muted:#6B7387;--line:#E5E8EF;--soft:#F8F9FB;
+--night:#06070D;--n-ink:#F3F5FB;--n-mut:#A3ABC2;--grad:linear-gradient(100deg,#2F5BFF 0%,#7C5CFF 50%,#22D3EE 100%);
+--series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;--series-4:#eda100;
+--h0:#EEF1F6;--h1:#CFE0F6;--h2:#7FB0EA;--h3:#2a78d6;--h3t:#FFFFFF;--h2t:#0A0D18;
+--shadow:0 1px 2px rgba(15,18,30,.05);--shadow-md:0 16px 32px -16px rgba(15,18,30,.22);--ease:cubic-bezier(.2,.8,.2,1);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#090A10;--paper:#11131B;--ink:#F3F5FB;--ink2:#C8CEDC;--muted:#959DB2;--line:#232835;--soft:#161925;
+--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--series-4:#c98500;--h0:#171B26;--h1:#1E3554;--h2:#2B5C97;--h3:#3987e5;--h2t:#F3F5FB;--shadow-md:0 18px 36px -16px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#090A10;--paper:#11131B;--ink:#F3F5FB;--ink2:#C8CEDC;--muted:#959DB2;--line:#232835;--soft:#161925;
+--series-1:#3987e5;--series-2:#d95926;--series-3:#199e70;--series-4:#c98500;--h0:#171B26;--h1:#1E3554;--h2:#2B5C97;--h3:#3987e5;--h2t:#F3F5FB;--shadow-md:0 18px 36px -16px rgba(0,0,0,.7);color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink2);font:15.5px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:2px solid #2F5BFF;outline-offset:2px}
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{width:30px;height:30px}
+.brand b{display:block;font-size:15px;line-height:1.2}.brand span{display:block;font-size:11.5px;color:var(--muted)}
+.toc{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.toc a{font-size:13px;text-decoration:none;color:var(--ink2);padding:7px 11px;border-radius:999px;white-space:nowrap}
+.toc a:hover,.toc a.on{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(900px 480px at 88% -10%,rgba(124,92,255,.4),transparent 62%),radial-gradient(760px 440px at -8% 110%,rgba(47,91,255,.48),transparent 60%),var(--night);color:var(--n-ink);padding:76px 0 56px}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 80%)}
+.kick{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px 5px 6px}
+.kick b{font-size:11px;color:#fff;background:var(--grad);border-radius:999px;padding:2px 9px}
+h1{margin:18px 0 12px;font-size:clamp(34px,5.6vw,64px);line-height:1.08;letter-spacing:-.035em;color:#fff;font-weight:780}
+.lede{max-width:44em;color:var(--n-mut);font-size:16.5px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:32px}
+.st{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 16px}
+.st small{display:block;font:700 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--n-mut)}
+.st b{display:block;color:#fff;font-size:26px;letter-spacing:-.02em;margin:8px 0 2px}
+.st span{font-size:12.5px;color:var(--n-mut)}
+section{padding:64px 0 8px;scroll-margin-top:70px}
+.sh{max-width:46em;margin-bottom:22px}
+.eyebrow{font:700 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#2F5BFF;text-transform:uppercase}
+.sh h2{margin:10px 0 6px;font-size:clamp(24px,3vw,34px);letter-spacing:-.025em;color:var(--ink);line-height:1.2}
+.sh p{margin:0;color:var(--muted)}
+.cardv{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px 22px 14px;box-shadow:var(--shadow)}
+.cardv h3{margin:0;color:var(--ink);font-size:17px}
+.cardv .sub{margin:4px 0 12px;color:var(--muted);font-size:13px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.lg{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:4px 0 6px}
+.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.lgh{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin-top:8px}
+.lgh i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px;border:1px solid var(--line)}
+svg.viz{display:block;width:100%;height:auto;overflow:visible}
+.viz text{font-family:inherit}
+.viz .lab{fill:var(--ink);font-size:13px;font-weight:600}
+.viz .val{fill:var(--ink2);font-size:13px;font-weight:600}
+.viz .tick{fill:var(--muted);font-size:11.5px}
+.viz .dlab{fill:var(--ink);font-size:13px;font-weight:700}
+.viz .sublab{fill:var(--muted);font-size:11.5px}
+.viz .evt{fill:var(--ink2);font-size:11px}
+.viz .grid{stroke:var(--line);stroke-width:1}
+.viz .axis{stroke:var(--muted);stroke-width:1}
+.viz .axis2{stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 5}
+.viz .quad{fill:var(--soft);stroke:var(--line)}
+.viz .hit{fill:transparent}
+.viz .line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.viz .dot,.viz .mk{stroke:var(--paper);stroke-width:2}
+.viz .lane{stroke-width:2;opacity:.45}
+.viz g[tabindex]{cursor:default;outline:none}
+.viz g[tabindex]:hover .dot,.viz g[tabindex]:focus .dot{r:7}
+.viz .bar path{transition:opacity .2s}
+.viz .bar:hover path,.viz .bar:focus path{opacity:.82}
+.viz .cell{stroke:var(--paper);stroke-width:2}
+.viz .cell.l0{fill:var(--h0)}.viz .cell.l1{fill:var(--h1)}.viz .cell.l2{fill:var(--h2)}.viz .cell.l3{fill:var(--h3)}
+.viz .ctext{font-size:14px;font-weight:700;fill:var(--ink2)}.viz .ctext.l3{fill:var(--h3t)}.viz .ctext.l2{fill:var(--h2t)}
+.viz g[tabindex]:hover .cell,.viz g[tabindex]:focus .cell{stroke:var(--ink);stroke-width:2}
+details.data{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+details.data summary{cursor:pointer;font-size:12.5px;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--paper);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--ink);background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:650;color:var(--ink);white-space:nowrap}
+details.data table{font-size:12.5px;margin-top:8px}
+.note{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px 22px;box-shadow:var(--shadow)}
+.tool h3{margin:0 0 4px;color:var(--ink);font-size:16.5px}
+.tool p{margin:0 0 10px;color:var(--muted);font-size:13.5px}
+.tool ul,.tool ol{margin:0;padding-left:20px}
+.tool li{margin:6px 0;font-size:14px}
+.tag{display:inline-block;font:600 11px/1 ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--muted);margin-left:6px;vertical-align:2px}
+.grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.grade div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13px}
+.grade b{display:block;color:var(--ink);font-size:14px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media print{.reveal{opacity:1!important;transform:none!important}}
+footer{border-top:1px solid var(--line);margin-top:64px;padding:26px 0 120px;font-size:12.5px;color:var(--muted)}
+@media (max-width:900px){.two,.tools{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.toc{display:none}.hero{padding:52px 0 40px}.st b{font-size:21px}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../" aria-label="返回总导航"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2F5BFF"/><stop offset=".55" stop-color="#7C5CFF"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><rect width="40" height="40" rx="12" fill="url(#lg)"/><path d="M20 8l3.6 12L20 32l-3.6-12z" fill="#fff"/></svg><div><b>市场情报总览</b><span>领航学院</span></div></a>
+  <nav class="toc" aria-label="本页目录"><a href="#capital">资本</a><a href="#growth">收入</a><a href="#apac">亚太</a><a href="#model">商业模式</a><a href="#position">定位</a><a href="#timeline">时间线</a><a href="#watch">信号监测</a><a href="#tools">实用工具</a><a href="#method">方法</a></nav>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <span class="kick"><b>情报</b>截至 2026 年 10 月 · 公开来源</span>
+  <h1>四家 AI 公司的横向对照</h1>
+  <p class="lede">把 Genspark、Glean、Dify、Zilliz 放在同一组坐标里看：资本、收入、亚太布局、商业模式与定位，再给出需要持续跟踪的信号和可以直接使用的清单。每个数字都标明来源性质；公司未公开的数字一律写「未公开」，不做推算。</p>
+  <div class="stats"><div class="st reveal"><small>Glean</small><b>3 亿美元</b><span>年化收入 · 2026 年 5 月</span></div><div class="st reveal"><small>Genspark</small><b>约 2.5 亿美元</b><span>年化收入 · 2026 年 7 月报道</span></div><div class="st reveal"><small>Dify</small><b>280+</b><span>企业客户 · 2026 年报道</span></div><div class="st reveal"><small>Zilliz</small><b>3.3 倍</b><span>12 个月收入增长 · 2025 年 8 月</span></div></div>
+</div></div>
+
+<section id="capital"><div class="wrap">
+  <div class="sh"><span class="eyebrow">01 · Capital</span><h2>资本：估值与已披露融资</h2><p>斜线条纹表示媒体或访谈中提及、并非公司正式公告的数字。四家公司所处阶段差异很大，估值不宜直接横向比较，它反映的是资本对各自赛道的定价。</p></div>
+  <div class="two">
+    <div class="cardv reveal"><h3 id="t-val">最近一次公开或报道的估值</h3><p class="sub">单位：美元</p><svg class="viz" viewBox="0 0 720 232" role="img" aria-labelledby="t-val"><defs><pattern id="hatch-t-val" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="var(--series-1)" opacity=".35"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--series-1)" stroke-width="3"/></pattern></defs><g class="bar" tabindex="0" data-tip="Glean：72 亿 美元（F 轮融资公告 · 2025 年 6 月）"><text x="96" y="34" class="lab" text-anchor="end">Glean</text><rect class="hit" x="108" y="6" width="612" height="46"/><path d="M108 12 h411.8 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-411.8 z" fill="var(--series-1)"/><text x="533.8" y="34" class="val">72 亿</text></g><g class="bar" tabindex="0" data-tip="Genspark：26 亿 美元（B 轮扩展报道 · 2026 年 6 月）"><text x="96" y="86" class="lab" text-anchor="end">Genspark</text><rect class="hit" x="108" y="58" width="612" height="46"/><path d="M108 64 h146.2 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-146.2 z" fill="var(--series-1)"/><text x="268.1" y="86" class="val">26 亿</text></g><g class="bar" tabindex="0" data-tip="Zilliz：约 6 亿 美元（访谈文章提及 · 2025 年 8 月 · 非公司公告）"><text x="96" y="138" class="lab" text-anchor="end">Zilliz</text><rect class="hit" x="108" y="110" width="612" height="46"/><path d="M108 116 h30.6 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-30.6 z" fill="url(#hatch-t-val)"/><text x="152.7" y="138" class="val">约 6 亿</text></g><g class="bar" tabindex="0" data-tip="Dify：约 1.8 亿 美元（媒体报道 · 2026 年 3 月 · 非公司公告）"><text x="96" y="190" class="lab" text-anchor="end">Dify</text><rect class="hit" x="108" y="162" width="612" height="46"/><path d="M108 168 h6.4 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-6.4 z" fill="url(#hatch-t-val)"/><text x="128.4" y="190" class="val">约 1.8 亿</text></g><line x1="108" y1="4" x2="108" y2="226" class="axis"/></svg>
+      <details class="data"><summary>查看数据表</summary><table><tr><th>公司</th><th>估值</th><th>来源性质与时间</th></tr><tr><td>Glean</td><td>72 亿</td><td>F 轮融资公告 · 2025 年 6 月</td></tr><tr><td>Genspark</td><td>26 亿</td><td>B 轮扩展报道 · 2026 年 6 月</td></tr><tr><td>Zilliz</td><td>约 6 亿</td><td>访谈文章提及 · 2025 年 8 月 · 非公司公告</td></tr><tr><td>Dify</td><td>约 1.8 亿</td><td>媒体报道 · 2026 年 3 月 · 非公司公告</td></tr></table></details></div>
+    <div class="cardv reveal"><h3 id="t-fund">已披露的融资额</h3><p class="sub">单位：美元。Dify 仅显示 2026 年 3 月 Pre-A 一轮</p><svg class="viz" viewBox="0 0 720 232" role="img" aria-labelledby="t-fund"><defs><pattern id="hatch-t-fund" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="var(--series-1)" opacity=".35"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--series-1)" stroke-width="3"/></pattern></defs><g class="bar" tabindex="0" data-tip="Glean：7.65 亿以上 美元（六轮累计 · Crunchbase）"><text x="96" y="34" class="lab" text-anchor="end">Glean</text><rect class="hit" x="108" y="6" width="612" height="46"/><path d="M108 12 h437.8 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-437.8 z" fill="var(--series-1)"/><text x="559.8" y="34" class="val">7.65 亿以上</text></g><g class="bar" tabindex="0" data-tip="Genspark：6.45 亿 美元（种子轮至 B 轮扩展累计）"><text x="96" y="86" class="lab" text-anchor="end">Genspark</text><rect class="hit" x="108" y="58" width="612" height="46"/><path d="M108 64 h368.5 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-368.5 z" fill="var(--series-1)"/><text x="490.5" y="86" class="val">6.45 亿</text></g><g class="bar" tabindex="0" data-tip="Zilliz：约 1.13 亿 美元（累计 · 官网）"><text x="96" y="138" class="lab" text-anchor="end">Zilliz</text><rect class="hit" x="108" y="110" width="612" height="46"/><path d="M108 116 h61.3 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-61.3 z" fill="var(--series-1)"/><text x="183.3" y="138" class="val">约 1.13 亿</text></g><g class="bar" tabindex="0" data-tip="Dify：3,000 万 美元（仅 2026 年 3 月 Pre-A；此前轮次未完整披露）"><text x="96" y="190" class="lab" text-anchor="end">Dify</text><rect class="hit" x="108" y="162" width="612" height="46"/><path d="M108 168 h13.3 a4 4 0 0 1 4 4 v26 a4 4 0 0 1 -4 4 h-13.3 z" fill="var(--series-1)"/><text x="135.3" y="190" class="val">3,000 万</text></g><line x1="108" y1="4" x2="108" y2="226" class="axis"/></svg>
+      <details class="data"><summary>查看数据表</summary><table><tr><th>公司</th><th>金额</th><th>口径</th></tr><tr><td>Glean</td><td>7.65 亿以上</td><td>六轮累计 · Crunchbase</td></tr><tr><td>Genspark</td><td>6.45 亿</td><td>种子轮至 B 轮扩展累计</td></tr><tr><td>Zilliz</td><td>约 1.13 亿</td><td>累计 · 官网</td></tr><tr><td>Dify</td><td>3,000 万</td><td>仅 2026 年 3 月 Pre-A；此前轮次未完整披露</td></tr></table></details></div>
+  </div>
+</div></section>
+
+<section id="growth"><div class="wrap">
+  <div class="sh"><span class="eyebrow">02 · Revenue</span><h2>收入：只有两家公开了年化收入</h2><p>Genspark 从个人用户起量，Glean 从大企业合同起量，两条曲线的形状不同，但在 2026 年都进入了 2–3 亿美元区间。Dify 与 Zilliz 未公开收入金额。</p></div>
+  <div class="cardv reveal"><h3 id="t-arr">年化收入轨迹</h3><p class="sub">单位：百万美元。Glean 含用量计价部分，更接近年化运行率</p><div class="lg"><span><i style="background:var(--series-1)"></i>Genspark</span><span><i style="background:var(--series-2)"></i>Glean</span></div><svg class="viz" viewBox="0 0 720 316" role="img" aria-labelledby="t-arr"><line x1="52" x2="600" y1="280.0" y2="280.0" class="grid"/><text x="44" y="284.0" class="tick" text-anchor="end">0</text><line x1="52" x2="600" y1="198.0" y2="198.0" class="grid"/><text x="44" y="202.0" class="tick" text-anchor="end">100</text><line x1="52" x2="600" y1="116.0" y2="116.0" class="grid"/><text x="44" y="120.0" class="tick" text-anchor="end">200</text><line x1="52" x2="600" y1="34.0" y2="34.0" class="grid"/><text x="44" y="38.0" class="tick" text-anchor="end">300</text><text x="52.0" y="304" class="tick" text-anchor="middle">2025.1</text><text x="216.4" y="304" class="tick" text-anchor="middle">2025.7</text><text x="380.8" y="304" class="tick" text-anchor="middle">2026.1</text><text x="545.2" y="304" class="tick" text-anchor="middle">2026.7</text><polyline class="line draw" points="134.2,271.8 161.6,250.5 271.2,239.0 380.8,198.0 463.0,116.0 545.2,75.0" stroke="var(--series-1)"/><g tabindex="0" data-tip="Genspark · 2025.04：上线 9 天 · 1,000 万 美元"><circle class="hit" cx="134.2" cy="271.8" r="14"/><circle class="dot" cx="134.2" cy="271.8" r="5" fill="var(--series-1)"/></g><g tabindex="0" data-tip="Genspark · 2025.05：上线 45 天 · 3,600 万 美元"><circle class="hit" cx="161.6" cy="250.5" r="14"/><circle class="dot" cx="161.6" cy="250.5" r="5" fill="var(--series-1)"/></g><g tabindex="0" data-tip="Genspark · 2025.09：约 5 个月 · 5,000 万以上 美元"><circle class="hit" cx="271.2" cy="239.0" r="14"/><circle class="dot" cx="271.2" cy="239.0" r="5" fill="var(--series-1)"/></g><g tabindex="0" data-tip="Genspark · 2026.01：1 亿（Web Summit 新闻稿） 美元"><circle class="hit" cx="380.8" cy="198.0" r="14"/><circle class="dot" cx="380.8" cy="198.0" r="5" fill="var(--series-1)"/></g><g tabindex="0" data-tip="Genspark · 2026.04：2 亿以上（融资报道） 美元"><circle class="hit" cx="463.0" cy="116.0" r="14"/><circle class="dot" cx="463.0" cy="116.0" r="5" fill="var(--series-1)"/></g><g tabindex="0" data-tip="Genspark · 2026.07：约 2.5 亿（首尔发布会报道） 美元"><circle class="hit" cx="545.2" cy="75.0" r="14"/><circle class="dot" cx="545.2" cy="75.0" r="5" fill="var(--series-1)"/></g><text x="555.2" y="79.0" class="dlab">Genspark</text><polyline class="line draw" points="79.4,198.0 353.4,116.0 490.4,34.0" stroke="var(--series-2)"/><g tabindex="0" data-tip="Glean · 2025.02：1 亿（公司公告） 美元"><circle class="hit" cx="79.4" cy="198.0" r="14"/><circle class="dot" cx="79.4" cy="198.0" r="5" fill="var(--series-2)"/></g><g tabindex="0" data-tip="Glean · 2025.12：2 亿（CEO 博客） 美元"><circle class="hit" cx="353.4" cy="116.0" r="14"/><circle class="dot" cx="353.4" cy="116.0" r="5" fill="var(--series-2)"/></g><g tabindex="0" data-tip="Glean · 2026.05：3 亿（公司公告） 美元"><circle class="hit" cx="490.4" cy="34.0" r="14"/><circle class="dot" cx="490.4" cy="34.0" r="5" fill="var(--series-2)"/></g><text x="500.4" y="38.0" class="dlab">Glean</text><text x="8" y="10" class="tick">百万美元</text></svg>
+    <details class="data"><summary>查看数据表</summary><table><tr><th>公司</th><th>时间</th><th>数值</th><th>口径</th></tr><tr><td>Genspark</td><td>2025.04</td><td>10 百万美元</td><td>上线 9 天 · 1,000 万</td></tr><tr><td>Genspark</td><td>2025.05</td><td>36 百万美元</td><td>上线 45 天 · 3,600 万</td></tr><tr><td>Genspark</td><td>2025.09</td><td>50 百万美元</td><td>约 5 个月 · 5,000 万以上</td></tr><tr><td>Genspark</td><td>2026.01</td><td>100 百万美元</td><td>1 亿（Web Summit 新闻稿）</td></tr><tr><td>Genspark</td><td>2026.04</td><td>200 百万美元</td><td>2 亿以上（融资报道）</td></tr><tr><td>Genspark</td><td>2026.07</td><td>250 百万美元</td><td>约 2.5 亿（首尔发布会报道）</td></tr><tr><td>Glean</td><td>2025.02</td><td>100 百万美元</td><td>1 亿（公司公告）</td></tr><tr><td>Glean</td><td>2025.12</td><td>200 百万美元</td><td>2 亿（CEO 博客）</td></tr><tr><td>Glean</td><td>2026.05</td><td>300 百万美元</td><td>3 亿（公司公告）</td></tr></table></details></div>
+  <p class="note">读法：Glean 用 15 个月从 1 亿美元增长到 3 亿美元；Genspark 从上线 9 天的 1,000 万美元增长到约 2.5 亿美元，用了约 15 个月。Genspark 的增长主要来自专业个人用户，企业收入占比尚未公开；Glean 的增长来自客户在部门间的扩张，但用量计价让续约更依赖 ROI 数据。</p>
+</div></section>
+
+<section id="apac"><div class="wrap">
+  <div class="sh"><span class="eyebrow">03 · APAC</span><h2>亚太布局：谁在哪里下了重注</h2><p>按公开动作分四级。颜色越深，投入越实。悬停或聚焦格子可以看到依据。</p></div>
+  <div class="cardv reveal"><h3 id="t-apac">亚太市场投入强度</h3><p class="sub">0 未见公开动作 · 1 云区域、内容或社区 · 2 客户、伙伴或办公室 · 3 法人、团队或专项投资</p><svg class="viz" viewBox="0 0 632 364" role="img" aria-labelledby="t-apac"><text x="162.0" y="20" class="lab" text-anchor="middle">Genspark</text><text x="294.0" y="20" class="lab" text-anchor="middle">Glean</text><text x="426.0" y="20" class="lab" text-anchor="middle">Dify</text><text x="558.0" y="20" class="lab" text-anchor="middle">Zilliz</text><text x="84" y="61.0" class="lab" text-anchor="end">日本</text><g tabindex="0" data-tip="Genspark · 日本：法人、团队或专项投资（东京法人；3 年 1 亿美元计划；本地团队）"><rect x="98" y="36" width="128" height="42" rx="6" class="cell l3"/><text x="162.0" y="61.0" class="ctext l3" text-anchor="middle">3</text></g><g tabindex="0" data-tip="Glean · 日本：法人、团队或专项投资（日本国家经理；丸红 IT Solutions 等代理）"><rect x="230" y="36" width="128" height="42" rx="6" class="cell l3"/><text x="294.0" y="61.0" class="ctext l3" text-anchor="middle">3</text></g><g tabindex="0" data-tip="Dify · 日本：法人、团队或专项投资（LangGenius K.K.；IF Con Tokyo；KDDI、理光案例）"><rect x="362" y="36" width="128" height="42" rx="6" class="cell l3"/><text x="426.0" y="61.0" class="ctext l3" text-anchor="middle">3</text></g><g tabindex="0" data-tip="Zilliz · 日本：云区域 / 内容 / 社区（AWS 东京区域；日文内容）"><rect x="494" y="36" width="128" height="42" rx="6" class="cell l1"/><text x="558.0" y="61.0" class="ctext l1" text-anchor="middle">1</text></g><text x="84" y="107.0" class="lab" text-anchor="end">韩国</text><g tabindex="0" data-tip="Genspark · 韩国：法人、团队或专项投资（首尔发布；3 年 1 亿美元计划）"><rect x="98" y="82" width="128" height="42" rx="6" class="cell l3"/><text x="162.0" y="107.0" class="ctext l3" text-anchor="middle">3</text></g><g tabindex="0" data-tip="Glean · 韩国：未见公开动作（未见公开动作）"><rect x="230" y="82" width="128" height="42" rx="6" class="cell l0"/><text x="294.0" y="107.0" class="ctext l0" text-anchor="middle">—</text></g><g tabindex="0" data-tip="Dify · 韩国：客户、伙伴或办公室（伙伴 ONS；首尔开发者活动）"><rect x="362" y="82" width="128" height="42" rx="6" class="cell l2"/><text x="426.0" y="107.0" class="ctext l2" text-anchor="middle">2</text></g><g tabindex="0" data-tip="Zilliz · 韩国：云区域 / 内容 / 社区（AWS 首尔区域）"><rect x="494" y="82" width="128" height="42" rx="6" class="cell l1"/><text x="558.0" y="107.0" class="ctext l1" text-anchor="middle">1</text></g><text x="84" y="153.0" class="lab" text-anchor="end">新加坡</text><g tabindex="0" data-tip="Genspark · 新加坡：未见公开动作（未见公开动作）"><rect x="98" y="128" width="128" height="42" rx="6" class="cell l0"/><text x="162.0" y="153.0" class="ctext l0" text-anchor="middle">—</text></g><g tabindex="0" data-tip="Glean · 新加坡：客户、伙伴或办公室（DBS 为公开客户）"><rect x="230" y="128" width="128" height="42" rx="6" class="cell l2"/><text x="294.0" y="153.0" class="ctext l2" text-anchor="middle">2</text></g><g tabindex="0" data-tip="Dify · 新加坡：客户、伙伴或办公室（线下活动；阿里云部署区域）"><rect x="362" y="128" width="128" height="42" rx="6" class="cell l2"/><text x="426.0" y="153.0" class="ctext l2" text-anchor="middle">2</text></g><g tabindex="0" data-tip="Zilliz · 新加坡：客户、伙伴或办公室（新加坡办公室与云区域）"><rect x="494" y="128" width="128" height="42" rx="6" class="cell l2"/><text x="558.0" y="153.0" class="ctext l2" text-anchor="middle">2</text></g><text x="84" y="199.0" class="lab" text-anchor="end">印度</text><g tabindex="0" data-tip="Genspark · 印度：云区域 / 内容 / 社区（被列为核心市场之一）"><rect x="98" y="174" width="128" height="42" rx="6" class="cell l1"/><text x="162.0" y="199.0" class="ctext l1" text-anchor="middle">1</text></g><g tabindex="0" data-tip="Glean · 印度：法人、团队或专项投资（班加罗尔办公室，计划约 450 人）"><rect x="230" y="174" width="128" height="42" rx="6" class="cell l3"/><text x="294.0" y="199.0" class="ctext l3" text-anchor="middle">3</text></g><g tabindex="0" data-tip="Dify · 印度：云区域 / 内容 / 社区（Dify Studio India 社区）"><rect x="362" y="174" width="128" height="42" rx="6" class="cell l1"/><text x="426.0" y="199.0" class="ctext l1" text-anchor="middle">1</text></g><g tabindex="0" data-tip="Zilliz · 印度：客户、伙伴或办公室（Azure 印度区域；客户 Sarvam）"><rect x="494" y="174" width="128" height="42" rx="6" class="cell l2"/><text x="558.0" y="199.0" class="ctext l2" text-anchor="middle">2</text></g><text x="84" y="245.0" class="lab" text-anchor="end">澳新</text><g tabindex="0" data-tip="Genspark · 澳新：未见公开动作（未见公开动作）"><rect x="98" y="220" width="128" height="42" rx="6" class="cell l0"/><text x="162.0" y="245.0" class="ctext l0" text-anchor="middle">—</text></g><g tabindex="0" data-tip="Glean · 澳新：法人、团队或专项投资（2026 年 5 月设立法人）"><rect x="230" y="220" width="128" height="42" rx="6" class="cell l3"/><text x="294.0" y="245.0" class="ctext l3" text-anchor="middle">3</text></g><g tabindex="0" data-tip="Dify · 澳新：未见公开动作（本站资料未收录）"><rect x="362" y="220" width="128" height="42" rx="6" class="cell l0"/><text x="426.0" y="245.0" class="ctext l0" text-anchor="middle">—</text></g><g tabindex="0" data-tip="Zilliz · 澳新：未见公开动作（未见公开动作）"><rect x="494" y="220" width="128" height="42" rx="6" class="cell l0"/><text x="558.0" y="245.0" class="ctext l0" text-anchor="middle">—</text></g><text x="84" y="291.0" class="lab" text-anchor="end">台湾 · 香港</text><g tabindex="0" data-tip="Genspark · 台湾 · 香港：云区域 / 内容 / 社区（繁体中文官网）"><rect x="98" y="266" width="128" height="42" rx="6" class="cell l1"/><text x="162.0" y="291.0" class="ctext l1" text-anchor="middle">1</text></g><g tabindex="0" data-tip="Glean · 台湾 · 香港：未见公开动作（未见公开动作）"><rect x="230" y="266" width="128" height="42" rx="6" class="cell l0"/><text x="294.0" y="291.0" class="ctext l0" text-anchor="middle">—</text></g><g tabindex="0" data-tip="Dify · 台湾 · 香港：客户、伙伴或办公室（CIO Taiwan 论坛；阿里云香港区域）"><rect x="362" y="266" width="128" height="42" rx="6" class="cell l2"/><text x="426.0" y="291.0" class="ctext l2" text-anchor="middle">2</text></g><g tabindex="0" data-tip="Zilliz · 台湾 · 香港：未见公开动作（未见公开动作）"><rect x="494" y="266" width="128" height="42" rx="6" class="cell l0"/><text x="558.0" y="291.0" class="ctext l0" text-anchor="middle">—</text></g><text x="84" y="337.0" class="lab" text-anchor="end">中国大陆</text><g tabindex="0" data-tip="Genspark · 中国大陆：未见公开动作（无业务；核心模型不在大陆提供）"><rect x="98" y="312" width="128" height="42" rx="6" class="cell l0"/><text x="162.0" y="337.0" class="ctext l0" text-anchor="middle">—</text></g><g tabindex="0" data-tip="Glean · 中国大陆：未见公开动作（无业务）"><rect x="230" y="312" width="128" height="42" rx="6" class="cell l0"/><text x="294.0" y="337.0" class="ctext l0" text-anchor="middle">—</text></g><g tabindex="0" data-tip="Dify · 中国大陆：法人、团队或专项投资（核心工程团队；上海办公室；伙伴体系）"><rect x="362" y="312" width="128" height="42" rx="6" class="cell l3"/><text x="426.0" y="337.0" class="ctext l3" text-anchor="middle">3</text></g><g tabindex="0" data-tip="Zilliz · 中国大陆：法人、团队或专项投资（上海主体；阿里云三个服务区）"><rect x="494" y="312" width="128" height="42" rx="6" class="cell l3"/><text x="558.0" y="337.0" class="ctext l3" text-anchor="middle">3</text></g></svg>
+    <div class="lgh"><span><i style="background:var(--h0)"></i>— 未见公开动作</span><span><i style="background:var(--h1)"></i>1 云区域 / 内容 / 社区</span><span><i style="background:var(--h2)"></i>2 客户、伙伴或办公室</span><span><i style="background:var(--h3)"></i>3 法人、团队或专项投资</span></div>
+    <details class="data"><summary>查看依据</summary><div class="tbl" style="margin-top:8px"><table><tr><th>市场</th><th>Genspark</th><th>Glean</th><th>Dify</th><th>Zilliz</th></tr><tr><td>日本</td><td>东京法人；3 年 1 亿美元计划；本地团队</td><td>日本国家经理；丸红 IT Solutions 等代理</td><td>LangGenius K.K.；IF Con Tokyo；KDDI、理光案例</td><td>AWS 东京区域；日文内容</td></tr><tr><td>韩国</td><td>首尔发布；3 年 1 亿美元计划</td><td>未见公开动作</td><td>伙伴 ONS；首尔开发者活动</td><td>AWS 首尔区域</td></tr><tr><td>新加坡</td><td>未见公开动作</td><td>DBS 为公开客户</td><td>线下活动；阿里云部署区域</td><td>新加坡办公室与云区域</td></tr><tr><td>印度</td><td>被列为核心市场之一</td><td>班加罗尔办公室，计划约 450 人</td><td>Dify Studio India 社区</td><td>Azure 印度区域；客户 Sarvam</td></tr><tr><td>澳新</td><td>未见公开动作</td><td>2026 年 5 月设立法人</td><td>本站资料未收录</td><td>未见公开动作</td></tr><tr><td>台湾 · 香港</td><td>繁体中文官网</td><td>未见公开动作</td><td>CIO Taiwan 论坛；阿里云香港区域</td><td>未见公开动作</td></tr><tr><td>中国大陆</td><td>无业务；核心模型不在大陆提供</td><td>无业务</td><td>核心工程团队；上海办公室；伙伴体系</td><td>上海主体；阿里云三个服务区</td></tr></table></div></details></div>
+  <p class="note">读法：日本是四家公司里共识最强的亚太市场；中国大陆只有 Dify 与 Zilliz 有实质存在，两家都在中国起步；新加坡、澳新、印度的投入分化明显，说明各家对亚太的优先级判断并不相同。</p>
+</div></section>
+
+<section id="model"><div class="wrap">
+  <div class="sh"><span class="eyebrow">04 · Business model</span><h2>商业模式对照</h2><p>同属「企业 AI」，四家公司的计价单位、进入方式和部署形态几乎没有重合。</p></div>
+  <div class="tbl reveal"><table>
+    <tr><th></th><th>Genspark</th><th>Glean</th><th>Dify</th><th>Zilliz</th></tr>
+    <tr><td>产品形态</td><td>面向个人与团队的 AI 工作空间</td><td>企业 SaaS 平台</td><td>开源平台 + Cloud + 企业版</td><td>开源数据库 + 托管云 + BYOC</td></tr>
+    <tr><td>计价单位</td><td>席位订阅 + 额度；Team 版每席位每月 30 美元</td><td>不公开；媒体称按活跃用户月费 + 模型用量</td><td>Cloud 订阅；企业版许可</td><td>Free / Serverless / Dedicated（每月 197 美元起）+ 资源用量</td></tr>
+    <tr><td>进入方式</td><td>个人口碑 → 团队版 → 企业版</td><td>付费 POC → 全员助手 → 多部门与 Agent</td><td>社区版 / Cloud → 企业版</td><td>开源 Milvus → Serverless → Dedicated / BYOC</td></tr>
+    <tr><td>部署形态</td><td>云；美国、欧盟、亚太区域；VPC</td><td>云服务</td><td>自托管、私有化；Cloud；云市场托管</td><td>托管云、BYOC、自托管开源</td></tr>
+    <tr><td>主要渠道</td><td>产品自助；微软生态；日本伙伴</td><td>直销；云与数据平台伙伴；区域代理</td><td>开源社区；伙伴计划；AWS、阿里云等云市场</td><td>开源社区；三大云市场；阿里云市场</td></tr>
+    <tr><td>开源</td><td>主产品闭源；GenOffice 开源</td><td>否</td><td>是（附商业条款的开源许可）</td><td>是（Apache 2.0）</td></tr>
+  </table></div>
+</div></section>
+
+<section id="position"><div class="wrap">
+  <div class="sh"><span class="eyebrow">05 · Positioning</span><h2>定位：开放程度 × 主要使用者</h2><p>学院判断，用于理解差异，不是排名。不同形状同时标识公司，避免只靠颜色区分。</p></div>
+  <div class="two">
+    <div class="cardv reveal"><h3 id="t-pos">定位图</h3><div class="lg"><span><i style="background:var(--series-1)"></i>Genspark</span><span><i style="background:var(--series-2)"></i>Glean</span><span><i style="background:var(--series-3)"></i>Dify</span><span><i style="background:var(--series-4)"></i>Zilliz</span></div><svg class="viz" viewBox="0 0 720 380" role="img" aria-labelledby="t-pos"><rect x="56" y="56" width="608" height="268" rx="14" class="quad"/><line x1="56" x2="664" y1="190.0" y2="190.0" class="axis2"/><line y1="56" y2="324" x1="360.0" x2="360.0" class="axis2"/><text x="56" y="346" class="tick">闭源产品</text><text x="664" y="346" class="tick" text-anchor="end">开源内核</text><text x="62" y="46" class="tick">面向业务用户</text><text x="62" y="364" class="tick">面向开发者与 IT</text><g tabindex="0" data-tip="Genspark：闭源 · 面向业务用户"><circle cx="153.3" cy="93.5" r="9" fill="var(--series-1)" class="mk"/><text x="169.3" y="91.5" class="dlab">Genspark</text><text x="169.3" y="108.5" class="sublab">闭源 · 面向业务用户</text></g><g tabindex="0" data-tip="Glean：闭源 · 员工与 IT"><rect x="217.7" y="154.7" width="17" height="17" rx="3" fill="var(--series-2)" class="mk"/><text x="242.2" y="161.2" class="dlab">Glean</text><text x="242.2" y="178.2" class="sublab">闭源 · 员工与 IT</text></g><g tabindex="0" data-tip="Dify：开源 · 构建者与 IT"><path d="M554.6 184.4 l11 11 l-11 11 l-11 -11 z" fill="var(--series-3)" class="mk"/><text x="538.6" y="193.4" class="dlab" text-anchor="end">Dify</text><text x="538.6" y="210.4" class="sublab" text-anchor="end">开源 · 构建者与 IT</text></g><g tabindex="0" data-tip="Zilliz：开源 · 开发者与数据团队"><path d="M578.9 274.5 l11 19 h-22 z" fill="var(--series-4)" class="mk"/><text x="562.9" y="284.5" class="dlab" text-anchor="end">Zilliz</text><text x="562.9" y="301.5" class="sublab" text-anchor="end">开源 · 开发者与数据团队</text></g></svg></div>
+    <div class="cardv reveal"><h3>这张图说明了什么</h3><ul style="margin:10px 0 0;padding-left:20px;line-height:1.8">
+      <li><b>左上（闭源 · 业务用户）</b>直接面对微软、谷歌的套件捆绑，胜负取决于成品质量与分发速度。</li>
+      <li><b>右侧（开源）</b>的两家用社区获客，难点都在把装机量转成企业收入。</li>
+      <li><b>上下之间存在供应关系：</b>Dify 的伙伴名单里有 Zilliz；Glean 与 Genspark 都调用外部模型与数据。栈越往下，越像别人的基础设施。</li>
+      <li><b>对国内市场：</b>右侧两家在中国都有真实存在，左侧两家基本没有。</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section id="timeline"><div class="wrap">
+  <div class="sh"><span class="eyebrow">06 · Timeline</span><h2>关键事件时间线</h2><p>Zilliz 与 Glean 分别成立于 2017 年和 2019 年；Dify 与 Genspark 都成立于 2023 年，起步时间相差六年。</p></div>
+  <div class="cardv reveal" style="overflow-x:auto"><h3 id="t-tl">2017–2026</h3><div style="min-width:640px"><svg class="viz" viewBox="0 0 760 288" role="img" aria-labelledby="t-tl"><line x1="96.0" x2="96.0" y1="18" y2="282" class="grid"/><text x="96.0" y="12" class="tick" text-anchor="middle">2017</text><line x1="160.0" x2="160.0" y1="18" y2="282" class="grid"/><text x="160.0" y="12" class="tick" text-anchor="middle">2018</text><line x1="224.0" x2="224.0" y1="18" y2="282" class="grid"/><text x="224.0" y="12" class="tick" text-anchor="middle">2019</text><line x1="288.0" x2="288.0" y1="18" y2="282" class="grid"/><text x="288.0" y="12" class="tick" text-anchor="middle">2020</text><line x1="352.0" x2="352.0" y1="18" y2="282" class="grid"/><text x="352.0" y="12" class="tick" text-anchor="middle">2021</text><line x1="416.0" x2="416.0" y1="18" y2="282" class="grid"/><text x="416.0" y="12" class="tick" text-anchor="middle">2022</text><line x1="480.0" x2="480.0" y1="18" y2="282" class="grid"/><text x="480.0" y="12" class="tick" text-anchor="middle">2023</text><line x1="544.0" x2="544.0" y1="18" y2="282" class="grid"/><text x="544.0" y="12" class="tick" text-anchor="middle">2024</text><line x1="608.0" x2="608.0" y1="18" y2="282" class="grid"/><text x="608.0" y="12" class="tick" text-anchor="middle">2025</text><line x1="672.0" x2="672.0" y1="18" y2="282" class="grid"/><text x="672.0" y="12" class="tick" text-anchor="middle">2026</text><text x="84" y="44" class="lab" text-anchor="end">Genspark</text><line x1="540.8" x2="723.2" y1="40" y2="40" stroke="var(--series-1)" class="lane"/><g tabindex="0" data-tip="Genspark · 创立"><circle cx="540.8" cy="40" r="5.5" fill="var(--series-1)" class="mk"/><text x="540.8" y="29" class="evt" text-anchor="middle">创立</text></g><g tabindex="0" data-tip="Genspark · AI 搜索 · 种子轮"><circle cx="572.8" cy="40" r="5.5" fill="var(--series-1)" class="mk"/><text x="572.8" y="61" class="evt" text-anchor="middle">AI 搜索 · 种子轮</text></g><g tabindex="0" data-tip="Genspark · Super Agent"><circle cx="624.0" cy="40" r="5.5" fill="var(--series-1)" class="mk"/><text x="624.0" y="29" class="evt" text-anchor="middle">Super Agent</text></g><g tabindex="0" data-tip="Genspark · B 轮"><circle cx="665.6" cy="40" r="5.5" fill="var(--series-1)" class="mk"/><text x="665.6" y="61" class="evt" text-anchor="middle">B 轮</text></g><g tabindex="0" data-tip="Genspark · 估值 26 亿"><circle cx="700.8" cy="40" r="5.5" fill="var(--series-1)" class="mk"/><text x="700.8" y="29" class="evt" text-anchor="middle">估值 26 亿</text></g><g tabindex="0" data-tip="Genspark · 日韩各 1 亿"><circle cx="707.2" cy="40" r="5.5" fill="var(--series-1)" class="mk"/><text x="707.2" y="61" class="evt" text-anchor="middle">日韩各 1 亿</text></g><text x="84" y="106" class="lab" text-anchor="end">Glean</text><line x1="236.8" x2="723.2" y1="102" y2="102" stroke="var(--series-2)" class="lane"/><g tabindex="0" data-tip="Glean · 创立 · A 轮"><circle cx="236.8" cy="102" r="5.5" fill="var(--series-2)" class="mk"/><text x="236.8" y="91" class="evt" text-anchor="middle">创立 · A 轮</text></g><g tabindex="0" data-tip="Glean · C 轮 · 独角兽"><circle cx="441.6" cy="102" r="5.5" fill="var(--series-2)" class="mk"/><text x="441.6" y="123" class="evt" text-anchor="middle">C 轮 · 独角兽</text></g><g tabindex="0" data-tip="Glean · E 轮"><circle cx="588.8" cy="102" r="5.5" fill="var(--series-2)" class="mk"/><text x="588.8" y="91" class="evt" text-anchor="middle">E 轮</text></g><g tabindex="0" data-tip="Glean · ARR 1 亿 · Agents"><circle cx="617.6" cy="102" r="5.5" fill="var(--series-2)" class="mk"/><text x="617.6" y="123" class="evt" text-anchor="middle">ARR 1 亿 · Agents</text></g><g tabindex="0" data-tip="Glean · F 轮 · 72 亿"><circle cx="636.8" cy="102" r="5.5" fill="var(--series-2)" class="mk"/><text x="636.8" y="91" class="evt" text-anchor="middle">F 轮 · 72 亿</text></g><g tabindex="0" data-tip="Glean · ARR 3 亿"><circle cx="697.6" cy="102" r="5.5" fill="var(--series-2)" class="mk"/><text x="697.6" y="123" class="evt" text-anchor="middle">ARR 3 亿</text></g><text x="84" y="168" class="lab" text-anchor="end">Dify</text><line x1="492.8" x2="723.2" y1="164" y2="164" stroke="var(--series-3)" class="lane"/><g tabindex="0" data-tip="Dify · 创立"><circle cx="492.8" cy="164" r="5.5" fill="var(--series-3)" class="mk"/><text x="492.8" y="153" class="evt" text-anchor="middle">创立</text></g><g tabindex="0" data-tip="Dify · 开源"><circle cx="505.6" cy="164" r="5.5" fill="var(--series-3)" class="mk"/><text x="505.6" y="185" class="evt" text-anchor="middle">开源</text></g><g tabindex="0" data-tip="Dify · Workflow"><circle cx="563.2" cy="164" r="5.5" fill="var(--series-3)" class="mk"/><text x="563.2" y="153" class="evt" text-anchor="middle">Workflow</text></g><g tabindex="0" data-tip="Dify · 东京法人"><circle cx="614.4" cy="164" r="5.5" fill="var(--series-3)" class="mk"/><text x="614.4" y="185" class="evt" text-anchor="middle">东京法人</text></g><g tabindex="0" data-tip="Dify · Pre-A"><circle cx="684.8" cy="164" r="5.5" fill="var(--series-3)" class="mk"/><text x="684.8" y="153" class="evt" text-anchor="middle">Pre-A</text></g><g tabindex="0" data-tip="Dify · IF Con Tokyo"><circle cx="716.8" cy="164" r="5.5" fill="var(--series-3)" class="mk"/><text x="716.8" y="185" class="evt" text-anchor="middle">IF Con Tokyo</text></g><text x="84" y="230" class="lab" text-anchor="end">Zilliz</text><line x1="128.0" x2="723.2" y1="226" y2="226" stroke="var(--series-4)" class="lane"/><g tabindex="0" data-tip="Zilliz · 上海起步"><circle cx="128.0" cy="226" r="5.5" fill="var(--series-4)" class="mk"/><text x="128.0" y="215" class="evt" text-anchor="middle">上海起步</text></g><g tabindex="0" data-tip="Zilliz · Milvus 开源"><circle cx="256.0" cy="226" r="5.5" fill="var(--series-4)" class="mk"/><text x="256.0" y="247" class="evt" text-anchor="middle">Milvus 开源</text></g><g tabindex="0" data-tip="Zilliz · Milvus 2.0"><circle cx="384.0" cy="226" r="5.5" fill="var(--series-4)" class="mk"/><text x="384.0" y="215" class="evt" text-anchor="middle">Milvus 2.0</text></g><g tabindex="0" data-tip="Zilliz · B 轮扩展"><circle cx="457.6" cy="226" r="5.5" fill="var(--series-4)" class="mk"/><text x="457.6" y="247" class="evt" text-anchor="middle">B 轮扩展</text></g><g tabindex="0" data-tip="Zilliz · Lakebase"><circle cx="700.8" cy="226" r="5.5" fill="var(--series-4)" class="mk"/><text x="700.8" y="215" class="evt" text-anchor="middle">Lakebase</text></g><g tabindex="0" data-tip="Zilliz · Milvus 3.0"><circle cx="707.2" cy="226" r="5.5" fill="var(--series-4)" class="mk"/><text x="707.2" y="247" class="evt" text-anchor="middle">Milvus 3.0</text></g></svg></div></div>
+</div></section>
+
+<section id="watch"><div class="wrap">
+  <div class="sh"><span class="eyebrow">07 · Watchlist</span><h2>信号监测表</h2><p>下一步该盯什么、去哪里看、多久看一次。信号出现时，回到对应学院更新判断。</p></div>
+  <div class="tbl reveal"><table>
+    <tr><th>信号</th><th>为什么重要</th><th>去哪里看</th><th>频率</th></tr>
+    <tr><td>Glean 新一轮融资或上市申报</td><td>72 亿美元估值与计价转型能否被资本市场接受</td><td>公司新闻稿；美国证监会 EDGAR</td><td>季度</td></tr>
+    <tr><td>Genspark 企业客户数与销售体系</td><td>收入是否从专业个人用户迁移到企业席位</td><td>官方发布；东京、首尔发布会</td><td>每次发布</td></tr>
+    <tr><td>Dify 企业案例与伙伴名单</td><td>开源影响力能否转化为企业收入</td><td>伙伴页、客户案例、IF Con 议程</td><td>月度</td></tr>
+    <tr><td>Zilliz 新融资或 Lakebase 正式可用</td><td>平台化需要持续投入</td><td>新闻中心；发布说明</td><td>季度</td></tr>
+    <tr><td>Copilot、Gemini 的检索与连接器更新</td><td>直接影响 Glean 与 Genspark 的差异化空间</td><td>微软、谷歌产品博客</td><td>月度</td></tr>
+    <tr><td>亚太法人设立与国家负责人任命</td><td>区域投入从「覆盖」变成「下注」的标志</td><td>PR TIMES 等新闻稿平台；当地商业登记</td><td>月度</td></tr>
+    <tr><td>GitHub 星标与贡献者变化</td><td>开源项目的社区势能</td><td>GitHub 仓库与发布记录</td><td>月度</td></tr>
+    <tr><td>云市场上架与区域上线</td><td>渠道覆盖与数据驻留能力</td><td>AWS、Azure、Google Cloud、阿里云市场</td><td>季度</td></tr>
+  </table></div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <div class="sh"><span class="eyebrow">08 · Toolkit</span><h2>实用工具</h2><p>可以直接拿去用的清单。它们来自四座学院的研究，按使用场景整理。</p></div>
+  <div class="tools">
+    <div class="tool reveal"><h3>选型：先判断你要买的是哪一层<span class="tag">企业买方</span></h3><p>四家公司解决的是不同层的问题，先定层，再比厂商。</p><ul>
+      <li><b>员工要直接产出成品</b>（报告、演示、表格）：看 Agent 工作空间类，例如 Genspark</li>
+      <li><b>要跨系统、按权限找到公司知识</b>：看企业 Work AI 类，例如 Glean</li>
+      <li><b>要自建、可私有化的 AI 应用与流程</b>：看应用开发平台类，例如 Dify</li>
+      <li><b>要自建检索与 RAG 底座</b>：看向量数据库类，例如 Zilliz</li></ul></div>
+    <div class="tool reveal"><h3>选型：五个必问问题<span class="tag">企业买方</span></h3><p>适用于以上任何一类。</p><ol>
+      <li>数据存放在哪个区域，能否选择本地或客户自有云</li>
+      <li>权限是否沿用原系统，答案能否追溯到来源</li>
+      <li>能否选择或更换模型，模型费用怎样计入账单</li>
+      <li>成本怎样预测：席位、用量还是两者混合</li>
+      <li>退出成本：数据、流程与配置能否导出</li></ol></div>
+    <div class="tool reveal"><h3>尽调：值得向四家公司追问的问题<span class="tag">合作与投资</span></h3><ul>
+      <li><b>Genspark：</b>企业席位收入占比；企业客户的续约与扩张；日韩之外的亚太由谁覆盖</li>
+      <li><b>Glean：</b>用量计价占收入比例；净收入留存；微软重度客户的赢单率</li>
+      <li><b>Dify：</b>社区版到企业版的转化路径；伙伴贡献的收入占比；中国区与全球产品的关系</li>
+      <li><b>Zilliz：</b>前十大客户收入占比；现金跑道与下一轮计划；中国区的私有化政策</li></ul></div>
+    <div class="tool reveal"><h3>给国内云厂商与集成商的五个合作样板<span class="tag">渠道与生态</span></h3><p>都来自公开案例，可以作为设计合作模式时的参照。</p><ul>
+      <li><b>云托管 + 原厂许可：</b>阿里云 DMS 托管 Dify 企业版，许可证向 Dify 单独购买</li>
+      <li><b>托管服务进入本地云：</b>Zilliz Cloud 在阿里云杭州、北京、深圳提供服务，可在云市场订阅</li>
+      <li><b>集成商补齐本地连接器：</b>丸红 IT Solutions 为日本 SaaS 开发 Glean 自定义连接器</li>
+      <li><b>伙伴承担 SLA：</b>Dify 伙伴计划由伙伴提供企业版服务与 SLA</li>
+      <li><b>前线部署团队：</b>Genspark 日本团队设有前线部署职能，负责企业落地</li></ul></div>
+  </div>
+</div></section>
+
+<section id="method"><div class="wrap">
+  <div class="sh"><span class="eyebrow">09 · Method</span><h2>方法与来源分级</h2><p>所有内容来自公开来源，截至 2026 年 10 月。每个数字的出处见各学院「信号与来源」模块。</p></div>
+  <div class="grade reveal">
+    <div><b>公司公告</b>新闻稿、官网、创始人署名文章</div>
+    <div><b>独立媒体</b>TechCrunch、Axios、虎嗅等报道</div>
+    <div><b>第三方估算</b>Sacra、采购平台、数据库，引用时注明</div>
+    <div><b>学院判断</b>基于公开信息的分析，明确标注</div>
+  </div>
+  <p class="note">本页不代表任何一家公司的观点，也不构成投资、法律或采购建议。文中提及的公司名称与产品名称归各自权利人所有。如发现事实错误，请以原始来源为准。</p>
+</div></section>
+</main>
+<footer><div class="wrap">领航学院 · 市场情报总览 · 基于公开资料整理 · 本站不加载任何第三方脚本、字体或统计服务</div></footer>
+<script>
+(function(){
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);
+    [].forEach.call(e.target.querySelectorAll('polyline.draw'),function(p){try{var L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;p.getBoundingClientRect();p.style.transition='stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)';p.style.strokeDashoffset=0}catch(x){}})}})},{threshold:.12}):null;
+  [].forEach.call(document.querySelectorAll('.reveal'),function(el){io?io.observe(el):el.classList.add('in')});setTimeout(function(){[].forEach.call(document.querySelectorAll('.reveal'),function(el){el.classList.add('in')})},4000);
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  addEventListener('scroll',function(){var y=scrollY+120,cur=null;links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s&&s.offsetTop<=y)cur=a});links.forEach(function(a){a.classList.toggle('on',a===cur)})},{passive:true});
+  try{var th=localStorage.getItem('v2-theme');if(th)document.documentElement.setAttribute('data-theme',th)}catch(e){}
+})();
+</script>
+<style>
+#a4wGate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:20px;color:#F3F5FB;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+ background:radial-gradient(800px 480px at 85% -10%,rgba(124,92,255,.45),transparent 62%),radial-gradient(700px 420px at -5% 105%,rgba(47,91,255,.5),transparent 60%),radial-gradient(520px 360px at 50% 120%,rgba(34,211,238,.25),transparent 70%),#06070D;overflow:hidden}
+#a4wGate::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 80%);pointer-events:none}
+#a4wGate form{position:relative;z-index:1;width:min(400px,100%);display:grid;gap:16px;padding:30px 28px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+#a4wGate .gb{display:flex;align-items:center;gap:12px}
+#a4wGate .gb svg{width:40px;height:40px;flex:none}
+#a4wGate h1{margin:0;font-size:20px;letter-spacing:-.01em;color:#fff}
+#a4wGate p{margin:0;color:#A3ABC2;font-size:13.5px}
+#a4wGate label{display:grid;gap:6px;font-size:13px;color:#CDD3E3}
+#a4wGate input{font:inherit;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:11px 13px;min-height:44px;width:100%;box-sizing:border-box}
+#a4wGate input:focus{outline:none;border-color:#7C8CFF;box-shadow:0 0 0 3px rgba(124,140,255,.25)}
+#a4wGate button{font-family:inherit;font-weight:650;font-size:15.5px;line-height:1;min-height:46px;border:0;border-radius:999px;background:#fff;color:#0A0B10;cursor:pointer;font-family:inherit}
+#a4wGate button:hover{opacity:.92}
+#a4wGate .msg{min-height:20px;font-size:13px;color:#FDA29B}
+#a4wGate .ft{font-size:12px;color:#7E879E}
+</style><script>function a4wSha(s){function r(n,b){return(n>>>b)|(n<<(32-b))}var K=[],H=[],p=2,c=0;function P(n){for(var f=Math.sqrt(n),i=2;i<=f;i++)if(n%i==0)return false;return true}function F(x){return((x-(x|0))*4294967296)|0}while(c<64){if(P(p)){if(c<8)H[c]=F(Math.pow(p,1/2));K[c]=F(Math.pow(p,1/3));c++}p++}var u=unescape(encodeURIComponent(s)),l=u.length*8,w=[],i,j;u+='\x80';while(u.length%64-56)u+='\x00';for(i=0;i<u.length;i++){j=u.charCodeAt(i);w[i>>2]|=j<<((3-i)%4)*8}w[w.length]=(l/4294967296)|0;w[w.length]=l;for(j=0;j<w.length;){var W=w.slice(j,j+=16),h=H.slice(0);H=H.slice(0,8);for(i=0;i<64;i++){var a=h[0],e=h[4];if(i>15){var x=W[i-15],y=W[i-2];W[i]=(W[i-16]+(r(x,7)^r(x,18)^(x>>>3))+W[i-7]+(r(y,17)^r(y,19)^(y>>>10)))|0}var t1=h[7]+(r(e,6)^r(e,11)^r(e,25))+((e&h[5])^(~e&h[6]))+K[i]+W[i],t2=(r(a,2)^r(a,13)^r(a,22))+((a&h[1])^(a&h[2])^(h[1]&h[2]));h=[(t1+t2)|0].concat(h);h[4]=(h[4]+t1)|0;h.length=8}for(i=0;i<8;i++)H[i]=(H[i]+h[i])|0}var o='';for(i=0;i<8;i++)for(j=3;j+1;j--){var b=(H[i]>>(j*8))&255;o+=(b<16?'0':'')+b.toString(16)}return o}
+(function(){var D="e2cb8d47afed7de9325d329f95ba98a5a1d55e55a4b8673630996a91a085327d",doc=document.documentElement;
+function exp(){try{return localStorage.getItem("a4w-v2-cred")||D}catch(e){return D}}
+window.a4wLogout=function(){try{localStorage.removeItem("a4w-v2-auth")}catch(e){}location.reload()};
+window.a4wChange=function(u,p){var h=a4wSha(u+":"+p);try{localStorage.setItem("a4w-v2-cred",h);localStorage.setItem("a4w-v2-auth",h)}catch(e){return false}return true};
+if(doc.className.indexOf("a4w-gated")<0)return;
+var g=document.createElement("div");g.id="a4wGate";g.innerHTML='<form autocomplete="on"><div class="gb"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="a4wg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2F5BFF"/><stop offset=".55" stop-color="#7C5CFF"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><rect width="40" height="40" rx="12" fill="url(#a4wg)"/><path d="M20 8l3.6 12L20 32l-3.6-12z" fill="#fff"/></svg><div><h1>领航学院</h1><p>首次访问请登录，本浏览器会记住你。</p></div></div><label>用户名<input name="username" autocomplete="username" required autocapitalize="off" spellcheck="false"></label><label>密码<input name="password" type="password" autocomplete="current-password" required></label><button type="submit">进入</button><div class="msg" role="alert"></div><div class="ft">这是进门验证，不是加密：页面内容本身是公开的。</div></form>';
+function mount(){document.body.appendChild(g);g.querySelector("input").focus()}
+if(document.body)mount();else document.addEventListener("DOMContentLoaded",mount);
+g.addEventListener("submit",function(ev){ev.preventDefault();var f=ev.target,h=a4wSha(f.username.value.trim()+":"+f.password.value);
+ if(h===exp()){try{localStorage.setItem("a4w-v2-auth",h)}catch(e){}doc.className=doc.className.replace(/\s*a4w-gated/g,"");g.remove()}
+ else{f.querySelector(".msg").textContent="用户名或密码不正确。";f.password.value="";f.password.focus()}});
+})();</script><style>#vizTip{position:fixed;z-index:9000;pointer-events:none;max-width:280px;padding:8px 11px;border-radius:10px;background:#0B0D16;color:#F3F5FB;font:500 12.5px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;box-shadow:0 12px 28px -10px rgba(0,0,0,.5);opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s}#vizTip.on{opacity:1;transform:none}</style>
+<script>(function(){var t=document.createElement("div");t.id="vizTip";t.setAttribute("role","tooltip");function add(){document.body.appendChild(t)}if(document.body)add();else document.addEventListener("DOMContentLoaded",add);
+function show(el,x,y){t.textContent=el.getAttribute("data-tip");t.classList.add("on");var w=t.offsetWidth,h=t.offsetHeight;var L=Math.min(innerWidth-w-8,Math.max(8,x-w/2)),T=y-h-14;if(T<8)T=y+18;t.style.left=L+"px";t.style.top=T+"px"}
+function hide(){t.classList.remove("on")}
+document.addEventListener("mouseover",function(e){var el=e.target.closest&&e.target.closest("[data-tip]");if(el)show(el,e.clientX,e.clientY);else hide()});
+document.addEventListener("mousemove",function(e){var el=e.target.closest&&e.target.closest("[data-tip]");if(el)show(el,e.clientX,e.clientY)});
+document.addEventListener("focusin",function(e){var el=e.target.closest&&e.target.closest("[data-tip]");if(el){var r=el.getBoundingClientRect();show(el,r.left+r.width/2,r.top)}});
+document.addEventListener("focusout",hide);addEventListener("scroll",hide,{passive:true})})();</script><style>
+#journey{position:fixed;z-index:70;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--paper,#fff) 82%,transparent);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px);border:1px solid var(--line,#e4e7ec);box-shadow:0 18px 40px -16px rgba(10,14,30,.45),inset 0 1px 0 rgba(255,255,255,.35);font:600 12.5px/1 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;animation:jIn .6s cubic-bezier(.2,.8,.2,1) both .3s}
+@keyframes jIn{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
+#journey a{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:36px;height:36px;padding:0 10px;border-radius:999px;text-decoration:none;color:var(--ink2,#344054);transition:background .2s,color .2s}
+#journey a:hover{background:var(--soft,#f2f4f7);color:var(--ink,#101828)}
+#journey .jh svg,#journey .jp svg,#journey .jn svg{width:15px;height:15px}
+#journey .sep{width:1px;height:20px;background:var(--line,#e4e7ec);margin:0 2px}
+#journey .stations{display:flex;align-items:center;gap:2px;position:relative}
+#journey .js{padding:0 8px;min-width:32px}
+#journey .js i{font-style:normal;font:700 11.5px/1 ui-monospace,Menlo,monospace;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line,#d0d5dd);color:var(--muted,#667085);background:var(--paper,#fff)}
+#journey .js span{display:none}
+#journey .js.seen i{border-color:var(--b1,#2F5BFF);color:var(--b1,#2F5BFF)}
+#journey .js.on{background:var(--brand-grad,linear-gradient(100deg,#2F5BFF,#7C5CFF));color:#fff;padding:0 12px 0 6px}
+#journey .js.on i{border-color:rgba(255,255,255,.6);color:#fff;background:rgba(255,255,255,.18)}
+#journey .js.on span{display:inline}
+#journey .jn{background:var(--ink,#101828);color:var(--paper,#fff);padding:0 14px}
+#journey .jn:hover{background:var(--ink,#101828);color:var(--paper,#fff);filter:brightness(1.25)}
+@media (max-width:1023px){#journey{bottom:calc(78px + env(safe-area-inset-bottom,0px))}}
+@media (max-width:520px){#journey{gap:2px}#journey a{height:34px;min-width:30px;padding:0 7px}#journey .jn span,#journey .jp{display:none}#journey .js.on span{max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+@media print{#journey{display:none}}
+body{padding-bottom:72px}
+</style>
+<nav id="journey" aria-label="巡航路径">
+<a class="jh" href="../" data-tip="返回总导航" aria-label="返回总导航"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></a>
+<a class="jp" href="../zilliz/" data-tip="上一站：Zilliz 领航学院" aria-label="上一站"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
+<span class="sep" aria-hidden="true"></span>
+<span class="stations"><a class="js on" href="../intel/" data-k="intel" data-tip="市场情报总览 · 四家公司的横向对照" aria-current="page"><i>◆</i><span>情报</span></a><a class="js" href="../genspark/" data-k="genspark" data-tip="Genspark 领航学院 · Agent 工作空间"><i>1</i><span>Genspark</span></a><a class="js" href="../glean/" data-k="glean" data-tip="Glean 领航学院 · 企业 Work AI"><i>2</i><span>Glean</span></a><a class="js" href="../dify/" data-k="dify" data-tip="DIFY 领航学院 · AI 应用开发平台"><i>3</i><span>Dify</span></a><a class="js" href="../zilliz/" data-k="zilliz" data-tip="Zilliz 领航学院 · 向量数据库"><i>4</i><span>Zilliz</span></a></span>
+<span class="sep" aria-hidden="true"></span>
+<a class="jn" href="../genspark/" data-tip="下一站：Genspark 领航学院"><span>下一站</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+</nav>
+<script>
+(function(){var S="intel",K={genspark:"v2-gspk",glean:"v2-glean",dify:"v2-dify",zilliz:"v2-zlz"};
+[].forEach.call(document.querySelectorAll("#journey .js"),function(a){var k=a.getAttribute("data-k");try{if(k==="intel"?localStorage.getItem("v2-intel-seen"):localStorage.getItem(K[k]+"-read"))a.classList.add("seen")}catch(e){}});
+function rec(v,o){try{localStorage.setItem("v2-hub-last",JSON.stringify({s:S,v:v||"learn",m:(o&&o.m)||(typeof curMod!=="undefined"?curMod:null),t:Date.now()}))}catch(e){}}
+if(S==="intel"){try{localStorage.setItem("v2-intel-seen","1")}catch(e){}rec("intel")}
+else{if(typeof window.go==="function"){var g=window.go;window.go=function(v,o){var r=g.apply(this,arguments);rec(v,o);return r}}rec(typeof curView!=="undefined"?curView:"learn")}
+document.addEventListener("keydown",function(e){if(e.altKey&&e.key==="ArrowRight"){location.href=document.querySelector("#journey .jn").href}if(e.altKey&&e.key==="ArrowLeft"){location.href=document.querySelector("#journey .jp").href}});
+})();
+</script>
+</body>
+</html>
