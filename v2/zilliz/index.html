@@ -1973,7 +1973,14 @@ function renderRead(){rDB();
 }
 
 </script>
-<style>
+<style>/* v3.1 三端阅读适配 */
+.vhint{display:none}
+@media (max-width:640px){.vscroll{contain:inline-size;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px 4px;scrollbar-width:thin}.vscroll>svg.viz{min-width:600px}.viz .tick,.viz .sublab,.viz .evt{font-size:13px!important}.viz .lab,.viz .val,.viz .dlab{font-size:14.5px!important}.vhint{display:block;font-size:12px;color:var(--muted,#667085);margin:2px 0 6px}}
+h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
+details.data table{min-width:0!important;display:table!important}
+@media (max-width:640px),(pointer:coarse){.flag,.pill,.toc .tt,.hs-h em,.st small,.ptag,.tag,.kick b,.mv .k,.st span,.src,.hs-n,.kpi small,.mmeta .chip,.trefs button,th span,.brand span{font-size:12px!important}.legend .ev,.sb,.ev{font-size:11.5px!important}}
+@media (pointer:coarse){a.brand{min-height:40px}.crumb button,.trefs button{min-height:36px}details.data summary,details.adv summary{padding:9px 0}.dchips .dchip{min-height:38px}.toc a{min-height:40px;display:flex;align-items:center}}
+@media (max-width:400px){#journey .js.on span{max-width:46px!important}#journey .js{padding:0 6px!important}#journey .jn{padding:0 11px!important}}</style><script>(function(){function w(){[].forEach.call(document.querySelectorAll("svg.viz:not([data-w])"),function(v){v.setAttribute("data-w","1");var d=document.createElement("div");d.className="vscroll";var h=document.createElement("span");h.className="vhint";h.textContent="图表可左右滑动 →";v.parentNode.insertBefore(h,v);v.parentNode.insertBefore(d,v);d.appendChild(v)})}w();new MutationObserver(w).observe(document.body,{childList:true,subtree:true})})();</script><style>
 #a4wGate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:20px;color:#F3F5FB;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
  background:radial-gradient(800px 480px at 85% -10%,rgba(124,92,255,.45),transparent 62%),radial-gradient(700px 420px at -5% 105%,rgba(47,91,255,.5),transparent 60%),radial-gradient(520px 360px at 50% 120%,rgba(34,211,238,.25),transparent 70%),#06070D;overflow:hidden}
 #a4wGate::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 80%);pointer-events:none}
@@ -2009,9 +2016,9 @@ document.addEventListener("mouseover",function(e){var el=e.target.closest&&e.tar
 document.addEventListener("mousemove",function(e){var el=e.target.closest&&e.target.closest("[data-tip]");if(el)show(el,e.clientX,e.clientY)});
 document.addEventListener("focusin",function(e){var el=e.target.closest&&e.target.closest("[data-tip]");if(el){var r=el.getBoundingClientRect();show(el,r.left+r.width/2,r.top)}});
 document.addEventListener("focusout",hide);addEventListener("scroll",hide,{passive:true})})();</script><style>
-#journey{position:fixed;z-index:70;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--paper,#fff) 82%,transparent);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px);border:1px solid var(--line,#e4e7ec);box-shadow:0 18px 40px -16px rgba(10,14,30,.45),inset 0 1px 0 rgba(255,255,255,.35);font:600 12.5px/1 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;animation:jIn .6s cubic-bezier(.2,.8,.2,1) both .3s}
+#journey{position:fixed;z-index:70;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 16px);transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .3s;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--paper,#fff) 82%,transparent);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px);border:1px solid var(--line,#e4e7ec);box-shadow:0 18px 40px -16px rgba(10,14,30,.45),inset 0 1px 0 rgba(255,255,255,.35);font:600 12.5px/1 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;animation:jIn .6s cubic-bezier(.2,.8,.2,1) backwards .3s}
 @keyframes jIn{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
-#journey a{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:36px;height:36px;padding:0 10px;border-radius:999px;text-decoration:none;color:var(--ink2,#344054);transition:background .2s,color .2s}
+#journey a{white-space:nowrap;flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:36px;height:36px;padding:0 10px;border-radius:999px;text-decoration:none;color:var(--ink2,#344054);transition:background .2s,color .2s}
 #journey a:hover{background:var(--soft,#f2f4f7);color:var(--ink,#101828)}
 #journey .jh svg,#journey .jp svg,#journey .jn svg{width:15px;height:15px}
 #journey .sep{width:1px;height:20px;background:var(--line,#e4e7ec);margin:0 2px}
@@ -2027,6 +2034,9 @@ document.addEventListener("focusout",hide);addEventListener("scroll",hide,{passi
 #journey .jn:hover{background:var(--ink,#101828);color:var(--paper,#fff);filter:brightness(1.25)}
 @media (max-width:1023px){#journey{bottom:calc(78px + env(safe-area-inset-bottom,0px))}}
 @media (max-width:520px){#journey{gap:2px}#journey a{height:34px;min-width:30px;padding:0 7px}#journey .jn span,#journey .jp{display:none}#journey .js.on span{max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+#journey.away{transform:translate(-50%,calc(100% + 110px));opacity:0;pointer-events:none}
+@media (pointer:coarse){#journey a{height:40px;min-width:40px}}
+@media (pointer:coarse) and (max-width:400px){#journey a{height:38px;min-width:34px;padding:0 6px}}
 @media print{#journey{display:none}}
 body{padding-bottom:72px}
 </style>
@@ -2044,6 +2054,7 @@ body{padding-bottom:72px}
 function rec(v,o){try{localStorage.setItem("v2-hub-last",JSON.stringify({s:S,v:v||"learn",m:(o&&o.m)||(typeof curMod!=="undefined"?curMod:null),t:Date.now()}))}catch(e){}}
 if(S==="intel"){try{localStorage.setItem("v2-intel-seen","1")}catch(e){}rec("intel")}
 else{if(typeof window.go==="function"){var g=window.go;window.go=function(v,o){var r=g.apply(this,arguments);rec(v,o);return r}}rec(typeof curView!=="undefined"?curView:"learn")}
+(function(){var J=document.getElementById("journey"),y=scrollY,t=0;addEventListener("scroll",function(){if(innerWidth>1023){J.classList.remove("away");return}var n=scrollY,end=n+innerHeight>document.documentElement.scrollHeight-160;if(end||n<120||n<y-6)J.classList.remove("away");else if(n>y+6)J.classList.add("away");y=n},{passive:true})})();
 document.addEventListener("keydown",function(e){if(e.altKey&&e.key==="ArrowRight"){location.href=document.querySelector("#journey .jn").href}if(e.altKey&&e.key==="ArrowLeft"){location.href=document.querySelector("#journey .jp").href}});
 })();
 </script>
