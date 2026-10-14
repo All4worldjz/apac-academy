@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
 <title>领航学院 · AI 公司深度研究</title>
-<meta name="description" content="四家 AI 公司的深度研究学院：Genspark、Glean、Dify、Zilliz。从工作入口到数据底座，一张地图读懂。">
+<meta name="description" content="六家 AI 公司的深度研究学院：Genspark、Manus、Glean、Dify、Zilliz 与 Palantir。从工作入口到数据底座，一张地图读懂。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%232F5BFF'/%3E%3Cstop offset='1' stop-color='%2322D3EE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='40' rx='12' fill='url(%23g)'/%3E%3Cpath d='M20 8l3.6 12L20 32l-3.6-12z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
 :root{--bg:#F5F6F9;--paper:#FFFFFF;--ink:#0A0D18;--ink2:#3A4256;--muted:#6B7387;--line:#E5E8EF;--soft:#F8F9FB;
 --night:#06070D;--n-ink:#F3F5FB;--n-mut:#A3ABC2;
 --b1:#2F5BFF;--b2:#7C5CFF;--b3:#22D3EE;--grad:linear-gradient(100deg,#2F5BFF 0%,#7C5CFF 50%,#22D3EE 100%);
---c-gs:#6366F1;--c-gl:#343CED;--c-df:#2F5BFF;--c-zl:#0EA5A0;
+--c-gs:#6366F1;--c-mn:#A07A3C;--c-gl:#343CED;--c-df:#2F5BFF;--c-zl:#0EA5A0;--c-pl:#3A4D78;
 --shadow:0 1px 2px rgba(15,18,30,.05);--shadow-md:0 16px 32px -16px rgba(15,18,30,.22);--ease:cubic-bezier(.2,.8,.2,1);color-scheme:light}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#090A10;--paper:#11131B;--ink:#F3F5FB;--ink2:#C8CEDC;--muted:#959DB2;--line:#232835;--soft:#161925;--shadow-md:0 18px 36px -16px rgba(0,0,0,.7);color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#090A10;--paper:#11131B;--ink:#F3F5FB;--ink2:#C8CEDC;--muted:#959DB2;--line:#232835;--soft:#161925;--shadow-md:0 18px 36px -16px rgba(0,0,0,.7);color-scheme:dark}
@@ -89,7 +89,7 @@ section{padding:84px 0}
 .stack-note ol{margin:0;padding-left:20px}
 .stack-note li{margin:6px 0}
 /* cards */
-.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .card{position:relative;display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:22px;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s;min-width:0}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .card .cv{margin:-22px -22px 0;height:118px;position:relative;background:radial-gradient(220px 130px at 85% 0%,color-mix(in srgb,var(--c2) 70%,transparent),transparent 70%),radial-gradient(240px 150px at 0% 110%,color-mix(in srgb,var(--c) 80%,transparent),transparent 70%),#07080F;overflow:hidden}
@@ -126,7 +126,7 @@ section{padding:84px 0}
 .tips b{display:block;color:var(--ink);margin-bottom:2px}
 .kbd{font:600 11.5px/1 ui-monospace,Menlo,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:2px 6px;background:var(--paper);color:var(--ink)}
 /* media */
-.media{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.media{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .mc{display:grid;gap:10px;padding:16px;border-radius:20px;background:var(--paper);border:1px solid var(--line);text-decoration:none;box-shadow:var(--shadow);transition:transform .25s var(--ease),box-shadow .25s}
 .mc:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
 .mc .mv{position:relative;height:120px;border-radius:14px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(160px 100px at 80% 0%,color-mix(in srgb,var(--c2) 70%,transparent),transparent 70%),radial-gradient(180px 120px at 0% 100%,color-mix(in srgb,var(--c) 80%,transparent),transparent 70%),#07080F}
@@ -220,40 +220,42 @@ dialog .msg{font-size:13px;min-height:18px;margin-top:8px}
 <main>
 <div class="hero"><div class="wrap hero-grid">
 <div class="hcol">
-  <span class="kick"><b>出发</b>四家 AI 公司 · 公开信息研究</span>
-  <h1>四家 AI 公司，<br><em>一套研究方法</em></h1>
-  <p class="lede">Genspark、Glean、Dify、Zilliz 分别位于企业 AI 的四层：工作入口、企业上下文、应用编排和数据底座。每家公司都按同样的结构整理：创始人、产品、组织、竞争、趋势与区域市场，附原典阅读室和练习题；另有一页横向对照的市场情报。</p>
+  <span class="kick"><b>出发</b>六家 AI 公司 · 公开信息研究</span>
+  <h1>六家 AI 公司，<br><em>一套研究方法</em></h1>
+  <p class="lede">Genspark 与 Manus 是 Agent 工作入口，Glean 是企业上下文层，Dify 是应用编排层，Zilliz 是数据底座；Palantir 作为上市公司参照系，展示从数据到决策的全栈做法和 FDE 交付方法。每家公司都按同样的结构整理，附原典阅读室和练习题；另有一页横向对照的市场情报。</p>
   <div class="ctas"><a class="btn w" href="intel/">先看横向对照 →</a><a class="btn g" href="#map">按栈逐层阅读</a></div>
   <div class="resume" id="resume" role="status"><div class="rt"><small>上次停在</small><b id="resumeT">—</b></div><a class="btn w" id="resumeA" href="#">继续 →</a></div>
-  <div class="stats"><div><b data-n="4">4</b><span>家公司</span></div><div><b data-n="32">32</b><span>个学习模块</span></div><div><b data-n="752">752</b><span>道练习题</span></div><div><b data-n="82">82</b><span>篇原典</span></div></div>
+  <div class="stats"><div><b data-n="6">6</b><span>家公司</span></div><div><b data-n="49">49</b><span>个学习模块</span></div><div><b data-n="947">947</b><span>道练习题</span></div><div><b data-n="128">128</b><span>篇原典</span></div></div>
 </div>
-<div class="hviz"><svg class="iso" viewBox="0 0 470 440" role="img" aria-label="AI 栈示意：自上而下为 Genspark、Glean、Dify、Zilliz"><defs><linearGradient id="pg-genspark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A5B4FC" stop-opacity=".95"/><stop offset="1" stop-color="#6366F1" stop-opacity=".9"/></linearGradient><linearGradient id="pg-glean" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#93A3FF" stop-opacity=".95"/><stop offset="1" stop-color="#343CED" stop-opacity=".9"/></linearGradient><linearGradient id="pg-dify" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7DD3FC" stop-opacity=".95"/><stop offset="1" stop-color="#2F5BFF" stop-opacity=".9"/></linearGradient><linearGradient id="pg-zilliz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5EEAD4" stop-opacity=".95"/><stop offset="1" stop-color="#0E9F9A" stop-opacity=".9"/></linearGradient><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"/></filter></defs><g class="beams"><path d="M150 60 V400" /><path d="M215 40 V420" /><path d="M280 60 V400" /></g><a href="zilliz/" class="plate p3" aria-label="Zilliz · 向量数据库"><g><path d="M215 334 L345 382 L215 430 L85 382 Z" fill="#0E9F9A" opacity=".35" filter="url(#glow)"/><path d="M215 334 L345 382 L215 430 L85 382 Z" fill="url(#pg-zilliz)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 382 L215 430 L215 440 L85 392 Z" fill="#0E9F9A" opacity=".75"/><path d="M345 382 L215 430 L215 440 L345 392 Z" fill="#0E9F9A" opacity=".55"/><text x="215" y="387" text-anchor="middle" class="pn">Zilliz</text><text x="362" y="380" class="pd">04</text><text x="362" y="398" class="pl">向量数据库</text></g></a><a href="dify/" class="plate p2" aria-label="Dify · AI 应用开发平台"><g><path d="M215 246 L345 294 L215 342 L85 294 Z" fill="#2F5BFF" opacity=".35" filter="url(#glow)"/><path d="M215 246 L345 294 L215 342 L85 294 Z" fill="url(#pg-dify)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 294 L215 342 L215 352 L85 304 Z" fill="#2F5BFF" opacity=".75"/><path d="M345 294 L215 342 L215 352 L345 304 Z" fill="#2F5BFF" opacity=".55"/><text x="215" y="299" text-anchor="middle" class="pn">Dify</text><text x="362" y="292" class="pd">03</text><text x="362" y="310" class="pl">AI 应用开发平台</text></g></a><a href="glean/" class="plate p1" aria-label="Glean · 企业 Work AI"><g><path d="M215 158 L345 206 L215 254 L85 206 Z" fill="#343CED" opacity=".35" filter="url(#glow)"/><path d="M215 158 L345 206 L215 254 L85 206 Z" fill="url(#pg-glean)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 206 L215 254 L215 264 L85 216 Z" fill="#343CED" opacity=".75"/><path d="M345 206 L215 254 L215 264 L345 216 Z" fill="#343CED" opacity=".55"/><text x="215" y="211" text-anchor="middle" class="pn">Glean</text><text x="362" y="204" class="pd">02</text><text x="362" y="222" class="pl">企业 Work AI</text></g></a><a href="genspark/" class="plate p0" aria-label="Genspark · Agent 工作空间"><g><path d="M215 70 L345 118 L215 166 L85 118 Z" fill="#6366F1" opacity=".35" filter="url(#glow)"/><path d="M215 70 L345 118 L215 166 L85 118 Z" fill="url(#pg-genspark)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 118 L215 166 L215 176 L85 128 Z" fill="#6366F1" opacity=".75"/><path d="M345 118 L215 166 L215 176 L345 128 Z" fill="#6366F1" opacity=".55"/><text x="215" y="123" text-anchor="middle" class="pn">Genspark</text><text x="362" y="116" class="pd">01</text><text x="362" y="134" class="pl">Agent 工作空间</text></g></a></svg></div>
+<div class="hviz"><svg class="iso" viewBox="0 0 470 440" role="img" aria-label="AI 栈示意：自上而下为 Agent 入口（Genspark、Manus）、Glean、Dify、Zilliz；左侧为全栈参照 Palantir"><defs><linearGradient id="pg-genspark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A5B4FC" stop-opacity=".95"/><stop offset="1" stop-color="#6366F1" stop-opacity=".9"/></linearGradient><linearGradient id="pg-glean" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#93A3FF" stop-opacity=".95"/><stop offset="1" stop-color="#343CED" stop-opacity=".9"/></linearGradient><linearGradient id="pg-dify" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7DD3FC" stop-opacity=".95"/><stop offset="1" stop-color="#2F5BFF" stop-opacity=".9"/></linearGradient><linearGradient id="pg-zilliz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5EEAD4" stop-opacity=".95"/><stop offset="1" stop-color="#0E9F9A" stop-opacity=".9"/></linearGradient><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"/></filter></defs><g class="beams"><path d="M150 60 V400" /><path d="M215 40 V420" /><path d="M280 60 V400" /></g><a href="zilliz/" class="plate p3" aria-label="Zilliz · 向量数据库"><g><path d="M215 334 L345 382 L215 430 L85 382 Z" fill="#0E9F9A" opacity=".35" filter="url(#glow)"/><path d="M215 334 L345 382 L215 430 L85 382 Z" fill="url(#pg-zilliz)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 382 L215 430 L215 440 L85 392 Z" fill="#0E9F9A" opacity=".75"/><path d="M345 382 L215 430 L215 440 L345 392 Z" fill="#0E9F9A" opacity=".55"/><text x="215" y="387" text-anchor="middle" class="pn">Zilliz</text><text x="362" y="380" class="pd">04</text><text x="362" y="398" class="pl">向量数据库</text></g></a><a href="dify/" class="plate p2" aria-label="Dify · AI 应用开发平台"><g><path d="M215 246 L345 294 L215 342 L85 294 Z" fill="#2F5BFF" opacity=".35" filter="url(#glow)"/><path d="M215 246 L345 294 L215 342 L85 294 Z" fill="url(#pg-dify)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 294 L215 342 L215 352 L85 304 Z" fill="#2F5BFF" opacity=".75"/><path d="M345 294 L215 342 L215 352 L345 304 Z" fill="#2F5BFF" opacity=".55"/><text x="215" y="299" text-anchor="middle" class="pn">Dify</text><text x="362" y="292" class="pd">03</text><text x="362" y="310" class="pl">AI 应用开发平台</text></g></a><a href="glean/" class="plate p1" aria-label="Glean · 企业 Work AI"><g><path d="M215 158 L345 206 L215 254 L85 206 Z" fill="#343CED" opacity=".35" filter="url(#glow)"/><path d="M215 158 L345 206 L215 254 L85 206 Z" fill="url(#pg-glean)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 206 L215 254 L215 264 L85 216 Z" fill="#343CED" opacity=".75"/><path d="M345 206 L215 254 L215 264 L345 216 Z" fill="#343CED" opacity=".55"/><text x="215" y="211" text-anchor="middle" class="pn">Glean</text><text x="362" y="204" class="pd">02</text><text x="362" y="222" class="pl">企业 Work AI</text></g></a><a href="genspark/" class="plate p0" aria-label="Genspark 与 Manus · Agent 工作入口"><g><path d="M215 70 L345 118 L215 166 L85 118 Z" fill="#6366F1" opacity=".35" filter="url(#glow)"/><path d="M215 70 L345 118 L215 166 L85 118 Z" fill="url(#pg-genspark)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><path d="M85 118 L215 166 L215 176 L85 128 Z" fill="#6366F1" opacity=".75"/><path d="M345 118 L215 166 L215 176 L345 128 Z" fill="#6366F1" opacity=".55"/><text x="215" y="123" text-anchor="middle" class="pn">Genspark · Manus</text><text x="362" y="116" class="pd">01</text><text x="362" y="134" class="pl">Agent 工作入口</text></g></a><a href="palantir/" class="plate pf" aria-label="Palantir · 全栈参照"><g><rect x="4" y="100" width="62" height="304" rx="12" fill="transparent"/><path d="M58 104 L40 112 L40 392 L58 400" fill="none" stroke="rgba(165,180,252,.75)" stroke-width="2" stroke-dasharray="5 5"/><text x="30" y="250" class="pl" text-anchor="middle" transform="rotate(-90 30 250)">Palantir · 全栈参照</text></g></a></svg></div>
 </div></div>
 </div></div>
 
 <section id="intel" class="intel-sec"><div class="wrap"><a class="intel-card reveal" href="intel/">
-  <div class="ic-text"><span class="eyebrow">00 · Market Intelligence</span><h2>市场情报总览</h2><p>估值与融资、收入轨迹、亚太布局热力图、商业模式对照、定位图、时间线、信号监测表和四份实用清单，都在一页里。</p><span class="btn d">打开情报总览 →</span></div>
+  <div class="ic-text"><span class="eyebrow">00 · Market Intelligence</span><h2>市场情报总览</h2><p>估值与融资、收入轨迹、Palantir 参照系、亚太布局热力图、商业模式对照、定位图、时间线、信号监测表和实用清单，都在一页里。</p><span class="btn d">打开情报总览 →</span></div>
   <div class="ic-viz" aria-hidden="true"><svg viewBox="0 0 320 180"><g class="mini-bars"><rect x="20" y="30" width="240" height="18" rx="5"/><rect x="20" y="62" width="88" height="18" rx="5"/><rect x="20" y="94" width="22" height="18" rx="5" class="h"/><rect x="20" y="126" width="8" height="18" rx="5" class="h"/></g><polyline class="mini-line" points="160,160 190,140 220,120 250,92 280,60 305,40"/></svg></div>
 </a></div></section>
 <section id="map"><div class="wrap">
-  <div class="sh"><span class="eyebrow">01 · Map</span><h2>一张 AI 栈地图</h2><p>四家公司位于企业 AI 的四层。自上而下读，先看员工每天直接使用的产品，再逐层看到下面的基础设施。</p></div>
+  <div class="sh"><span class="eyebrow">01 · Map</span><h2>一张 AI 栈地图</h2><p>五家创业公司位于企业 AI 的四层，Palantir 横跨全栈作参照。自上而下读，先看员工每天直接使用的 Agent，再逐层看到下面的基础设施。</p></div>
   <div class="reveal stack">
     <div class="layers">
       <a class="layer" style="--c:var(--c-gs)" href="genspark/"><span class="no">01</span><span><b>Genspark · 工作入口</b><small>给出目标，Agent 交付成品：演示、表格、文档、网站</small></span><span class="tag">AGENT 工作空间</span></a>
+      <a class="layer" style="--c:var(--c-mn)" href="manus/"><span class="no">01</span><span><b>Manus · 工作入口</b><small>通用 Agent，每个任务一台云端虚拟机；E2B 沙箱与上下文工程</small></span><span class="tag">通用 AGENT</span></a>
       <a class="layer" style="--c:var(--c-gl)" href="glean/"><span class="no">02</span><span><b>Glean · 企业上下文</b><small>连接 250 多个系统，按权限给出带引用的答案</small></span><span class="tag">WORK AI</span></a>
       <a class="layer" style="--c:var(--c-df)" href="dify/"><span class="no">03</span><span><b>Dify · 应用编排</b><small>开源平台，把模型、知识库和工作流编排成应用</small></span><span class="tag">应用开发平台</span></a>
       <a class="layer" style="--c:var(--c-zl)" href="zilliz/"><span class="no">04</span><span><b>Zilliz · 数据底座</b><small>开源向量数据库 Milvus，AI 的检索与记忆层</small></span><span class="tag">向量数据库</span></a>
+      <a class="layer" style="--c:var(--c-pl)" href="palantir/"><span class="no">◇</span><span><b>Palantir · 全栈参照</b><small>本体、AIP 与 FDE：上市公司如何把数据变成决策与动作</small></span><span class="tag">参照系</span></a>
     </div>
     <div class="stack-note">
       <h3>为什么这样排</h3>
-      <p>同一个问题「AI 怎样进入企业」，四家给出四种答案：交付成品、连接上下文、编排应用、管理数据。按顺序读，可以比较价值在哪一层沉淀、竞争在哪一层最激烈。</p>
-      <ol><li><b>Genspark：</b>最容易上手，先建立对 Agent 的直觉</li><li><b>Glean：</b>看 Work AI 的 2B 生意怎么做</li><li><b>Dify：</b>内容最完整的一座学院</li><li><b>Zilliz：</b>回到数据层，理解检索与成本</li></ol>
+      <p>同一个问题「AI 怎样进入企业」，五家创业公司给出四种答案：交付成品、连接上下文、编排应用、管理数据；Palantir 用二十多年证明了全栈加驻场工程的路径。按顺序读，可以比较价值在哪一层沉淀、竞争在哪一层最激烈。</p>
+      <ol><li><b>Genspark：</b>最容易上手，先建立对 Agent 的直觉</li><li><b>Manus：</b>看 Agent 的「电脑」：沙箱与上下文工程</li><li><b>Glean：</b>看 Work AI 的 2B 生意怎么做</li><li><b>Dify：</b>内容最完整的一座学院</li><li><b>Zilliz：</b>回到数据层，理解检索与成本</li><li><b>Palantir：</b>最后看全栈参照与 FDE 方法</li></ol>
     </div>
   </div>
 </div></section>
 
 <section id="academies" style="padding-top:0"><div class="wrap">
-  <div class="sh"><span class="eyebrow">02 · Academies</span><h2>四座学院</h2><p>进度保存在你这台设备的浏览器里，这里实时显示。</p></div>
+  <div class="sh"><span class="eyebrow">02 · Academies</span><h2>六座学院</h2><p>进度保存在你这台设备的浏览器里，这里实时显示。</p></div>
   <div class="reveal cards">
     <article class="card" style="--c:var(--c-gs);--c2:#A1A1AA" data-key="v2-gspk" data-site="genspark">
       <div class="cv"><s>01</s><i>Agent 工作空间</i></div>
@@ -264,8 +266,18 @@ dialog .msg{font-size:13px;min-height:18px;margin-top:8px}
       <div class="jump"><a href="genspark/#M1">创始人</a><a href="genspark/#read">原典</a><a href="genspark/#assess">测评</a></div>
       <div class="go"><a class="btn d" href="genspark/">进入学院 →</a></div>
     </article>
+    <article class="card" style="--c:var(--c-mn);--c2:#E8D3A8" data-key="v2-manus" data-site="manus" data-mods="8">
+      <span class="flag">新增</span>
+      <div class="cv"><s>02</s><i>通用 Agent</i></div>
+      <div><h3>Manus 领航学院</h3><p class="sub">年化收入 1 亿美元以上 · 2025 年 12 月</p></div>
+      <p class="desc">每个任务一台云端虚拟机：E2B 沙箱与 Firecracker 深入浅出，以及上下文工程和一笔被叫停的跨境收购。</p>
+      <div class="nums"><div><b>78</b><span>道题</span></div><div><b>15</b><span>篇原典</span></div><div><b>8</b><span>模块</span></div></div>
+      <div class="prog"><div class="pl"><span>模块进度</span><span class="pv">0 / 8</span></div><div class="bar"><i></i></div><span class="pa">尚未开始</span></div>
+      <div class="jump"><a href="manus/#M3">E2B 沙箱</a><a href="manus/#read">原典</a><a href="manus/#assess">测评</a></div>
+      <div class="go"><a class="btn d" href="manus/">进入学院 →</a></div>
+    </article>
     <article class="card" style="--c:var(--c-gl);--c2:#C9F15A" data-key="v2-glean" data-site="glean">
-      <div class="cv"><s>02</s><i>企业 Work AI</i></div>
+      <div class="cv"><s>03</s><i>企业 Work AI</i></div>
       <div><h3>Glean 领航学院</h3><p class="sub">估值 72 亿美元 · 年化收入 3 亿美元</p></div>
       <p class="desc">企业 AI 的上下文层：模型、连接器与治理，以及 Work AI 的 2B 打法。</p>
       <div class="nums"><div><b>112</b><span>道题</span></div><div><b>18</b><span>篇原典</span></div><div><b>8</b><span>模块</span></div></div>
@@ -275,7 +287,7 @@ dialog .msg{font-size:13px;min-height:18px;margin-top:8px}
     </article>
     <article class="card" style="--c:var(--c-df);--c2:#7C5CFF" data-key="v2-dify" data-site="dify">
       <span class="flag">内容最全</span>
-      <div class="cv"><s>03</s><i>AI 应用开发平台</i></div>
+      <div class="cv"><s>04</s><i>AI 应用开发平台</i></div>
       <div><h3>DIFY 领航学院</h3><p class="sub">开源 AI 应用平台 · Pre-A 3,000 万美元</p></div>
       <p class="desc">从张路宇的思考方式到中国与亚太市场，内容最完整的一座学院。</p>
       <div class="nums"><div><b>362</b><span>道题</span></div><div><b>27</b><span>篇原典</span></div><div><b>8</b><span>模块</span></div></div>
@@ -284,13 +296,23 @@ dialog .msg{font-size:13px;min-height:18px;margin-top:8px}
       <div class="go"><a class="btn d" href="dify/">进入学院 →</a></div>
     </article>
     <article class="card" style="--c:var(--c-zl);--c2:#2747E8" data-key="v2-zlz" data-site="zilliz">
-      <div class="cv"><s>04</s><i>向量数据库</i></div>
+      <div class="cv"><s>05</s><i>向量数据库</i></div>
       <div><h3>Zilliz 领航学院</h3><p class="sub">Milvus · 累计融资约 1.13 亿美元</p></div>
       <p class="desc">开源向量数据库 Milvus 的创造者：开源获客、云订阅变现，2026 年推出 Vector Lakebase。</p>
       <div class="nums"><div><b>131</b><span>道题</span></div><div><b>16</b><span>篇原典</span></div><div><b>8</b><span>模块</span></div></div>
       <div class="prog"><div class="pl"><span>模块进度</span><span class="pv">0 / 8</span></div><div class="bar"><i></i></div><span class="pa">尚未开始</span></div>
       <div class="jump"><a href="zilliz/#M6">中国区</a><a href="zilliz/#read">原典</a><a href="zilliz/#assess">测评</a></div>
       <div class="go"><a class="btn d" href="zilliz/">进入学院 →</a></div>
+    </article>
+    <article class="card" style="--c:var(--c-pl);--c2:#9FB4DE" data-key="v2-pltr" data-site="palantir" data-mods="9">
+      <span class="flag">FDE 专题</span>
+      <div class="cv"><s>06</s><i>全栈参照</i></div>
+      <div><h3>Palantir 领航学院</h3><p class="sub">2025 年收入 44.75 亿美元 · 2026 Q2 +93%</p></div>
+      <p class="desc">本体、AIP 与 FDE：财务全部来自 SEC 文件，另有 FDE 前世今生与在中国落地 Enterprise Agentic AI 的九步实践。</p>
+      <div class="nums"><div><b>117</b><span>道题</span></div><div><b>30</b><span>篇原典</span></div><div><b>9</b><span>模块</span></div></div>
+      <div class="prog"><div class="pl"><span>模块进度</span><span class="pv">0 / 9</span></div><div class="bar"><i></i></div><span class="pa">尚未开始</span></div>
+      <div class="jump"><a href="palantir/#M4">FDE 专题</a><a href="palantir/#read">原典</a><a href="palantir/#assess">测评</a></div>
+      <div class="go"><a class="btn d" href="palantir/">进入学院 →</a></div>
     </article>
   </div>
 </div></section>
@@ -299,15 +321,15 @@ dialog .msg{font-size:13px;min-height:18px;margin-top:8px}
   <div class="sh"><span class="eyebrow">03 · Route</span><h2>巡航路径：出发、学习、返回</h2><p>每座学院走同一条航线，任何一站都能一键回到这里，或直达下一站。</p></div>
   <div class="reveal panel">
     <ol class="route">
-      <li><span class="dot">◆</span><b>情报总览</b><p>先看四家公司的横向对照，确定要深入哪一家</p></li>
-      <li><span class="dot">1</span><b>学习</b><p>按顺序读 8 个模块，第一个模块末尾有影像与声音</p></li>
+      <li><span class="dot">◆</span><b>情报总览</b><p>先看六家公司的横向对照，确定要深入哪一家</p></li>
+      <li><span class="dot">1</span><b>学习</b><p>按顺序读各模块，第一个模块末尾有影像与声音</p></li>
       <li><span class="dot">2</span><b>原典</b><p>在原典阅读室核对来源，标记已读</p></li>
       <li><span class="dot">3</span><b>测评</b><p>选一个视角题包，每题标注把握程度</p></li>
       <li><span class="dot">4</span><b>报告</b><p>看对齐指数、偏差画像和该补读的材料</p></li>
       <li class="end"><span class="dot">↻</span><b>下一站</b><p>用页面底部的巡航条进入下一站，或回到导航页</p></li>
     </ol>
     <div class="tips">
-      <div><b>巡航条</b>每个页面底部都有一条巡航条：主页、上一站、五个站点、下一站。电脑上也可以用 <span class="kbd">Alt</span> + <span class="kbd">←</span> / <span class="kbd">→</span>。</div>
+      <div><b>巡航条</b>每个页面底部都有一条巡航条：主页、上一站、七个站点、下一站。电脑上也可以用 <span class="kbd">Alt</span> + <span class="kbd">←</span> / <span class="kbd">→</span>。</div>
       <div><b>直达任意一站</b>点巡航条上的站点编号；读过的站点会亮起，各学院进度互不影响。</div>
       <div><b>回到原处</b>导航页记住你最后停留的学院和栏目，点「继续」直接回去。</div>
     </div>
@@ -318,24 +340,26 @@ dialog .msg{font-size:13px;min-height:18px;margin-top:8px}
   <div class="sh"><span class="eyebrow">04 · Watch &amp; Listen</span><h2>影像与声音</h2><p>每家公司精选一份视频、播客或长访谈。更多在各学院第一个模块的末尾。</p></div>
   <div class="reveal media">
     <a class="mc" style="--c:var(--c-gs);--c2:#A1A1AA" href="https://summify.io/discover/ai-dev-25-x-nyc-kay-zhu-how-genspark-built-a-super-agent-tha-Q24UKZ/" target="_blank" rel="noopener"><span class="mv"><span class="k">演讲</span><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="src">GENSPARK · AI DEV 25</span><b>How Genspark built a Super Agent</b><small>朱凯华讲「少控制，多工具」（第三方摘要）。</small></a>
+    <a class="mc" style="--c:var(--c-mn);--c2:#E8D3A8" href="https://www.e2b.dev/blog/how-manus-uses-e2b-to-provide-agents-with-virtual-computers" target="_blank" rel="noopener"><span class="mv"><span class="k">案例</span><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="src">MANUS · E2B</span><b>Manus 如何给 Agent 一台虚拟电脑</b><small>张涛解释为什么放弃 Docker、选择 E2B。</small></a>
     <a class="mc" style="--c:var(--c-gl);--c2:#C9F15A" href="https://tv.nyse.com/videos/glean-ceo-arvind-jain-on-making-ai-work-at-work" target="_blank" rel="noopener"><span class="mv"><span class="k">视频 · 3:25</span><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span><span class="src">GLEAN · NYSE TV</span><b>Making AI Work at Work</b><small>Arvind Jain 谈 AI 在工作场景的落地。</small></a>
     <a class="mc" style="--c:var(--c-df);--c2:#7C5CFF" href="https://news.qq.com/rain/a/20251214A06K4B00" target="_blank" rel="noopener"><span class="mv"><span class="k">播客</span><span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i></span></span><span class="src">DIFY · 42章经</span><b>张路宇播客对谈</b><small>耐心、三条 Day 1 策略，与逐一点评竞品。</small></a>
     <a class="mc" style="--c:var(--c-zl);--c2:#2747E8" href="https://m.aitntnews.com/newDetail.html?newId=16906" target="_blank" rel="noopener"><span class="mv"><span class="k">播客</span><span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i></span></span><span class="src">ZILLIZ · 十字路口</span><b>从「没有对手」到「一天崩溃好几次」</b><small>星爵谈商业化最难的两年。</small></a>
+    <a class="mc" style="--c:var(--c-pl);--c2:#9FB4DE" href="https://blog.palantir.com/dev-versus-delta-demystifying-engineering-roles-at-palantir-ad44c2a6e87" target="_blank" rel="noopener"><span class="mv"><span class="k">官方博客</span><span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i></span></span><span class="src">PALANTIR · BLOG</span><b>Dev versus Delta</b><small>FDE 最权威的一手定义。</small></a>
   </div>
   <p class="note">点击后在新窗口打开原始页面；本站不嵌入第三方播放器，不加载任何外部脚本或字体。</p>
 </div></section>
 
 <section id="compare" style="padding-top:0"><div class="wrap">
-  <div class="sh"><span class="eyebrow">05 · At a glance</span><h2>四家公司横向速览</h2><p>从市场情报视角看。数据截至 2026 年 10 月，出处见各学院「信号与来源」；完整图表见「市场情报总览」。</p></div>
+  <div class="sh"><span class="eyebrow">05 · At a glance</span><h2>六家公司横向速览</h2><p>从市场情报视角看。数据截至 2026 年 10 月，出处见各学院「信号与来源」；完整图表见「市场情报总览」。</p></div>
   <div class="reveal tbl"><table>
-    <thead><tr><th></th><th>Genspark<span>Agent 工作空间</span></th><th>Glean<span>企业 Work AI</span></th><th>Dify<span>AI 应用开发平台</span></th><th>Zilliz<span>向量数据库</span></th></tr></thead>
+    <thead><tr><th></th><th>Genspark<span>Agent 工作空间</span></th><th>Manus<span>通用 Agent</span></th><th>Glean<span>企业 Work AI</span></th><th>Dify<span>AI 应用开发平台</span></th><th>Zilliz<span>向量数据库</span></th><th>Palantir<span>全栈参照</span></th></tr></thead>
     <tbody>
-      <tr><td>资本与估值</td><td>估值 26 亿美元，累计融资 6.45 亿美元</td><td>估值 72 亿美元，累计融资 7.65 亿美元以上</td><td>2026 年 3 月 Pre-A 3,000 万美元</td><td>累计约 1.13 亿美元，最近一轮在 2022 年</td></tr>
-      <tr><td>增长发动机</td><td>产品口碑与极小团队</td><td>大客户销售：付费 POC、年合同、多部门扩张</td><td>开源社区与企业版</td><td>开源获客、云订阅变现</td></tr>
-      <tr><td>收入信号</td><td>年化约 2.5 亿美元（2026 年 7 月报道）</td><td>年化 3 亿美元（2026 年 5 月）</td><td>280 多家企业客户（2026 年报道）</td><td>12 个月增长 3.3 倍（2025 年 8 月）</td></tr>
-      <tr><td>亚太布局</td><td>日本、韩国各 3 年 1 亿美元</td><td>日本国家经理、澳洲法人、印度班加罗尔</td><td>东京法人与伙伴，韩国伙伴</td><td>新加坡办公室，亚太多个云区域</td></tr>
-      <tr><td>中国大陆</td><td>不是选项；现实范围是台港</td><td>基本不可行；台港与跨国企业可做</td><td>约 60 名核心工程师在中国；中国市场的商业化仍在探索</td><td>上海起步，有本地主体与阿里云服务区</td></tr>
-      <tr><td>关键问题</td><td>日韩之外的亚太由谁来打</td><td>能否守住微软重度客户</td><td>开源影响力如何变成企业收入</td><td>如何在「不做项目」的纪律下拿下大客户</td></tr>
+      <tr><td>资本与估值</td><td>估值 26 亿美元，累计融资 6.45 亿美元</td><td>2025 年 4 月估值约 5 亿美元；2026 年 8 月原投资方约 20 亿美元回购（报道）</td><td>估值 72 亿美元，累计融资 7.65 亿美元以上</td><td>2026 年 3 月 Pre-A 3,000 万美元</td><td>累计约 1.13 亿美元，最近一轮在 2022 年</td><td>纳斯达克上市公司</td></tr>
+      <tr><td>增长发动机</td><td>产品口碑与极小团队</td><td>订阅加用量；产品迭代快</td><td>大客户销售：付费 POC、年合同、多部门扩张</td><td>开源社区与企业版</td><td>开源获客、云订阅变现</td><td>训练营、大合同与 FDE 扩张</td></tr>
+      <tr><td>收入信号</td><td>年化约 2.5 亿美元（2026 年 7 月报道）</td><td>年化 1 亿美元以上（2025 年 12 月）；约 4 亿美元（2026 年 6 月报道）</td><td>年化 3 亿美元（2026 年 5 月）</td><td>280 多家企业客户（2026 年报道）</td><td>12 个月增长 3.3 倍（2025 年 8 月）</td><td>2025 年 44.75 亿美元；2026 Q2 同比 +93%</td></tr>
+      <tr><td>亚太布局</td><td>日本、韩国各 3 年 1 亿美元</td><td>新加坡总部，东京团队</td><td>日本国家经理、澳洲法人、印度班加罗尔</td><td>东京法人与伙伴，韩国伙伴</td><td>新加坡办公室，亚太多个云区域</td><td>日本 SOMPO 合资、富士通 FDE 伙伴；韩国 HD 现代</td></tr>
+      <tr><td>中国大陆</td><td>不是选项；现实范围是台港</td><td>2025 年 7 月关闭大陆服务</td><td>基本不可行；台港与跨国企业可做</td><td>约 60 名核心工程师在中国；中国市场的商业化仍在探索</td><td>上海起步，有本地主体与阿里云服务区</td><td>不进入；方法可借鉴</td></tr>
+      <tr><td>关键问题</td><td>日韩之外的亚太由谁来打</td><td>独立后的股权与企业化能力</td><td>能否守住微软重度客户</td><td>开源影响力如何变成企业收入</td><td>如何在「不做项目」的纪律下拿下大客户</td><td>美国以外增长能否跟上</td></tr>
     </tbody>
   </table></div>
 </div></section>
@@ -366,13 +390,13 @@ dialog .msg{font-size:13px;min-height:18px;margin-top:8px}
   var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1}):null;
   [].forEach.call(document.querySelectorAll('.reveal'),function(el){io?io.observe(el):el.classList.add('in')});setTimeout(function(){[].forEach.call(document.querySelectorAll('.reveal'),function(el){el.classList.add('in')})},4000);
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){[].forEach.call(document.querySelectorAll('.stats b[data-n]'),function(b){var n=+b.dataset.n,t0=null;b.textContent='0';function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-p,3);b.textContent=Math.round(n*e);if(p<1)requestAnimationFrame(f)}setTimeout(function(){requestAnimationFrame(f)},400)})}
-  var NAMES={intel:'市场情报总览',genspark:'Genspark 领航学院',glean:'Glean 领航学院',dify:'DIFY 领航学院',zilliz:'Zilliz 领航学院'};
+  var NAMES={intel:'市场情报总览',genspark:'Genspark 领航学院',manus:'Manus 领航学院',glean:'Glean 领航学院',dify:'DIFY 领航学院',zilliz:'Zilliz 领航学院',palantir:'Palantir 领航学院'};
   var VIEWS={learn:'学习路径',module:'学习模块',read:'原典阅读室',assess:'测评',run:'测评进行中',report:'测评报告'};
   [].forEach.call(document.querySelectorAll('.card[data-key]'),function(c){
     var k=c.dataset.key,read=get(k+'-read')||{},hist=get(k+'-hist')||[],canon=get(k+'-canon')||{};
     var done=Object.keys(read).filter(function(x){return /^M\d+$/.test(x)}).length;
-    c.querySelector('.pv').textContent=done+' / 8';
-    setTimeout(function(){c.querySelector('.bar i').style.width=Math.round(done/8*100)+'%'},200);
+    var tot=+(c.dataset.mods||8);c.querySelector('.pv').textContent=done+' / '+tot;
+    setTimeout(function(){c.querySelector('.bar i').style.width=Math.round(done/tot*100)+'%'},200);
     var parts=[],nc=Object.keys(canon).length;if(nc)parts.push('原典已读 '+nc+' 篇');
     if(hist.length)parts.push('最近对齐指数 '+hist[hist.length-1].align);
     c.querySelector('.pa').textContent=parts.length?parts.join(' · '):(done?'学习中':'尚未开始');

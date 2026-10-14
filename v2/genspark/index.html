@@ -1177,7 +1177,7 @@ details.data td,details.data th{padding:6px 8px;border-bottom:1px solid var(--li
     <tr><td><b>AI Slides / Sheets / Docs</b></td><td>生成可编辑的演示文稿、财务模型和客户文档</td><td>最容易量化的场景：报告、提案、董事会材料的工时下降</td></tr>
     <tr><td><b>AI Developer / AI Design</b></td><td>用自然语言生成全栈网页、移动应用、海报与品牌素材</td><td>市场、运营团队的自助交付能力</td></tr>
     <tr><td><b>Call For Me</b></td><td>基于实时语音接口的电话代理，由一个影子模型监听通话质量</td><td>在日本因「代打辞职电话」走红，展示了消费者侧的病毒传播力</td></tr>
-    <tr><td><b>GenMail · GenTeam</b></td><td>在 Gmail、Outlook 里起草回复和跟进；人与不同角色的 Agent 在共享空间协作</td><td>团队席位扩张的抓手</td></tr>
+    <tr><td><b>GenMail · GenTeam</b></td><td>在 Gmail、Outlook 里起草回复和跟进；人与不同角色的 Agent 在共享空间协作</td><td>团队席位扩张的切入点</td></tr>
     <tr><td><b>SecondBrain · SecondBrain Note</b></td><td>把邮件、会议纪要、日历、项目、联系人和决策记录连成持久记忆；配套卡片大小的录音硬件，记录线下会议</td><td>「上下文 All in One」的落地，也带来隐私与合规问题</td></tr>
     <tr><td><b>Agent Base</b></td><td>把表格和 CRM 数据生成工作系统与仪表盘</td><td>从个人工具走向部门系统</td></tr>
     <tr><td><b>GenOffice</b></td><td>开源（Apache 2.0）桌面办公套件，原生支持 docx、xlsx、pptx 和 PDF，离线编辑免费，AI 操作消耗账户额度</td><td>到用户所在的地方去：在本地文件里直接用 AI</td></tr>
@@ -1224,7 +1224,7 @@ details.data td,details.data th{padding:6px 8px;border-bottom:1px solid var(--li
   <thead><tr><th>特征</th><th>对区域团队的含义</th><th>你要准备的</th></tr></thead>
   <tbody>
     <tr><td><b>总部人很少</b></td><td>区域不会有大量总部支持，产品本地化、合规材料、案例都要自己推动</td><td>能自己写方案、做演示、谈伙伴的「超级个体」型团队</td></tr>
-    <tr><td><b>每两个月一个大版本</b></td><td>销售材料、培训、伙伴赋能必须跟上发布节奏</td><td>用 AI 生成和更新销售材料的内部流水线</td></tr>
+    <tr><td><b>每两个月一个大版本</b></td><td>销售材料、培训、伙伴培训必须跟上发布节奏</td><td>用 AI 生成和更新销售材料的内部流水线</td></tr>
     <tr><td><b>AI 原生运营</b></td><td>日本销售人员被描述为一人带多个 AI Agent 工作（日本分析文章）</td><td>区域团队自己就要重度使用 Genspark，用它做提案和复盘</td></tr>
     <tr><td><b>创始人亲自出场</b></td><td>首尔发布会三位联合创始人都到场</td><td>中文与创始人沟通顺畅，但对外要能用英语和当地语言主持局面</td></tr>
     <tr><td><b>新任首席营收官</b></td><td>2026 年 6 月任命 Jamison Powell 为 CRO，企业销售体系正在搭建</td><td>区域负责人汇报给 CRO 还是 COO，配额和预算由谁定，需要事先明确</td></tr>
@@ -1364,6 +1364,7 @@ details.data td,details.data th{padding:6px 8px;border-bottom:1px solid var(--li
   <div class="panel trace"><span class="mono">SIGNAL 05</span><h3>录音硬件与全量记忆</h3><p><b>读出：</b>SecondBrain Note 把线下对话也纳入记忆。<b>要确认：</b>各国隐私法下的合规方案，以及企业客户能否关闭。</p></div>
   <div class="panel trace"><span class="mono">SIGNAL 06</span><h3>开源 GenOffice</h3><p><b>读出：</b>用开源桌面套件争夺用户的本地文件入口，商业化走 AI 额度。<b>要确认：</b>企业客户是否允许安装、数据是否落地。</p></div>
 </div>
+
 
 
 <div class="tbl" style="margin-top:16px"><table><thead><tr><th>持续跟踪</th><th>为什么重要</th><th>去哪里看</th><th>频率</th></tr></thead><tbody><tr><td><b>企业客户数与 CRO 体系</b></td><td>收入是否从专业个人用户迁移到企业席位</td><td>官方发布、发布会</td><td>每次发布</td></tr><tr><td><b>日韩之外的亚太动作</b></td><td>亚太投入是否扩散到新加坡、印度、澳新</td><td>新闻稿、招聘与活动信息</td><td>月度</td></tr><tr><td><b>微软联合销售落地</b></td><td>渠道杠杆是否兑现</td><td>微软与 Genspark 公告</td><td>季度</td></tr></tbody></table></div>
@@ -1691,16 +1692,16 @@ document.addEventListener("click",function(e){var t=e.target.closest("[data-go]"
 function modDone(id){return !!READ[id]}
 function renderLearn(){
   var tq=Q.length,done=MODS.filter(function(m){return modDone(m.id)}).length;
-  $("hstats").innerHTML='<div><b>8</b><span>个学习模块</span></div><div><b>'+tq+'</b><span>道题 · 17 个维度</span></div><div><b>5</b><span>个视角题包</span></div><div><b>'+Object.keys(SRC).length+'</b><span>个公开来源</span></div>';
-  $("railProg").textContent="已完成 "+done+" / 8";
+  $("hstats").innerHTML='<div><b>'+MODS.length+'</b><span>个学习模块</span></div><div><b>'+tq+'</b><span>道题 · 17 个维度</span></div><div><b>5</b><span>个视角题包</span></div><div><b>'+Object.keys(SRC).length+'</b><span>个公开来源</span></div>';
+  $("railProg").textContent="已完成 "+done+" / "+MODS.length;
   var h="";MODS.forEach(function(m,i){h+='<button class="node'+(modDone(m.id)?" done":"")+'" style="--c:'+m.c+'" data-go="module" data-m="'+m.id+'">'+(i%5?'<span class="pin l"></span>':'')+'<span class="nt"><span class="ic">'+(i+1)+'</span>'+m.type+'</span><b>'+m.t+'</b><small>'+m.s+'</small><span class="st"><span>'+m.min+' 分钟</span>'+(modDone(m.id)?'<span class="ok">✓ 已读</span>':'<span>未读</span>')+'</span><span class="pin r"></span></button>'});
   h+='<button class="node end" style="--c:var(--n-end)" data-go="assess"><span class="pin l"></span><span class="nt"><span class="ic">✓</span>结束</span><b>认证测评</b><small>选视角题包，生成运行日志与结果码</small><span class="st"><span>30–50 题</span><span>→</span></span></button>';
   $("rail").innerHTML=h;
 }
-function showModule(id){var m=MODS.filter(function(x){return x.id===id})[0],i=MODS.indexOf(m);setTimeout(function(){buildToc(id)},0);
+function showModule(id){var m=MODS.filter(function(x){return x.id===id})[0];if(!m){m=MODS[0];id=m.id}var i=MODS.indexOf(m);setTimeout(function(){buildToc(id)},0);
   [].forEach.call(document.querySelectorAll("article.mod"),function(a){a.hidden=a.dataset.m!==id});
   $("mCrumb").textContent=m.t;$("mBadge").textContent=i+1;$("mBadge").parentNode.style.setProperty("--c",m.c);
-  $("mEyebrow").textContent="模块 "+(i+1)+" / 8 · "+m.type+"节点";$("mTitle").textContent=m.t;$("mLead").textContent=m.s;
+  $("mEyebrow").textContent="模块 "+(i+1)+" / "+MODS.length+" · "+m.type+"节点";$("mTitle").textContent=m.t;$("mLead").textContent=m.s;
   var nq=Q.filter(function(q){return m.dims.indexOf(q.d)>=0}).length;
   $("mMeta").innerHTML='<span class="chip">约 '+m.min+' 分钟</span><span class="chip">关联 '+nq+' 道题</span><span class="chip">考查维度：'+m.dims.map(function(d){return DIMS[d].n}).join("、")+'</span>'+(modDone(id)?'<span class="chip" style="color:var(--ok)">✓ 已读</span>':'');
   $("mQuizTitle").textContent="读完「"+m.t+"」？用 10 道题检验一下";
@@ -1764,7 +1765,7 @@ function renderQ(){
     else if(!lk&&!a)h+='<p class="tip">点选项即提交，按默认把握「'+confName(PROF.conf)+'」计分；拿不准就点右侧「拿不准」。</p>'}
   if(ex&&a)h+='<p class="tip ans">已作答 · 把握「'+confName(a.conf)+'」。点其他选项可以修改。</p>';
   if(ex&&nextUnanswered()<0)h+='<div class="donebar"><span>全部 '+A.order.length+' 题已作答。</span><button class="btn" id="doneFinish">交卷，生成运行日志</button></div>';
-  if(lk){var pts=cbmPts(a.conf,a.s);h+='<div class="fb '+cls(a.s)+'"><span class="h">'+(a.s>=.85?"✓ 对齐":a.s>=.5?"◐ 部分对齐":"✕ 偏离")+' · 得分 '+Math.round(a.s*100)+' · 把握「'+confName(a.conf)+'」· 加权 '+(pts>0?"+":"")+pts.toFixed(1)+(q.t==="r"?' · 参考位置约 '+q.tg+'，你选 '+a.sel:'')+' <span class="ev '+q.v+'">'+EVN[q.v]+'</span></span><span>'+esc(q.e)+'</span><div class="srcs">'+q.src.map(function(s){var x=SRC[s];return x&&x.u?'<a href="'+esc(x.u)+'" target="_blank" rel="noopener">'+esc(x.t)+' ↗</a>':'<a href="#" data-go="module" data-m="M8">'+esc(x?x.t:s)+'</a>'}).join("")+'</div></div>';
+  if(lk){var pts=cbmPts(a.conf,a.s);h+='<div class="fb '+cls(a.s)+'"><span class="h">'+(a.s>=.85?"✓ 对齐":a.s>=.5?"◐ 部分对齐":"✕ 偏离")+' · 得分 '+Math.round(a.s*100)+' · 把握「'+confName(a.conf)+'」· 加权 '+(pts>0?"+":"")+pts.toFixed(1)+(q.t==="r"?' · 参考位置约 '+q.tg+'，你选 '+a.sel:'')+' <span class="ev '+q.v+'">'+EVN[q.v]+'</span></span><span>'+esc(q.e)+'</span><div class="srcs">'+q.src.map(function(s){var x=SRC[s];return x&&x.u?'<a href="'+esc(x.u)+'" target="_blank" rel="noopener">'+esc(x.t)+' ↗</a>':'<a href="#" data-go="module" data-m="'+MODS[MODS.length-1].id+'">'+esc(x?x.t:s)+'</a>'}).join("")+'</div></div>';
     h+='<div class="qnav"><button class="btn ghost" id="prev"'+(A.idx===0?" disabled":"")+'>← 上一题</button>'+(A.idx<A.order.length-1?'<button class="btn" id="nextQ">下一题 →<span class="kbd" style="color:inherit;border-color:currentColor;opacity:.7">Enter</span></button>':'<button class="btn" id="doneFinish">完成，生成运行日志</button>')+'</div>'+(a.s>=.85&&!A.done?'<div class="autobar"><i></i></div>':'')}
   else h+='<div class="qnav"><button class="btn ghost" id="prev"'+(A.idx===0?" disabled":"")+'>← 上一题</button><button class="btn ghost" id="next"'+(A.idx===A.order.length-1?" disabled":"")+'>跳过 →</button></div>';
   $("qcard").innerHTML=h;
@@ -2043,7 +2044,8 @@ document.addEventListener("focusout",hide);addEventListener("scroll",hide,{passi
 @media (max-width:520px){#journey{gap:2px}#journey a{height:34px;min-width:30px;padding:0 7px}#journey .jn span,#journey .jp{display:none}#journey .js.on span{max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 #journey.away{transform:translate(-50%,calc(100% + 110px));opacity:0;pointer-events:none}
 @media (pointer:coarse){#journey a{height:40px;min-width:40px}}
-@media (pointer:coarse) and (max-width:400px){#journey a{height:38px;min-width:34px;padding:0 6px}}
+@media (pointer:coarse) and (max-width:400px){#journey a{height:38px;min-width:32px;padding:0 5px}}
+@media (max-width:430px){#journey .js.on span{display:none}#journey .js.on{padding:0 5px}#journey .js{min-width:30px;padding:0 4px}}
 @media print{#journey{display:none}}
 body{padding-bottom:72px}
 </style>
@@ -2051,12 +2053,12 @@ body{padding-bottom:72px}
 <a class="jh" href="../" data-tip="返回总导航" aria-label="返回总导航"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></a>
 <a class="jp" href="../intel/" data-tip="上一站：市场情报总览" aria-label="上一站"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></a>
 <span class="sep" aria-hidden="true"></span>
-<span class="stations"><a class="js" href="../intel/" data-k="intel" data-tip="市场情报总览 · 四家公司的横向对照"><i>◆</i><span>情报</span></a><a class="js on" href="../genspark/" data-k="genspark" data-tip="Genspark 领航学院 · Agent 工作空间" aria-current="page"><i>1</i><span>Genspark</span></a><a class="js" href="../glean/" data-k="glean" data-tip="Glean 领航学院 · 企业 Work AI"><i>2</i><span>Glean</span></a><a class="js" href="../dify/" data-k="dify" data-tip="DIFY 领航学院 · AI 应用开发平台"><i>3</i><span>Dify</span></a><a class="js" href="../zilliz/" data-k="zilliz" data-tip="Zilliz 领航学院 · 向量数据库"><i>4</i><span>Zilliz</span></a></span>
+<span class="stations"><a class="js" href="../intel/" data-k="intel" data-tip="市场情报总览 · 六家公司的横向对照"><i>◆</i><span>情报</span></a><a class="js on" href="../genspark/" data-k="genspark" data-tip="Genspark 领航学院 · Agent 工作空间" aria-current="page"><i>1</i><span>Genspark</span></a><a class="js" href="../manus/" data-k="manus" data-tip="Manus 领航学院 · 通用 Agent 与 E2B 沙箱"><i>2</i><span>Manus</span></a><a class="js" href="../glean/" data-k="glean" data-tip="Glean 领航学院 · 企业 Work AI"><i>3</i><span>Glean</span></a><a class="js" href="../dify/" data-k="dify" data-tip="DIFY 领航学院 · AI 应用开发平台"><i>4</i><span>Dify</span></a><a class="js" href="../zilliz/" data-k="zilliz" data-tip="Zilliz 领航学院 · 向量数据库"><i>5</i><span>Zilliz</span></a><a class="js" href="../palantir/" data-k="palantir" data-tip="Palantir 领航学院 · 本体、AIP 与 FDE"><i>6</i><span>Palantir</span></a></span>
 <span class="sep" aria-hidden="true"></span>
-<a class="jn" href="../glean/" data-tip="下一站：Glean 领航学院"><span>下一站</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+<a class="jn" href="../manus/" data-tip="下一站：Manus 领航学院"><span>下一站</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
 </nav>
 <script>
-(function(){var S="genspark",K={genspark:"v2-gspk",glean:"v2-glean",dify:"v2-dify",zilliz:"v2-zlz"};
+(function(){var S="genspark",K={genspark:"v2-gspk",manus:"v2-manus",glean:"v2-glean",dify:"v2-dify",zilliz:"v2-zlz",palantir:"v2-pltr"};
 [].forEach.call(document.querySelectorAll("#journey .js"),function(a){var k=a.getAttribute("data-k");try{if(k==="intel"?localStorage.getItem("v2-intel-seen"):localStorage.getItem(K[k]+"-read"))a.classList.add("seen")}catch(e){}});
 function rec(v,o){try{localStorage.setItem("v2-hub-last",JSON.stringify({s:S,v:v||"learn",m:(o&&o.m)||(typeof curMod!=="undefined"?curMod:null),t:Date.now()}))}catch(e){}}
 if(S==="intel"){try{localStorage.setItem("v2-intel-seen","1")}catch(e){}rec("intel")}
