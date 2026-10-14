@@ -151,7 +151,8 @@ ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:9px;font-size:14.5p
 ul.clean li{padding-left:18px;position:relative}
 ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;border-radius:2px;background:var(--accent)}
 ol.steps,ol.plan{margin:0;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:10px;font-size:14.5px}
-ol.steps li,ol.plan li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:10px}
+ol.steps li,ol.plan li{counter-increment:s;display:block;position:relative;padding-left:38px;min-height:26px;line-height:1.7}
+ol.steps li::before,ol.plan li::before{position:absolute;left:0;top:0}
 ol.steps li::before,ol.plan li::before{content:counter(s);width:24px;height:24px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-family:var(--f-mono);font-size:12px;display:grid;place-items:center;margin-top:2px}
 .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);box-shadow:var(--shadow)}
 table{border-collapse:collapse;width:100%;min-width:700px;font-size:14px;line-height:1.65}
@@ -1983,6 +1984,7 @@ function renderRead(){rDB();
 @media (max-width:640px){.vscroll{contain:inline-size;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px 4px;scrollbar-width:thin}.vscroll>svg.viz{min-width:600px}.viz .tick,.viz .sublab,.viz .evt{font-size:13px!important}.viz .lab,.viz .val,.viz .dlab{font-size:14.5px!important}.vhint{display:block;font-size:12px;color:var(--muted,#667085);margin:2px 0 6px}}
 h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
 details.data table{min-width:0!important;display:table!important}
+.tbl th,.tbl td{min-width:5.5em}.tbl th:first-child,.tbl td:first-child{min-width:6.5em}
 @media (max-width:640px),(pointer:coarse){.flag,.pill,.toc .tt,.hs-h em,.st small,.ptag,.tag,.kick b,.mv .k,.st span,.src,.hs-n,.kpi small,.mmeta .chip,.trefs button,th span,.brand span{font-size:12px!important}.legend .ev,.sb,.ev{font-size:11.5px!important}}
 @media (pointer:coarse){a.brand{min-height:40px}.crumb button,.trefs button{min-height:36px}details.data summary,details.adv summary{padding:9px 0}.dchips .dchip{min-height:38px}.toc a{min-height:40px;display:flex;align-items:center}}
 @media (max-width:400px){#journey .js.on span{max-width:46px!important}#journey .js{padding:0 6px!important}#journey .jn{padding:0 11px!important}}</style><script>(function(){function w(){[].forEach.call(document.querySelectorAll("svg.viz:not([data-w])"),function(v){v.setAttribute("data-w","1");var d=document.createElement("div");d.className="vscroll";var h=document.createElement("span");h.className="vhint";h.textContent="图表可左右滑动 →";v.parentNode.insertBefore(h,v);v.parentNode.insertBefore(d,v);d.appendChild(v)})}w();new MutationObserver(w).observe(document.body,{childList:true,subtree:true})})();</script><style>
